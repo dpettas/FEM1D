@@ -1,0 +1,5 @@
+[
+  { "directory": "/home/pettas/llvm/build",
+    "arguments": ["~/.local/share/nvim/lsp_servers/clangd/clangd/bin/clangd", "-I./src/"],
+    "file": "file.cc" }
+]
