@@ -3,6 +3,7 @@
 
 #include "Point.h"
 #include <cmath>
+#include <iostream>
 
 namespace FEM
 {
@@ -12,6 +13,7 @@ namespace FEM
 
     public:
       Point1D();
+      ~Point1D();
       Point1D(double x_);
 
       Point1D(const Point1D& rhs);
@@ -19,12 +21,12 @@ namespace FEM
 
       const int&    numberOfDimensions()   const;
       const double* getCoordinates() const;
-      const double  distance( const Point& other) const;
+      const double  distanceFrom( const Point& other) const;
       
 
     private:
       int num;
-      double xx;
+      double* xx;
   };
 }
 

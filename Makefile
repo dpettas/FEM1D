@@ -24,6 +24,12 @@ obj/%.o: src/%.cpp
 	@mkdir -p $(shell dirname $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+test_point1D: $(OBJ)
+	$(CC) $(CFLAGS) -o ./tests_point1D $(OBJ) ./tests/test_point1D.cpp $(INC)
+	./tests_point1D
+
+
+
 test_sequentials: $(OBJ)
 	$(CC) $(CFLAGS) -o $(TEST_SEQUENTIALS:.cpp=.exe) $(OBJ) $(TEST_SEQUENTIALS) $(INC)
 	@./$(TEST_SEQUENTIALS:.cpp=.exe)
