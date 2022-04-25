@@ -21,6 +21,8 @@ namespace FEM{
       Point*       getPoint()        { return p;};
       const int    getNodeId() const { return node_id;}
       int          getNodeId()       { return node_id;}
+
+      bool hasTheSameId(const Node& other);
       
 
     private:

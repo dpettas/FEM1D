@@ -35,4 +35,10 @@ namespace FEM{
     point_created = true;
   }
 
+  bool Node::hasTheSameId(const Node& other){
+
+    return other.getNodeId() == this->getNodeId();
+  }
+
+
 }

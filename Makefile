@@ -25,8 +25,15 @@ obj/%.o: src/%.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 test_point1D: $(OBJ)
-	$(CC) $(CFLAGS) -o ./tests_point1D $(OBJ) ./tests/test_point1D.cpp $(INC)
-	./tests_point1D
+	$(CC) $(CFLAGS) -o ./test_point1D $(OBJ) ./tests/test_point1D.cpp $(INC)
+	./test_point1D
+
+test_node: $(OBJ)
+	$(CC) $(CFLAGS) -o ./test_node $(OBJ) ./tests/test_Node.cpp $(INC)
+	./test_node
+	@rm test_node
+
+
 
 
 
