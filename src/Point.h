@@ -14,6 +14,8 @@ namespace FEM
       virtual const double  distanceFrom(const Point& other) const = 0;
 
 
+
+
     private:
 
 
