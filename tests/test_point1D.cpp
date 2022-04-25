@@ -14,6 +14,9 @@ int main (int argc, char *argv[])
   FEM::Point1D p2( 1.0);
   FEM::Point1D p3(-1.0);
   FEM::Point1D p4 = p3;
+  FEM::Point1D* pp; 
+  double a; 
+
 
   assert( p.numberOfDimensions() ==  1  );
   assert(*p .getCoordinates()    ==  0.0);

@@ -1,13 +1,13 @@
 #include <iostream>
 #include "Point1D.h"
+#include "Node.h"
 
 
 int main(){
 
-  double a = 1.0;
-  double* x = &a;
+  FEM::Node n(0,10);
 
-  std::cout << x[0] << std::endl;
 
+  std::cout << "End\n";
   return 0;
 }
