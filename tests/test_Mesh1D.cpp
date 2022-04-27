@@ -10,7 +10,8 @@ int main (int argc, char *argv[])
   FEM::Mesh1D d0(-1.0, 1.0, 10);
 
 
-  d0.setSpaceModifier(FEM::Mesh1D::UNIFORM);
+  FEM::Mesh1D::IDENTITY(d0.getNumNodes(), d0.getNodes());
+  // d0.setSpaceModifier(FEM::Mesh1D::IDENTITY);
 
   std::ofstream out;
   out.open("nodes.dat");

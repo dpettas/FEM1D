@@ -2,17 +2,11 @@
 #define _FEM1D_MESH1D_INCLUDED_
 
 #include "Node.h"
+#include <iostream>
 
 
 
 namespace FEM{
-
-  class Transformation{
-    public:
-      Transformation(){};
-      Transformation(double stretch){};
-
-  };
 
 
   class Mesh1D{
@@ -20,7 +14,9 @@ namespace FEM{
     public:
 
 
-      static inline Transformation UNIFORM = Transformation(1.0);
+      static Node* IDENTITY(int num_nodes, const Node* nodes){ return const_cast<Node*>(nodes);}
+
+
 
 
 
@@ -35,7 +31,7 @@ namespace FEM{
       const Node*   getNodes()      const { return nodes;    }
       
 
-      void setSpaceModifier(const Transformation& smod_);
+      void setSpaceModifier( Node* (*mod)(int, const Node*) );
 
 
 
@@ -46,7 +42,6 @@ namespace FEM{
       double         xlow;
       double         xmax;
       Node*          nodes = nullptr;
-      Transformation smod;
 
 
 

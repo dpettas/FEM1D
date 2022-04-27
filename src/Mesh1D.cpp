@@ -31,8 +31,7 @@ void FEM::Mesh1D::createNodes(){
 
 }
 
-void FEM::Mesh1D::setSpaceModifier(const Transformation& smod_){
+void FEM::Mesh1D::setSpaceModifier(Node* (*mod) (int,const Node*) ){
 
-
-
+  nodes = mod(this->getNumNodes(), this->getNodes());
 }
