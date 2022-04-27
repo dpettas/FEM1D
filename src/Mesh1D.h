@@ -4,24 +4,31 @@
 namespace FEM{
 
 
-  class SpartialModifier{
-    public:
-
-    private:
-
-  };
-// use uniform 
-
 
   class Mesh1D{
 
     public:
 
-      Mesh1D(double xlow_, double xmax_);
-      Mesh1D(double xlow_, double xmax_, SpartialModifier sp);
+      class Transformation{
+        public:
+
+        private:
+
+      };
+
+
+      Mesh1D();
+      Mesh1D(double low_, double max_, int num_nodes_);
       Mesh1D(const Mesh1D& rhs);
+      ~Mesh1D();
+
 
     private:
+      int     num_nodes;
+      double  xlow;
+      double  xmax;
+      double* x;
+
 
 
   };
