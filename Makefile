@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS= -g -Wall
+CFLAGS= -std=c++17 -g -Wall
 CLINKS="./src"
 
 TARGET= main
@@ -33,6 +33,10 @@ test_node: $(OBJ)
 	./test_node
 	@rm test_node
 
+test_Mesh1D: $(OBJ)
+	$(CC) $(CFLAGS) -o ./test_Mesh1D $(OBJ) ./tests/test_Mesh1D.cpp $(INC)
+	./test_Mesh1D
+	@rm test_Mesh1D
 
 
 

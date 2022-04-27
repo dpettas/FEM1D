@@ -6,6 +6,7 @@ namespace FEM{
   Node::Node(){
     node_id = -1;
     p = nullptr;
+    point_created = false;
 
   }
 
@@ -39,6 +40,18 @@ namespace FEM{
 
     return other.getNodeId() == this->getNodeId();
   }
+
+
+  void Node::setNodeId(const int& node_id_){ 
+    node_id = node_id_;
+  }
+
+
+  void Node::setLocation(const double& x_){
+    point_created = true;
+    p = new Point1D(x_);
+  }
+
 
 
 }

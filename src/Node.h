@@ -22,7 +22,10 @@ namespace FEM{
       const int    getNodeId() const { return node_id;}
       int          getNodeId()       { return node_id;}
 
-      bool hasTheSameId(const Node& other);
+
+      bool hasTheSameId(const Node& other  );
+      void setNodeId   (const int& node_id_);
+      void setLocation (const double& x_   );
       
 
     private:

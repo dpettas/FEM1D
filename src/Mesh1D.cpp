@@ -4,10 +4,8 @@ FEM::Mesh1D::Mesh1D(){
   xlow      = 0.0; 
   xmax      = 1.0;
   num_nodes = 100;
-  x         = new double [num_nodes];
 
-  for (int i = 0; i < num_nodes; ++i) x[i] = xlow + static_cast<double>(i)/num_nodes * (xmax - xlow);
-
+  createNodes();
 }
 
 FEM::Mesh1D::Mesh1D(double low_, double max_, int num_nodes_){
@@ -15,11 +13,26 @@ FEM::Mesh1D::Mesh1D(double low_, double max_, int num_nodes_){
   xmax      = max_;
   num_nodes = num_nodes_;
 
-  x = new double [num_nodes];
-  for (int i = 0; i < num_nodes; ++i) x[i] = xlow + static_cast<double>(i)/num_nodes * (xmax - xlow);
+  createNodes();
 }
 
 FEM::Mesh1D::~Mesh1D(){
-  delete [] x;
+  delete [] nodes;
+  nodes = nullptr;
 }
 
+void FEM::Mesh1D::createNodes(){
+  nodes     = new Node [num_nodes];
+  for (int i = 0; i < num_nodes; ++i) {
+    double x = xlow + static_cast<double>(i)/(num_nodes-1) * (xmax - xlow);
+    nodes[i].setNodeId(i);
+    nodes[i].setLocation(x);
+  }
+
+}
+
+void FEM::Mesh1D::setSpaceModifier(const Transformation& smod_){
+
+
+
+}
