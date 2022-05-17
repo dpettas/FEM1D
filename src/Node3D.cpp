@@ -32,5 +32,32 @@ namespace FEM
     return m_label;
   }
 
+  std::ostream& operator << (std::ostream& out, const Node3D& obj){
+
+
+    out << "Node3D("<< obj.getLabel() << ","
+                    << obj.getX()     << "," 
+                    << obj.getY()     << "," 
+                    << obj.getZ()     <<")\n";
+    return out;
+  }
+
+
+  bool Node3D::operator == (const Node3D& other)
+  {
+
+    return m_label      == other.getLabel() && 
+           this->getX() == other.getX()     && 
+           this->getY() == other.getY()     && 
+           this->getZ() == other.getZ();
+  }
+
+
+  bool Node3D::operator != (const Node3D& other)
+  {
+    return !this->operator==(other);
+  }
+
+
 }
 

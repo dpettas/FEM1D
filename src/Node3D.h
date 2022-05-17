@@ -2,6 +2,7 @@
 #define _NODE3D_INCLUDED_
 
 #include "Point3D.h"
+#include <cmath>
 #include <iostream>
 
 namespace FEM{
@@ -16,10 +17,14 @@ namespace FEM{
       int& getLabel();
       const int& getLabel() const;
 
+
       void setLabel(int label);
 
+      bool operator == (const Node3D& other);
+      bool operator != (const Node3D& other);
+
     private:
-      int m_label = 0;
+      int m_label = -1;
   };
 
   std::ostream& operator << (std::ostream& out, const Node3D& obj);
