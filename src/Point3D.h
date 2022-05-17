@@ -24,7 +24,6 @@ class Point3D
 
 
     double distanceFrom(const Point3D& other);
-    double distanceFrom(const Point3D& other);
 
     void setX(double x);
     void setY(double y);
