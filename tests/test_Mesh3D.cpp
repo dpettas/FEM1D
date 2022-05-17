@@ -4,7 +4,7 @@
 
 int main (int argc, char *argv[])
 {
-  FEM::Mesh3D mesh(10,10,10);
+  FEM::Mesh3D mesh(10,10,10, FEM::Mesh3D::PolynomialOrder::Quadratic);
 
 
   std::cout << mesh.getNumberOfElementsInX() << std::endl;
