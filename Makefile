@@ -48,6 +48,10 @@ test_Node3D: $(OBJ)
 	./test_Node3D
 	@rm test_Node3D
 
+test_Mesh3D: $(OBJ)
+	$(CC) $(CFLAGS) -o ./test_Mesh3D $(OBJ) ./tests/test_Mesh3D.cpp $(INC)
+	./test_Mesh3D
+	@rm test_Mesh3D
 
 
 test_sequentials: $(OBJ)
