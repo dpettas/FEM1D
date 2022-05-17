@@ -38,6 +38,11 @@ test_Mesh1D: $(OBJ)
 	./test_Mesh1D
 	@rm test_Mesh1D
 
+test_Point3D: $(OBJ)
+	$(CC) $(CFLAGS) -o ./test_Point3D $(OBJ) ./tests/test_Point3D.cpp $(INC)
+	./test_Point3D
+	@rm test_Point3D
+
 
 
 
