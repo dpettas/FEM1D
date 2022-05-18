@@ -1,5 +1,5 @@
-CC=g++
-CFLAGS= -std=c++17 -g -Wall
+CC=g++-10
+CFLAGS= -std=c++2a -g -Wall
 CLINKS="./src"
 
 TARGET= main
