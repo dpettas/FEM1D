@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <vector>
 #include <iostream>
+#include <iomanip>
+#include <functional>
 
 namespace FEM
 {
@@ -32,7 +34,9 @@ namespace FEM
       int getNumberOfElementsInY() const;
       int getNumberOfElementsInZ() const;
       PolynomialOrder getOrder()   const;
-      
+
+
+      std::vector<Node3D*> getNodesThatSatisfies( std::function<bool(const Node3D& n)> which);
       
       void generateNodes();
       void createconnectivity();

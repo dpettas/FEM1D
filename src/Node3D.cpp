@@ -38,7 +38,7 @@ namespace FEM
     out << "Node3D("<< obj.getLabel() << ","
                     << obj.getX()     << "," 
                     << obj.getY()     << "," 
-                    << obj.getZ()     <<")\n";
+                    << obj.getZ()     <<")";
     return out;
   }
 

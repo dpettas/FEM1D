@@ -92,8 +92,63 @@ namespace FEM
     std::sort(m_nodes.begin(), m_nodes.end(), sort_byLabel);
   }
   
+  std::vector<Node3D*> Mesh3D::getNodesThatSatisfies( std::function<bool(const Node3D& n)> which)
+  {
+    std::vector<Node3D*> out;
+
+    for (Node3D& node : m_nodes)
+    {
+      if (which(node)) out.push_back(&node);
+    }
+
+    return out;
+  }
+
+
+
+
+
   void Mesh3D::createconnectivity()
   {
+    for (int i = 0; i < m_nzel; ++i)
+    {
+      for (int j = 0; j < m_nyel; ++j)
+      {
+        for (int k = 0; k < m_nxel; ++k)
+        {
+          int J     = (static_cast<int>(m_order)-1)*k;
+          std::cout << std::setprecision(5) << std::fixed << m_nodes.at(J) << std::endl;
+
+        }
+        // std::cout << std::endl;
+      }
+    }
+//           ELEM = 0
+//
+//           LOOP_ELEMENTS_z: DO ELEMz = 1, NZEL
+//           LOOP_ELEMENTS_y: DO ELEMy = 1, NYEL
+//           LOOP_ELEMENTS_x: DO ELEMx = 1, NXEL
+//  
+// !         FIND THE NODE NUMBERS OF NELEM
+//           J     = (NBF_1d-1)*(ELEMx-1) + 1
+// 		  
+//           SURF   = ELEMz - 1
+//           LEVEL  = ELEMy - 1
+// 		  ELEM   = ELEM  + 1
+// 		 		 
+//           NM_ELEM(ELEM, 1) = SURF*MND + LEVEL*NND        + J
+//           NM_ELEM(ELEM, 2) = NM_ELEM(ELEM,1)  + 1
+//           NM_ELEM(ELEM, 3) = SURF*MND + (LEVEL+1)*NND    + J
+//           NM_ELEM(ELEM, 4) = NM_ELEM(ELEM,3)  + 1
+//
+//           NM_ELEM(ELEM, 5) = (SURF+1)*MND + LEVEL*NND       + J
+//           NM_ELEM(ELEM, 6) = NM_ELEM(ELEM,5)  + 1
+//           NM_ELEM(ELEM, 7) = (SURF+1)*MND + (LEVEL+1)*NND   + J
+//           NM_ELEM(ELEM, 8) = NM_ELEM(ELEM,7)  + 1
+// 		  
+//           ENDDO LOOP_ELEMENTS_x
+//           ENDDO LOOP_ELEMENTS_y
+//           ENDDO LOOP_ELEMENTS_z
 
   }
 

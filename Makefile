@@ -7,7 +7,7 @@ MAIN_SOURCE=main.cpp
 SRC = $(wildcard src/**/*.cpp)
 SRC+= $(wildcard src/*.cpp)
 OBJ = $(patsubst src/%.cpp, obj/%.o, $(SRC))
-INC = -I./src
+INC = -I./src/
 
 TEST_SEQUENTIALS=./tests/test_sequentials.cpp
 TEST_TABLE_SORT=./tests/test_table_sort.cpp
@@ -22,7 +22,7 @@ build: $(OBJ)
 
 obj/%.o: src/%.cpp
 	@mkdir -p $(shell dirname $@)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 test_point1D: $(OBJ)
 	$(CC) $(CFLAGS) -o ./test_point1D $(OBJ) ./tests/test_point1D.cpp $(INC)
@@ -52,7 +52,6 @@ test_Mesh3D: $(OBJ)
 	$(CC) $(CFLAGS) -o ./test_Mesh3D $(OBJ) ./tests/test_Mesh3D.cpp $(INC)
 	./test_Mesh3D
 	@rm test_Mesh3D
-
 
 test_sequentials: $(OBJ)
 	$(CC) $(CFLAGS) -o $(TEST_SEQUENTIALS:.cpp=.exe) $(OBJ) $(TEST_SEQUENTIALS) $(INC)
