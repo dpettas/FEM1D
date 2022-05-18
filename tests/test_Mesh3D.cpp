@@ -1,4 +1,8 @@
 #include "Mesh3D.h"
+#include <vector>
+
+#include <fstream>
+#include <iomanip>
 
 
 
@@ -15,11 +19,22 @@ int main (int argc, char *argv[])
 
   mesh.generateNodes();
 
-  std::vector<FEM::Node3D> nodes = mesh.getNodes();
-  for (int i = 0; i < nodes.size(); ++i){
-    std::cout << i << "   " << nodes[i] << std::endl;
+
+  const std::vector<FEM::Node3D>* nodes = &mesh.getNodes();
+
+
+  std::ofstream file;
+  file.open("nodes.dat");
+
+  
+  for (int i = 0; i < nodes->size(); ++i){
+    file      << std::setprecision(10) << std::fixed 
+              << nodes->at(i).getX() << " "
+              << nodes->at(i).getY() << " "
+              << nodes->at(i).getZ() << '\n';
 
   }
+  file.close();
 
   return 0;
 }
