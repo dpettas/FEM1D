@@ -23,7 +23,7 @@ void printNodes(const std::vector<FEM::Node3D*>& nodes)
 
 int main (int argc, char *argv[])
 {
-  FEM::Mesh3D mesh(2,2,2, FEM::Mesh3D::PolynomialOrder::Linear);
+  FEM::Mesh3D mesh(1,1,1, FEM::Mesh3D::PolynomialOrder::Linear);
 
 
   // std::cout << mesh.getNumberOfElementsInX() << std::endl;
@@ -43,6 +43,7 @@ int main (int argc, char *argv[])
   auto plane_Y_0_5 = [](const FEM::Node3D& n){ return std::abs(n.getY() - 0.5) <= 1e-8;};
   auto plane_Z_0   = [](const FEM::Node3D& n){ return std::abs(n.getZ() - 0.0) <= 1e-8;};
   auto plane_Z_0_5 = [](const FEM::Node3D& n){ return std::abs(n.getZ() - 0.5) <= 1e-8;};
+  auto all         = [](const FEM::Node3D& n){ return true;};
 
 
 
@@ -52,9 +53,9 @@ int main (int argc, char *argv[])
   file.open("nodes.dat");
 
   // {0,1,3,4,9,10,12,}
-  printNodes(mesh.getNodesThatSatisfies(plane_X_0  ));
+  printNodes(mesh.getNodesThatSatisfies(all  ));
   std::cout << std::endl;
-  printNodes(mesh.getNodesThatSatisfies(plane_X_0_5));
+  // printNodes(mesh.getNodesThatSatisfies(plane_X_0_5));
   // std::cout << std::endl;
   // printNodes(mesh.getNodesThatSatisfies(plane_Y_0  ));
   // std::cout << std::endl;

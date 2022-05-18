@@ -53,6 +53,11 @@ test_Mesh3D: $(OBJ)
 	./test_Mesh3D
 	@rm test_Mesh3D
 
+test_AsciiTecplot: $(OBJ)
+	$(CC) $(CFLAGS) -o ./test_AsciiTecplot $(OBJ) ./tests/test_AsciiTecplot.cpp $(INC)
+	./test_AsciiTecplot
+	@rm test_AsciiTecplot
+
 test_sequentials: $(OBJ)
 	$(CC) $(CFLAGS) -o $(TEST_SEQUENTIALS:.cpp=.exe) $(OBJ) $(TEST_SEQUENTIALS) $(INC)
 	@./$(TEST_SEQUENTIALS:.cpp=.exe)
