@@ -135,26 +135,32 @@ namespace FEM
           int nnd    = m_nnx;
 
 
-          std::vector<int> element;
-          element.resize(8);
+          int element_id;
+          Brick  element;
+          element_id  = surf * mnd + level * nnd + jj;
+          element.addNode( this->getNode(element_id));
 
-          element[0] = surf * mnd + level * nnd + jj;
-          element[1] = element[0] + 1;
-          element[3] = surf * mnd + (level + 1) * nnd + jj;
-          element[2] = element[3] + 1;
-          element[4] = (surf + 1) * mnd + (level) * nnd + jj;
-          element[5] = element[4] + 1;
-          element[7] = (surf + 1) * mnd + (level+1) * nnd + jj;
-          element[6] = element[7] + 1;
+          element_id += 1;
+          element.addNode( this->getNode(element_id));
+          
+          element_id += surf * mnd + (level + 1) * nnd + jj;
+          element.addNode( this->getNode(element_id));
 
-          ++nelem; 
-          for(auto id : element)
-            std::cout << id+1 << " ";
-          std::cout << std::endl;
+          element_id += 1;
+          element.addNode( this->getNode(element_id));
 
+          element_id += (surf + 1) * mnd + (level) * nnd + jj;
+          element.addNode( this->getNode(element_id));
 
+          element_id += 1;
+          element.addNode( this->getNode(element_id));
+
+          element_id += (surf + 1) * mnd + (level+1) * nnd + jj;
+          element.addNode( this->getNode(element_id));
+
+          element_id += 1;
+          element.addNode( this->getNode(element_id));
         }
-        // std::cout << std::endl;
       }
     }
 

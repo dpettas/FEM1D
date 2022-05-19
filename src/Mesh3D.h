@@ -2,6 +2,7 @@
 #define _FEM_MESH3D_INCLUDED_ 
 
 #include "Node3D.h"
+#include "Elements/Brick.h"
 #include <algorithm>
 #include <vector>
 #include <iostream>
@@ -58,7 +59,7 @@ namespace FEM
       int m_nnz  = 0;
       PolynomialOrder m_order = PolynomialOrder::Linear;
       std::vector<Node3D> m_nodes;
-      std::vector<std::vector<int>> elements;
+      std::vector<Brick>  m_elements;
   };
 
 }
