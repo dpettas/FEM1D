@@ -43,6 +43,8 @@ namespace FEM
       void createconnectivity();
 
       const std::vector<Node3D>& getNodes() const;
+      const std::vector<Brick>&  getElements() const;
+
       const Node3D& getNode(int id) const;
 
     private:

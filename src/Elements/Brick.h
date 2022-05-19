@@ -2,7 +2,6 @@
 #define _FEM_BRICK_INCLUDED_ 
 
 #include "Node3D.h"
-
 #include <vector>
 
 namespace FEM 
@@ -17,6 +16,9 @@ namespace FEM
       int getNumberOfNodes() const;
 
       void addNode(const Node3D& node);
+
+      const Node3D& getNode(int id) const;
+      const std::vector<int> getNodeLabels() const;
 
 
     private:

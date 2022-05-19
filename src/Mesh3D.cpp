@@ -60,6 +60,11 @@ namespace FEM
   }
 
 
+  const std::vector<Brick>&  Mesh3D::getElements() const
+  {
+    return m_elements;
+  }
+
   void Mesh3D::generateNodes()
   {
 
@@ -115,9 +120,7 @@ namespace FEM
 
   void Mesh3D::createconnectivity()
   {
-
-    elements.resize(this->getNumberOfElements());
-    int nelem = -1;
+    m_elements.resize(this->getNumberOfElements());
 
     for (int i = 0; i < m_nzel; ++i)
     {
@@ -137,29 +140,31 @@ namespace FEM
 
           int element_id;
           Brick  element;
-          element_id  = surf * mnd + level * nnd + jj;
+          element_id  = (surf+0) * mnd + level * nnd + jj;
           element.addNode( this->getNode(element_id));
 
           element_id += 1;
           element.addNode( this->getNode(element_id));
           
-          element_id += surf * mnd + (level + 1) * nnd + jj;
+          element_id  = surf * mnd + (level + 1) * nnd + jj;
           element.addNode( this->getNode(element_id));
 
           element_id += 1;
           element.addNode( this->getNode(element_id));
 
-          element_id += (surf + 1) * mnd + (level) * nnd + jj;
+          element_id  = (surf + 1) * mnd + (level) * nnd + jj;
           element.addNode( this->getNode(element_id));
 
           element_id += 1;
           element.addNode( this->getNode(element_id));
 
-          element_id += (surf + 1) * mnd + (level+1) * nnd + jj;
+          element_id  = (surf + 1) * mnd + (level+1) * nnd + jj;
           element.addNode( this->getNode(element_id));
 
           element_id += 1;
           element.addNode( this->getNode(element_id));
+          
+          m_elements.push_back(element);
         }
       }
     }
