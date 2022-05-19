@@ -3,6 +3,7 @@
 
 #include "Node3D.h"
 #include "Elements/Brick.h"
+#include "export/AsciiTecplot.h"
 #include <algorithm>
 #include <vector>
 #include <iostream>
@@ -30,6 +31,7 @@ namespace FEM
              int numberOfElementsInZ, 
              PolynomialOrder order = PolynomialOrder::Linear);
 
+      int getNumberOfNodes() const;
       int getNumberOfElements()    const;
       int getNumberOfElementsInX() const;
       int getNumberOfElementsInY() const;
@@ -46,6 +48,8 @@ namespace FEM
       const std::vector<Brick>&  getElements() const;
 
       const Node3D& getNode(int id) const;
+
+      void toAsciiTeplot(const std::string& filename);
 
     private:
       int  getNodeID(int i, int j, int k);

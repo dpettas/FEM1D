@@ -24,7 +24,7 @@ void printNodes(const std::vector<FEM::Node3D*>& nodes)
 
 int main (int argc, char *argv[])
 {
-  FEM::Mesh3D mesh(1,1,1, FEM::Mesh3D::PolynomialOrder::Linear);
+  FEM::Mesh3D mesh(10,20,25, FEM::Mesh3D::PolynomialOrder::Linear);
 
   // std::cout << mesh.getNumberOfElementsInX() << std::endl;
   // std::cout << mesh.getNumberOfElementsInY() << std::endl;
@@ -35,45 +35,8 @@ int main (int argc, char *argv[])
   mesh.generateNodes();
   mesh.createconnectivity();
 
-  std::cout << mesh.getNode(0)  << std::endl;
-  std::cout << mesh.getNode(1)  << std::endl;
-  std::cout << mesh.getNode(3)  << std::endl;
-  std::cout << mesh.getNode(4)  << std::endl;
-  std::cout << mesh.getNode(5)  << std::endl;
-  std::cout << mesh.getNode(6)  << std::endl;
-  std::cout << mesh.getNode(9)  << std::endl;
-  std::cout << mesh.getNode(10) << std::endl;
-  std::exit(1);
+  mesh.toAsciiTeplot("test_.plt");
 
-
-  // const std::vector<FEM::Node3D>* nodes = &mesh.getNodes();
-  auto plane_X_0   = [](const FEM::Node3D& n){ return std::abs(n.getX() - 0.0) <= 1e-8;};
-  auto plane_X_0_5 = [](const FEM::Node3D& n){ return std::abs(n.getX() - 0.5) <= 1e-8;};
-  auto plane_Y_0   = [](const FEM::Node3D& n){ return std::abs(n.getY() - 0.0) <= 1e-8;};
-  auto plane_Y_0_5 = [](const FEM::Node3D& n){ return std::abs(n.getY() - 0.5) <= 1e-8;};
-  auto plane_Z_0   = [](const FEM::Node3D& n){ return std::abs(n.getZ() - 0.0) <= 1e-8;};
-  auto plane_Z_0_5 = [](const FEM::Node3D& n){ return std::abs(n.getZ() - 0.5) <= 1e-8;};
-  auto all         = [](const FEM::Node3D& n){ return true;};
-
-
-
-
-
-  std::ofstream file;
-  file.open("nodes.dat");
-
-  // {0,1,3,4,9,10,12,}
-  printNodes(mesh.getNodesThatSatisfies(all  ));
-  std::cout << std::endl;
-  // printNodes(mesh.getNodesThatSatisfies(plane_X_0_5));
-  // std::cout << std::endl;
-  // printNodes(mesh.getNodesThatSatisfies(plane_Y_0  ));
-  // std::cout << std::endl;
-  // printNodes(mesh.getNodesThatSatisfies(plane_Y_0_5));
-
-
-
-  file.close();
 
   return 0;
 }

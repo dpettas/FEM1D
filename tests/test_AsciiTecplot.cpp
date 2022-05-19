@@ -25,19 +25,15 @@ int main (int argc, char *argv[])
 
   const std::vector<FEM::Brick>& elements = mesh.getElements(); 
   
- 
+
+  std::vector<std::vector<int>> connectivity;
   for(const FEM::Brick& element : elements)
   {
-    printVec(element.getNodeLabels());
-    std::cout << std::endl;
-  
+    connectivity.push_back(element.getNodeLabels());
   }
 
 
 
-
-
-  std::exit(0);
   std::vector<double> x = flattenX(mesh);
   std::vector<double> y = flattenY(mesh);
   std::vector<double> z = flattenZ(mesh);
@@ -50,9 +46,7 @@ int main (int argc, char *argv[])
   tecfile.addFieldValue("X",x);
   tecfile.addFieldValue("Y",y);
   tecfile.addFieldValue("Z",z);
-
-// Ordere of Connectivity (Linear)
-// 1 2 4 3 5 6 8 7
+  tecfile.addConnectivity(connectivity);
 
   tecfile.write();
   tecfile.close();

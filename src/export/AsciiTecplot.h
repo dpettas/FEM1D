@@ -33,14 +33,16 @@ namespace FEM
         std::string getFieldValuesNames();
 
         void addFieldValue(const std::string& name, const std::vector<double> val);
-        void addConnectivity( const std::vector<std::vector<int>> elements);
+        void addConnectivity( const std::vector<std::vector<int>>& connectivity);
 
+
+      private: 
         std::string   title_();
         std::string   variables_();
         std::string   header_();
         std::string   values_();
+        std::string   connectivity_();
 
-      private: 
         int m_npoints = 0; 
         int m_nelements = 0;
 
@@ -51,6 +53,7 @@ namespace FEM
         std::string   m_zonetype    = "FEBRICK";
         std::ofstream m_file;
         std::vector<FieldValue> m_values;
+        std::vector<std::vector<int>> m_connectivity;
 
     };
 

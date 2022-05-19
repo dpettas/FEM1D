@@ -23,6 +23,11 @@ namespace FEM
     return m_nxel * m_nyel * m_nzel;
   }
 
+  int Mesh3D::getNumberOfNodes() const 
+  {
+    return m_nodes.size();
+  }
+
   int Mesh3D::getNumberOfElementsInX() const 
   {
     return m_nxel;
@@ -115,12 +120,63 @@ namespace FEM
   }
 
 
+  void Mesh3D::toAsciiTeplot(const std::string& filename)
+  {
+   
+    auto flattenX = [this]()
+    {
+      std::vector<double> out; 
+      auto& nodes = this->getNodes();
+      for(auto node : nodes) out.push_back(node.getX());
+      return out;
+    };
+
+    auto flattenY = [this]()
+    {
+      std::vector<double> out; 
+      auto& nodes = this->getNodes();
+      for(auto node : nodes) out.push_back(node.getY());
+      return out;
+    };
+
+    auto flattenZ = [this]()
+    {
+      std::vector<double> out; 
+      auto& nodes = this->getNodes();
+      for(auto node : nodes) out.push_back(node.getZ());
+      return out;
+    };
+
+    auto connectivity = [this]()
+    {
+      std::vector<std::vector<int>> out;
+      for (auto& element : this->getElements() )
+      {
+        out.push_back(element.getNodeLabels());
+      }
+      return out;
+    };
+  
+
+
+    IO::AsciiTecplot tecfile (filename.c_str());
+    tecfile.open();
+    tecfile.setNumberOfPoints(this->getNumberOfNodes());
+    tecfile.setNumberOfElemets(this->getNumberOfElements());
+    tecfile.addFieldValue("X",flattenX());
+    tecfile.addFieldValue("Y",flattenY());
+    tecfile.addFieldValue("Z",flattenZ());
+    tecfile.addConnectivity(connectivity());
+    tecfile.write();
+    tecfile.close();
+  }
+
+
 
 
 
   void Mesh3D::createconnectivity()
   {
-    m_elements.resize(this->getNumberOfElements());
 
     for (int i = 0; i < m_nzel; ++i)
     {
@@ -140,29 +196,36 @@ namespace FEM
 
           int element_id;
           Brick  element;
-          element_id  = (surf+0) * mnd + level * nnd + jj;
+
+          auto node_id = [mnd, nnd](int surf_, int level_, int loc_)
+          { 
+            return surf_ * mnd + level_ * nnd + loc_;
+          };
+
+          element_id  = node_id(surf + 0, level + 0, jj + 0);
           element.addNode( this->getNode(element_id));
 
-          element_id += 1;
+          element_id  = node_id(surf + 0, level + 0, jj + 1);
           element.addNode( this->getNode(element_id));
           
-          element_id  = surf * mnd + (level + 1) * nnd + jj;
+          element_id  = node_id(surf + 0, level + 1, jj + 1);
           element.addNode( this->getNode(element_id));
 
-          element_id += 1;
+          element_id  = node_id(surf + 0, level + 1, jj + 0);
           element.addNode( this->getNode(element_id));
 
-          element_id  = (surf + 1) * mnd + (level) * nnd + jj;
+          element_id  = node_id(surf + 1, level + 0, jj + 0);
           element.addNode( this->getNode(element_id));
 
-          element_id += 1;
+          element_id  = node_id(surf + 1, level + 0, jj + 1);
           element.addNode( this->getNode(element_id));
 
-          element_id  = (surf + 1) * mnd + (level+1) * nnd + jj;
+          element_id  = node_id(surf + 1, level + 1, jj + 1);
           element.addNode( this->getNode(element_id));
 
-          element_id += 1;
+          element_id  = node_id(surf + 1, level + 1, jj + 0);
           element.addNode( this->getNode(element_id));
+
           
           m_elements.push_back(element);
         }

@@ -28,7 +28,7 @@ namespace FEM
       m_file << this->variables_() << std::endl;
       m_file << this->header_() << std::endl;
       m_file << this->values_() << std::endl;
-
+      m_file << this->connectivity_() << std::endl;
     }
 
 
@@ -46,6 +46,12 @@ namespace FEM
       out.pop_back();
 
       return out;
+    }
+
+
+    void AsciiTecplot::addConnectivity(const std::vector<std::vector<int>>& connectivity)
+    {
+      m_connectivity = connectivity;
     }
 
 
@@ -147,12 +153,26 @@ namespace FEM
         for (int j = 0; j < m_values.size(); ++j)
         {
           out << m_values.at(j).second[i] << "  ";
-
         }
         out << '\n';
       }
 
+      return out.str();
+    }
 
+    std::string AsciiTecplot::connectivity_()
+    {
+      std::stringstream out;
+
+      for (int nelem = 0; nelem < m_connectivity.size(); ++nelem)
+      {
+        for (int id_ = 0; id_ < m_connectivity[nelem].size(); ++id_)
+        {
+          out << m_connectivity[nelem][id_] + 1 << " ";
+        }
+       out << '\n';
+      }
+      
       return out.str();
     }
 
@@ -166,23 +186,4 @@ namespace FEM
 
 
 
-      //
-      //
-      //  WRITE(14,'(a,i10.10,a,i10.10,a)')&
-      //  'ZONE T="3D ZONE", DATAPACKING=POINT, N= ', NUNKNOWNS, ', E= ', NNTOL, ', ZONETYPE= FEBRICK'
-      //
-      // WRITE(14,*)
-      //
-      //
-      // DO I = 1, NUNKNOWNS
-      // WRITE(14,'(4(1X,D14.6))') X(I), Y(I), Z(I), SOLUTION(I)
-      // ENDDO
-      //
-      //
-      // WRITE(14,*)
-      // DO J = 1, NNTOL
-      // WRITE(14,'(8(1X,I8))')(NMGR_ELEM(J,I),I=1,NBF_3d)
-      // ENDDO
-      //
-      // CLOSE( 14, status='KEEP' )
 
