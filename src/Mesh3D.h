@@ -42,6 +42,7 @@ namespace FEM
       void createconnectivity();
 
       const std::vector<Node3D>& getNodes() const;
+      const Node3D& getNode(int id) const;
 
     private:
       int  getNodeID(int i, int j, int k);
@@ -57,6 +58,7 @@ namespace FEM
       int m_nnz  = 0;
       PolynomialOrder m_order = PolynomialOrder::Linear;
       std::vector<Node3D> m_nodes;
+      std::vector<std::vector<int>> elements;
   };
 
 }

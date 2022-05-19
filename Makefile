@@ -53,6 +53,11 @@ test_Mesh3D: $(OBJ)
 	./test_Mesh3D
 	@rm test_Mesh3D
 
+test_Brick: $(OBJ)
+	$(CC) $(CFLAGS) -o ./test_Brick $(OBJ) ./tests/test_Brick.cpp $(INC)
+	./test_Brick
+	@rm test_Brick
+
 test_AsciiTecplot: $(OBJ)
 	$(CC) $(CFLAGS) -o ./test_AsciiTecplot $(OBJ) ./tests/test_AsciiTecplot.cpp $(INC)
 	./test_AsciiTecplot

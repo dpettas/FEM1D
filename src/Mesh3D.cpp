@@ -42,6 +42,11 @@ namespace FEM
   {
     return k * m_nnx*m_nny + j * m_nnx + i;
   }
+  
+  const Node3D& Mesh3D::getNode(int id) const
+  {
+    return m_nodes[id];
+  }
 
  
   Mesh3D::PolynomialOrder Mesh3D::getOrder() const
@@ -110,45 +115,54 @@ namespace FEM
 
   void Mesh3D::createconnectivity()
   {
+
+    elements.resize(this->getNumberOfElements());
+    int nelem = -1;
+
     for (int i = 0; i < m_nzel; ++i)
     {
       for (int j = 0; j < m_nyel; ++j)
       {
         for (int k = 0; k < m_nxel; ++k)
         {
-          int J     = (static_cast<int>(m_order)-1)*k;
-          std::cout << std::setprecision(5) << std::fixed << m_nodes.at(J) << std::endl;
+          // Only for Linear
+          // std::cout << k << std::endl;
+          int NBF_1d = static_cast<int>(PolynomialOrder::Linear);
+          int jj     = (NBF_1d-1)*(k-0) + 0;
+          int surf   = i -0;
+          int level  = j -0;
+          int mnd    = m_nnx * m_nny;
+          int nnd    = m_nnx;
+
+
+          std::vector<int> element;
+          element.resize(8);
+
+          element[0] = surf * mnd + level * nnd + jj;
+          element[1] = element[0] + 1;
+          element[3] = surf * mnd + (level + 1) * nnd + jj;
+          element[2] = element[3] + 1;
+          element[4] = (surf + 1) * mnd + (level) * nnd + jj;
+          element[5] = element[4] + 1;
+          element[7] = (surf + 1) * mnd + (level+1) * nnd + jj;
+          element[6] = element[7] + 1;
+
+          ++nelem; 
+          for(auto id : element)
+            std::cout << id+1 << " ";
+          std::cout << std::endl;
+
 
         }
         // std::cout << std::endl;
       }
     }
-//           ELEM = 0
-//
-//           LOOP_ELEMENTS_z: DO ELEMz = 1, NZEL
-//           LOOP_ELEMENTS_y: DO ELEMy = 1, NYEL
-//           LOOP_ELEMENTS_x: DO ELEMx = 1, NXEL
-//  
-// !         FIND THE NODE NUMBERS OF NELEM
-//           J     = (NBF_1d-1)*(ELEMx-1) + 1
-// 		  
-//           SURF   = ELEMz - 1
-//           LEVEL  = ELEMy - 1
-// 		  ELEM   = ELEM  + 1
-// 		 		 
-//           NM_ELEM(ELEM, 1) = SURF*MND + LEVEL*NND        + J
-//           NM_ELEM(ELEM, 2) = NM_ELEM(ELEM,1)  + 1
-//           NM_ELEM(ELEM, 3) = SURF*MND + (LEVEL+1)*NND    + J
-//           NM_ELEM(ELEM, 4) = NM_ELEM(ELEM,3)  + 1
-//
-//           NM_ELEM(ELEM, 5) = (SURF+1)*MND + LEVEL*NND       + J
-//           NM_ELEM(ELEM, 6) = NM_ELEM(ELEM,5)  + 1
-//           NM_ELEM(ELEM, 7) = (SURF+1)*MND + (LEVEL+1)*NND   + J
-//           NM_ELEM(ELEM, 8) = NM_ELEM(ELEM,7)  + 1
-// 		  
-//           ENDDO LOOP_ELEMENTS_x
-//           ENDDO LOOP_ELEMENTS_y
-//           ENDDO LOOP_ELEMENTS_z
+
+
+		  
+		 		 
+
+
 
   }
 

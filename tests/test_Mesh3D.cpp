@@ -1,4 +1,5 @@
 #include "Mesh3D.h"
+#include <cstdlib>
 #include <vector>
 #include <cmath>
 
@@ -25,7 +26,6 @@ int main (int argc, char *argv[])
 {
   FEM::Mesh3D mesh(1,1,1, FEM::Mesh3D::PolynomialOrder::Linear);
 
-
   // std::cout << mesh.getNumberOfElementsInX() << std::endl;
   // std::cout << mesh.getNumberOfElementsInY() << std::endl;
   // std::cout << mesh.getNumberOfElementsInZ() << std::endl;
@@ -33,7 +33,17 @@ int main (int argc, char *argv[])
 
 
   mesh.generateNodes();
-  // mesh.createconnectivity();
+  mesh.createconnectivity();
+
+  std::cout << mesh.getNode(0)  << std::endl;
+  std::cout << mesh.getNode(1)  << std::endl;
+  std::cout << mesh.getNode(3)  << std::endl;
+  std::cout << mesh.getNode(4)  << std::endl;
+  std::cout << mesh.getNode(5)  << std::endl;
+  std::cout << mesh.getNode(6)  << std::endl;
+  std::cout << mesh.getNode(9)  << std::endl;
+  std::cout << mesh.getNode(10) << std::endl;
+  std::exit(1);
 
 
   // const std::vector<FEM::Node3D>* nodes = &mesh.getNodes();
