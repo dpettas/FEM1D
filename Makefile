@@ -63,6 +63,11 @@ test_AsciiTecplot: $(OBJ)
 	./test_AsciiTecplot
 	@rm test_AsciiTecplot
 
+test_DenseMatrix: $(OBJ)
+	$(CC) $(CFLAGS) -o ./test_DenseMatrix $(OBJ) ./tests/test_DenseMatrix.cpp $(INC)
+	./test_DenseMatrix
+	@rm test_DenseMatrix
+
 test_sequentials: $(OBJ)
 	$(CC) $(CFLAGS) -o $(TEST_SEQUENTIALS:.cpp=.exe) $(OBJ) $(TEST_SEQUENTIALS) $(INC)
 	@./$(TEST_SEQUENTIALS:.cpp=.exe)
