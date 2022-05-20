@@ -68,6 +68,11 @@ test_DenseMatrix: $(OBJ)
 	./test_DenseMatrix
 	@rm test_DenseMatrix
 
+test_GaussPoint1D: $(OBJ)
+	$(CC) $(CFLAGS) -o ./test_GaussPoint1D $(OBJ) ./tests/test_GaussPoint1D.cpp $(INC)
+	./test_GaussPoint1D
+	@rm test_GaussPoint1D
+
 test_sequentials: $(OBJ)
 	$(CC) $(CFLAGS) -o $(TEST_SEQUENTIALS:.cpp=.exe) $(OBJ) $(TEST_SEQUENTIALS) $(INC)
 	@./$(TEST_SEQUENTIALS:.cpp=.exe)

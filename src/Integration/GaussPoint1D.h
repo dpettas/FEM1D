@@ -2,18 +2,26 @@
 #define _FEM_GAUSSPOINT1D_INCLUDED_ 
 
 #include <iostream>
+#include <utility>
 
-class GaussPoint1D
+namespace FEM 
 {
-  public: 
-    GaussPoint1D() = default;
+  class GaussPoint1D
+  {
+    public: 
+      GaussPoint1D(double m_position, double m_weight);
+      GaussPoint1D(const GaussPoint1D& other) = default;
 
 
-  private:
-    double position = 0.0;
-    double weight   = 0.0;
+      std::pair<double,double> get() const;
 
-};
+
+    private:
+      double m_position = 0.0;
+      double m_weight   = 0.0;
+
+  };
+}
 
 
 #endif
