@@ -1,6 +1,0 @@
-#ifndef _FEM_GAUSS_POINT_INCLUDED_
-#define _FEM_GAUSS_POINT_INCLUDED_ 
-
-
-
-#endif
