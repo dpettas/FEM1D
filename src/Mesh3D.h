@@ -31,7 +31,7 @@ namespace FEM
              int numberOfElementsInZ, 
              PolynomialOrder order = PolynomialOrder::Linear);
 
-      int getNumberOfNodes() const;
+      int getNumberOfNodes()       const;
       int getNumberOfElements()    const;
       int getNumberOfElementsInX() const;
       int getNumberOfElementsInY() const;
@@ -40,9 +40,7 @@ namespace FEM
 
 
       std::vector<Node3D*> getNodesThatSatisfies( std::function<bool(const Node3D& n)> which);
-      
-      void generateNodes();
-      void createconnectivity();
+     
 
       const std::vector<Node3D>& getNodes() const;
       const std::vector<Brick>&  getElements() const;
@@ -53,6 +51,8 @@ namespace FEM
 
     private:
       int  getNodeID(int i, int j, int k);
+      void generateNodes();
+      void createconnectivity();
 
 
 

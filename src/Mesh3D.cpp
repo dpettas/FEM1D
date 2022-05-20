@@ -15,6 +15,9 @@ namespace FEM
     m_nnx = (static_cast<int>(order) - 1) * m_nxel + 1;
     m_nny = (static_cast<int>(order) - 1) * m_nyel + 1;
     m_nnz = (static_cast<int>(order) - 1) * m_nzel + 1;
+
+    this->generateNodes();
+    this->createconnectivity();
   }
 
 
