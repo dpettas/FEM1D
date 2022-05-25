@@ -11,6 +11,7 @@ namespace FEM{
   {
     public:
 
+      static double EPS;
 
       Point3D()               = default;
       Point3D(const Point3D&) = default;

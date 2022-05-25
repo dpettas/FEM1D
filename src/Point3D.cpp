@@ -2,6 +2,10 @@
 
 namespace FEM{
 
+//#################################################
+// COMPARISON_TOLERANCE
+//#################################################
+double Point3D::EPS = 1e-8;
 
 Point3D::Point3D(double x, double y, double z): m_x(x), m_y(y), m_z(z)
 {
@@ -38,9 +42,11 @@ Point3D Point3D::operator - (const Point3D& other)
 
 
 bool Point3D::operator==(const Point3D& other){
-  return std::abs(m_x - other.getX()) <= 1.e-8 &&
-         std::abs(m_y - other.getY()) <= 1.e-8 &&
-         std::abs(m_z - other.getZ()) <= 1.e-8;
+  double eps = EPS;
+
+  return std::abs(m_x - other.getX()) <= eps &&
+         std::abs(m_y - other.getY()) <= eps &&
+         std::abs(m_z - other.getZ()) <= eps;
 }
 
 bool Point3D::operator!=(const Point3D& other){
