@@ -21,6 +21,9 @@ namespace FEM{
       Point3D& operator = (const Point3D& that) = default;
       Point3D& operator = (Point3D&& that) = delete;
 
+
+      Point3D operator+ (const Point3D& other);
+
       double& getX(); 
       const double& getX() const;
 

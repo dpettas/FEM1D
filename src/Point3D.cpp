@@ -20,6 +20,17 @@ const double& Point3D::getY() const { return m_y;}
 const double& Point3D::getZ() const { return m_z;}
 
 
+Point3D Point3D::operator + (const Point3D& other)
+{
+  return Point3D(this->getX() + other.getX(),
+                 this->getY() + other.getY(),
+                 this->getZ() + other.getZ());
+}
+
+
+
+
+
 bool Point3D::operator==(const Point3D& other){
   return std::abs(m_x - other.getX()) <= 1.e-8 &&
          std::abs(m_y - other.getY()) <= 1.e-8 &&
