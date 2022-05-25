@@ -23,6 +23,7 @@ namespace FEM{
 
 
       Point3D operator+ (const Point3D& other);
+      Point3D operator- (const Point3D& other);
 
       double& getX(); 
       const double& getX() const;
