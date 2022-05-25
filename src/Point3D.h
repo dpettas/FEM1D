@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <initializer_list>
 
 namespace FEM{
 
@@ -14,6 +15,11 @@ namespace FEM{
       Point3D()               = default;
       Point3D(const Point3D&) = default;
       Point3D(double x, double y = 0.0, double z = 0.0);
+
+      Point3D(Point3D&& other) = delete;
+
+      Point3D& operator = (const Point3D& that) = default;
+      Point3D& operator = (Point3D&& that) = delete;
 
       double& getX(); 
       const double& getX() const;
