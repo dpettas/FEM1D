@@ -1,4 +1,5 @@
 CC=g++-10
+# CFLAGS= -std=c++2a -g -Wall -fprofile-arcs -ftest-coverage
 CFLAGS= -std=c++2a -g -Wall
 CLINKS="./src"
 

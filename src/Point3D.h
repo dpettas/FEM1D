@@ -25,8 +25,8 @@ namespace FEM{
       Point3D& operator = (Point3D&& that) = delete;
 
 
-      Point3D operator+ (const Point3D& other);
-      Point3D operator- (const Point3D& other);
+      Point3D operator+ (const Point3D& other) const;
+      Point3D operator- (const Point3D& other) const;
 
       double& getX(); 
       const double& getX() const;
@@ -38,7 +38,9 @@ namespace FEM{
       const double& getZ() const;
 
 
-      double distanceFrom(const Point3D& other);
+      double distanceFrom(const Point3D& other) const;
+      double distanceFrom(double x, double y, double z) const;
+
 
       void setX(double x);
       void setY(double y);

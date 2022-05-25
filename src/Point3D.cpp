@@ -7,6 +7,8 @@ namespace FEM{
 //#################################################
 double Point3D::EPS = 1e-8;
 
+
+
 Point3D::Point3D(double x, double y, double z): m_x(x), m_y(y), m_z(z)
 {
 }
@@ -24,14 +26,14 @@ const double& Point3D::getY() const { return m_y;}
 const double& Point3D::getZ() const { return m_z;}
 
 
-Point3D Point3D::operator + (const Point3D& other)
+Point3D Point3D::operator + (const Point3D& other) const
 {
   return Point3D(this->getX() + other.getX(),
                  this->getY() + other.getY(),
                  this->getZ() + other.getZ());
 }
 
-Point3D Point3D::operator - (const Point3D& other)
+Point3D Point3D::operator - (const Point3D& other) const
 {
   return Point3D(this->getX() - other.getX(),
                  this->getY() - other.getY(),
@@ -53,7 +55,7 @@ bool Point3D::operator!=(const Point3D& other){
   return !this->operator==(other);
 }
 
-double Point3D::distanceFrom(const Point3D& other)
+double Point3D::distanceFrom(const Point3D& other) const
 {
  if (*this == other) return 0.0;
 
@@ -65,6 +67,14 @@ double Point3D::distanceFrom(const Point3D& other)
  out = std::sqrt(out);
  return out;
 }
+
+
+double Point3D::distanceFrom(double x, double y, double z) const 
+{
+  Point3D tmp {x,y,z};
+  return this->distanceFrom(tmp);
+}
+
 
 
 
