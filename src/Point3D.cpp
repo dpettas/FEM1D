@@ -41,7 +41,7 @@ Point3D Point3D::operator - (const Point3D& other)
 
 
 
-bool Point3D::operator==(const Point3D& other){
+bool Point3D::operator==(const Point3D& other) const noexcept{
   double eps = EPS;
 
   return std::abs(m_x - other.getX()) <= eps &&
