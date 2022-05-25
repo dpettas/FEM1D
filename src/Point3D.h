@@ -16,6 +16,8 @@ namespace FEM{
       Point3D(const Point3D&) = default;
       Point3D(double x, double y = 0.0, double z = 0.0);
 
+      ~Point3D() = default;
+
       Point3D(Point3D&& other) = delete;
 
       Point3D& operator = (const Point3D& that) = default;
