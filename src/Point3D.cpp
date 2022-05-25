@@ -65,7 +65,7 @@ double Point3D::distanceFrom(const Point3D& other)
 
 std::ostream& operator << (std::ostream& out, const Point3D& obj)
 {
-  out << "Point3D("<<obj.getX() << "," << obj.getY() << "," << obj.getZ() << ")";
+  out << "("<<obj.getX() << "," << obj.getY() << "," << obj.getZ() << ")";
 
   return out;
 }

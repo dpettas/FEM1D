@@ -11,6 +11,7 @@ int main (int argc, char *argv[])
   FEM::Point3D p2 = {1.5,2.5,3.5};
 
   std::cout << std::boolalpha;
+  std::cout << std::fixed;
   std::cout << p1 << std::endl;
   std::cout << p2 << std::endl;
   std::cout << p1 + p2 << std::endl;
