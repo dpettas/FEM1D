@@ -24,7 +24,15 @@ namespace FEM
 
 
 
+  Array::Array(Array&& other)
+  {
+    std::cout << "HI" << std::endl;
+    delete [] m_values;
+    m_size   = other.m_size;
+    m_values = other.m_values;
 
+    other.m_values = nullptr;
+  }
 
   Array::~Array()
   {

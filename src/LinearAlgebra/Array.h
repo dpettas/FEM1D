@@ -1,4 +1,5 @@
 #include <iostream> 
+#include <initializer_list>
 
 namespace FEM 
 {
@@ -8,6 +9,7 @@ namespace FEM
     public: 
       Array() = default;
       Array(int size, double init = 0.0);
+      Array(std::initializer_list<double>);
       Array(const Array& other);
       Array( Array&& other);
       ~Array();
