@@ -1,5 +1,6 @@
 #include <iostream> 
 #include <initializer_list>
+#include <vector>
 
 namespace FEM 
 {
@@ -20,6 +21,9 @@ namespace FEM
       int size() const;
       double& get(int i);
       double  get(int i) const;
+
+      double* begin() {return m_values;}
+      double* end()   {return (m_values + m_size);}
       
 
     private: 

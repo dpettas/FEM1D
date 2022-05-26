@@ -19,11 +19,15 @@ int main (int argc, char *argv[])
 
   FEM::Array v = {1.0,2.0,3.0,4.0};
 
+  for(auto it : v){
+    std::cout << it << " " << &it << std::endl;
 
-  for(int i = 0; i < v.size(); ++i)
-  {
-    std::cout << v.get(i) << std::endl;
   }
+
+  // for(int i = 0; i < v.size(); ++i)
+  // {
+  //   std::cout << v.get(i) << std::endl;
+  // }
 
   return 0;
 }
