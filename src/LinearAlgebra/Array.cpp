@@ -31,6 +31,18 @@ namespace FEM
   }
 
 
+  Array::Array(const Array& other)
+  {
+    m_size = other.m_size;
+
+    m_values = new double [m_size];
+
+    for (int i = 0; i < m_size; ++i)
+      m_values = other.m_values;
+  }
+
+
+
   int Array::size() const 
   {
     return m_size;
@@ -47,24 +59,54 @@ namespace FEM
   }
 
 
-
-
-  Array::Array(const Array& other)
+  Array& Array::operator=(const Array& that)
   {
-    std::cout << "copy" << std::endl;
-    m_size = other.m_size;
+    if (this == &that)
+      return *this;
 
-    m_values = new double [m_size];
+    // check if m_values is nullptr
+    if (!m_values)
+    {
+      std::cout << "OK" << std::endl;
+      m_size = that.m_size;
+      m_values = new double [m_size];
 
-    for (int i = 0; i < m_size; ++i)
-      m_values = other.m_values;
+      for (int i = 0; i < m_size; ++i)
+        m_values[i] = that.m_values[i];
+
+      return *this;
+    }
+
+    // arrays have the same sizes
+    if (m_size == that.m_size)
+    {
+      for (int i = 0; i < m_size; ++i)
+        m_values[i] = that.m_values[i];
+
+      return *this;
+    }
+    else 
+    {
+      delete [] m_values;
+      m_size = that.m_size;
+      m_values = new double [m_size];
+
+      for (int i = 0; i < m_size; ++i)
+        m_values[i] = that.m_values[i];
+
+      return *this;
+
+    }
+
+    throw "there is a cases that is not implemented\n";
   }
+
+
 
 
 
   Array::Array(Array&& other)
   {
-    std::cout << "move" << std::endl;
     delete [] m_values;
     m_size   = other.m_size;
     m_values = other.m_values;
