@@ -32,8 +32,8 @@ test_Point3D: $(OBJ)
 
 test_Array: $(OBJ)
 	$(CC) $(CFLAGS) -o ./test_Array $(OBJ) ./tests/test_Array.cpp $(INC)
-	./test_Point3D
-	@rm test_Point3D
+	./test_Array
+	@rm test_Array
 
 test_point1D: $(OBJ)
 	$(CC) $(CFLAGS) -o ./test_point1D $(OBJ) ./tests/test_point1D.cpp $(INC)
