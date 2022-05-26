@@ -25,6 +25,16 @@ obj/%.o: src/%.cpp
 	@mkdir -p $(shell dirname $@)
 	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
+test_Point3D: $(OBJ)
+	$(CC) $(CFLAGS) -o ./test_Point3D $(OBJ) ./tests/test_Point3D.cpp $(INC)
+	./test_Point3D
+	@rm test_Point3D
+
+test_Array: $(OBJ)
+	$(CC) $(CFLAGS) -o ./test_Array $(OBJ) ./tests/test_Array.cpp $(INC)
+	./test_Point3D
+	@rm test_Point3D
+
 test_point1D: $(OBJ)
 	$(CC) $(CFLAGS) -o ./test_point1D $(OBJ) ./tests/test_point1D.cpp $(INC)
 	./test_point1D
@@ -39,10 +49,6 @@ test_Mesh1D: $(OBJ)
 	./test_Mesh1D
 	@rm test_Mesh1D
 
-test_Point3D: $(OBJ)
-	$(CC) $(CFLAGS) -o ./test_Point3D $(OBJ) ./tests/test_Point3D.cpp $(INC)
-	./test_Point3D
-	@rm test_Point3D
 
 test_Node3D: $(OBJ)
 	$(CC) $(CFLAGS) -o ./test_Node3D $(OBJ) ./tests/test_Node3D.cpp $(INC)
