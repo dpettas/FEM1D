@@ -5,6 +5,7 @@ namespace FEM
   Array::Array(int size, double init) : 
     m_size(size)
   {
+    std::cout << "init" << std::endl;
     m_values = new double [m_size];
 
     for (int i = 0; i < m_size; ++i)
@@ -14,6 +15,7 @@ namespace FEM
 
   Array::Array(const Array& other)
   {
+    std::cout << "copy" << std::endl;
     m_size = other.m_size;
 
     m_values = new double [m_size];
@@ -26,7 +28,7 @@ namespace FEM
 
   Array::Array(Array&& other)
   {
-    std::cout << "HI" << std::endl;
+    std::cout << "move" << std::endl;
     delete [] m_values;
     m_size   = other.m_size;
     m_values = other.m_values;
