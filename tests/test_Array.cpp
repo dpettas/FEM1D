@@ -26,7 +26,7 @@ int main (int argc, char *argv[])
   FEM::Array c = a;
 
 
-  std::cout << c(10) << std::endl;
+  std::cout << c.L2norm() << std::endl;
 
 
 

@@ -209,5 +209,19 @@ namespace FEM
   }
 
 
+  double Array::L2norm()
+  {
+    std::for_each( this->begin(), 
+                   this->end(), 
+                   [this] (int i)
+                   { return m_values[i]*m_values[i];});
+
+
+    double sum_square = std::accumulate(this->begin(), this->end(), 0);
+
+    return std::sqrt(sum_square);
+  }
+
+
 
 }

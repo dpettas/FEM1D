@@ -1,12 +1,12 @@
 #ifndef _FEM_ARRAY_INCLUDED_
 #define _FEM_ARRAY_INCLUDED_
 
-
-
-
 #include <iostream> 
 #include <initializer_list>
+#include <numeric>
+#include <cmath>
 #include "exceptions.h"
+
 
 
 namespace FEM 
@@ -44,6 +44,8 @@ namespace FEM
       Array& operator-=(const Array& other);
 
       double&  operator() (int i);
+
+      double L2norm();
       
 
     private: 
