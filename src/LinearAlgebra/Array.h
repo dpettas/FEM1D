@@ -1,9 +1,20 @@
+#ifndef _FEM_ARRAY_INCLUDED_
+#define _FEM_ARRAY_INCLUDED_
+
+
+
+
 #include <iostream> 
 #include <initializer_list>
-#include <algorithm>
+#include "exceptions.h"
+
 
 namespace FEM 
 {
+
+
+
+
 
   class Array 
   {
@@ -28,6 +39,8 @@ namespace FEM
 
 
 
+      Array operator+ (const Array& other);
+
       
 
     private: 
@@ -37,3 +50,6 @@ namespace FEM
 
 
 }
+
+
+#endif

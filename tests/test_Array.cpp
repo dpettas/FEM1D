@@ -9,6 +9,8 @@
 auto time_now = [](){return std::chrono::high_resolution_clock::now();};
 int main (int argc, char *argv[])
 {
+
+
   // auto t_start = time_now();
   // FEM::Array v = {1.0,2.0,3.0,4.0};;
   // auto t_end   = time_now();

@@ -100,6 +100,11 @@ namespace FEM
   }
 
 
+
+
+
+
+
   Array& Array::operator = (Array&& that)
   {
     if (this == &that)
