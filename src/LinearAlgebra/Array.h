@@ -43,7 +43,7 @@ namespace FEM
       Array  operator- (const Array& other);
       Array& operator-=(const Array& other);
 
-      int&  operator() (int i);
+      double&  operator() (int i);
       
 
     private: 

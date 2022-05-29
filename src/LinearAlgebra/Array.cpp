@@ -200,9 +200,12 @@ namespace FEM
   }
 
 
-  int& Array::operator() (int i)
+  double& Array::operator() (int i)
   {
+    if (i >= m_size || i < 0)
+      throw OutOfBoundsIndex("Array::operator ()", i);
 
+    return m_values[i];
   }
 
 

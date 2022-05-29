@@ -25,17 +25,8 @@ int main (int argc, char *argv[])
 
   FEM::Array c = a;
 
-  try
-  {
 
-  c += 1.0;
-  print(c);
-  }
-  catch(FEM::NotEqualSizedArrays& e)
-  {
-    std::cout << e.what() << std::endl;
-  }
-
+  std::cout << c(10) << std::endl;
 
 
 
