@@ -20,11 +20,9 @@ namespace FEM
     m_values = new double [m_size];
 
     int idx = 0;
-    for(std::initializer_list<double>::iterator it = il.begin(); 
-        it != il.end(); 
-        ++it) 
+    for(double val : il) 
     {
-      m_values[idx] = *it;
+      m_values[idx] = val;
       ++idx; 
     }
     
