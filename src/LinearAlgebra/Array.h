@@ -29,7 +29,6 @@ namespace FEM
       Array& operator = (const Array& that);
       Array& operator = ( Array&& that);
 
-
       int size() const;
       double& get(int i);
       double  get(int i) const;
@@ -38,6 +37,7 @@ namespace FEM
       double* end()    { return (m_values + m_size);}
 
 
+      void set(int i, double val);
 
       Array operator+ (const Array& other);
 

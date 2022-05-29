@@ -65,7 +65,6 @@ namespace FEM
     // check if m_values is nullptr
     if (!m_values)
     {
-      std::cout << "OK" << std::endl;
       m_size = that.m_size;
       m_values = new double [m_size];
 
@@ -136,6 +135,28 @@ namespace FEM
     delete [] m_values;
     m_size = 0;
   }
+
+
+  
+  Array Array::operator+ (const Array& other)
+  {
+    Array out;
+
+    if (this->size() != other.size() )
+      throw NotEqualSizedArrays("Array::opereator +");
+
+
+    out = *this;
+    for (int i = 0; i < m_size; ++i)
+      out.m_values[i] += other.m_values[i]; 
+
+
+    return std::move(out);
+  }
+
+
+
+
 
 
 }
