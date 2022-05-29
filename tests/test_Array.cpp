@@ -6,6 +6,14 @@
 
 // the work...
 
+void print(const FEM::Array& obj)
+{
+  for (int i = 0; i < obj.size(); ++i)
+  {
+    std::cout << obj.get(i) << std::endl;
+  }
+}
+
 
 auto time_now = [](){return std::chrono::high_resolution_clock::now();};
 int main (int argc, char *argv[])
@@ -15,12 +23,21 @@ int main (int argc, char *argv[])
   FEM::Array b = {1,2,3}; 
 
 
-  FEM::Array c = a + b;
+  FEM::Array c = a;
 
-  for(int i = 0; i < c.size(); ++i)
+  try
   {
-    std::cout << c.get(i) << std::endl;
+
+  c += 1.0;
+  print(c);
   }
+  catch(FEM::NotEqualSizedArrays& e)
+  {
+    std::cout << e.what() << std::endl;
+  }
+
+
+
 
   std::cout << "End\n";
 

@@ -5,7 +5,6 @@ namespace FEM
   Array::Array(int size, double init) : 
     m_size(size)
   {
-    std::cout << "init" << std::endl;
     m_values = new double [m_size];
 
     for (int i = 0; i < m_size; ++i)
@@ -36,7 +35,7 @@ namespace FEM
     m_values = new double [m_size];
 
     for (int i = 0; i < m_size; ++i)
-      m_values = other.m_values;
+      m_values[i] = other.m_values[i];
   }
 
 
@@ -46,12 +45,12 @@ namespace FEM
     return m_size;
   }
 
-  double& Array::get(int i)
+  double& Array::get(int i) noexcept
   {
     return m_values[i];
   }
 
-  double Array::get(int i) const 
+  double Array::get(int i) const noexcept
   {
     return m_values[i];
   }
@@ -151,11 +150,60 @@ namespace FEM
       out.m_values[i] += other.m_values[i]; 
 
 
-    return std::move(out);
+    return out;
+  }
+
+  Array& Array::operator+=(const Array& other)
+  {
+
+    if (this->size() != other.size() )
+      throw NotEqualSizedArrays("Array::opereator +=");
+
+
+    for (int i = 0; i < m_size; ++i)
+      m_values[i] += other.m_values[i]; 
+
+
+    return *this;
   }
 
 
 
+  Array Array::operator- (const Array& other)
+  {
+    Array out;
+
+    if (this->size() != other.size() )
+      throw NotEqualSizedArrays("Array::opereator -");
+
+
+    out = *this;
+    for (int i = 0; i < m_size; ++i)
+      out.m_values[i] -= other.m_values[i]; 
+
+
+    return out;
+  }
+
+  Array& Array::operator-=(const Array& other)
+  {
+
+    if (this->size() != other.size() )
+      throw NotEqualSizedArrays("Array::opereator -=");
+
+
+    for (int i = 0; i < m_size; ++i)
+      m_values[i] += other.m_values[i]; 
+
+
+    return *this;
+  }
+
+
+  int& Array::operator() (int i)
+  {
+
+  }
 
 
 

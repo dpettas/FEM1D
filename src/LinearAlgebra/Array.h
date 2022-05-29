@@ -30,17 +30,20 @@ namespace FEM
       Array& operator = ( Array&& that);
 
       int size() const;
-      double& get(int i);
-      double  get(int i) const;
+      double& get(int i) noexcept;
+      double  get(int i) const noexcept;
 
       double* begin()  { return  m_values;}
       double* end()    { return (m_values + m_size);}
 
 
-      void set(int i, double val);
 
-      Array operator+ (const Array& other);
+      Array  operator+ (const Array& other);
+      Array& operator+=(const Array& other);
+      Array  operator- (const Array& other);
+      Array& operator-=(const Array& other);
 
+      int&  operator() (int i);
       
 
     private: 
