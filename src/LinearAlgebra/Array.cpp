@@ -96,9 +96,23 @@ namespace FEM
 
     }
 
-    throw "there is a cases that is not implemented\n";
+    throw "NotImplemented\n";
   }
 
+
+  Array& Array::operator = (Array&& that)
+  {
+    if (this == &that)
+      return *this;
+
+    m_size        = that.m_size;
+    m_values      = that.m_values;
+    that.m_values = nullptr;
+    that.m_size   = 0;
+
+
+    return *this;
+  }
 
 
 

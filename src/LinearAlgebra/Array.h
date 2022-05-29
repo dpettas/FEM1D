@@ -16,7 +16,7 @@ namespace FEM
       ~Array();
 
       Array& operator = (const Array& that);
-      // Array& operator = ( Array&& that);
+      Array& operator = ( Array&& that);
 
 
       int size() const;
