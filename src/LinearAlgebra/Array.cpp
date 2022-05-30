@@ -209,6 +209,13 @@ namespace FEM
   }
 
 
+  double Array::at(int i) const 
+  {
+    return m_values[i];
+  }
+
+
+
   double Array::L2norm()
   {
     std::for_each( this->begin(), 

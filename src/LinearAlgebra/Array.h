@@ -44,6 +44,7 @@ namespace FEM
       Array& operator-=(const Array& other);
 
       double&  operator() (int i);
+      double   at(int i) const;
 
       double L2norm();
       
