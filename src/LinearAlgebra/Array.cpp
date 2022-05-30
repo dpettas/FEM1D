@@ -211,6 +211,9 @@ namespace FEM
 
   double Array::at(int i) const 
   {
+    if (i >= m_size || i < 0)
+      throw OutOfBoundsIndex("Array::at ()", i);
+
     return m_values[i];
   }
 
