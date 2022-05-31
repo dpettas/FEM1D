@@ -23,6 +23,16 @@ DenseMatrix Identity(int i)
   return Diagonal(i,1.0);
 }
 
+DenseMatrix Zeros(int i, int j)
+{
+  return DenseMatrix(i,j,0.0);
+}
+
+DenseMatrix Ones(int i, int j)
+{
+  return DenseMatrix(i,j,1.0);
+}
+
 
 
 }

@@ -10,6 +10,8 @@ namespace FEM
   DenseMatrix Square  (int i, double val = 0.0);
   DenseMatrix Diagonal(int i, double val = 0.0);
   DenseMatrix Identity(int i);
+  DenseMatrix Zeros   (int i, int j);
+  DenseMatrix Ones    (int i, int j);
 
 
 
