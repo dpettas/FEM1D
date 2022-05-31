@@ -6,7 +6,10 @@
 namespace FEM 
 {
 
-  DenseMatrix square(int n, double val = 0.0);
+ // If I use template, the type cannot be deduced
+  DenseMatrix Square  (int i, double val = 0.0);
+  DenseMatrix Diagonal(int i, double val = 0.0);
+  DenseMatrix Identity(int i);
 
 
 

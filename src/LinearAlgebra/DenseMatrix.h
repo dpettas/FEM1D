@@ -14,6 +14,9 @@ namespace FEM
   class DenseMatrix
   {
     public:
+
+
+
       DenseMatrix() = default;
       ~DenseMatrix();
       DenseMatrix(int n, int m, double val = 0.0);

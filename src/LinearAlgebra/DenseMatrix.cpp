@@ -3,6 +3,10 @@
 
 namespace FEM 
 {
+
+
+
+
   DenseMatrix::DenseMatrix(int n, int m, double val)
   {
     m_rows    = n; 

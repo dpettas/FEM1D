@@ -4,11 +4,14 @@
 #include "LinearAlgebra/Matrices.h"
 
 
+
+
+
 int main (int argc, char *argv[])
 {
-  FEM::DenseMatrix mat = FEM::square(100, 10.0);
+  FEM::DenseMatrix mat = FEM::Identity(3);
 
-  mat(10,0) = 10.0;
+  // mat(1,0) = 1.0;
   std::cout << mat << std::endl;
 
   // mat.value(1,2) = 10;
