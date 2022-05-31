@@ -55,6 +55,29 @@ namespace FEM
     return (m_val+m_size);
   }
 
+  double& DenseMatrix::diagonal(int i)
+  {
+
+    if (i < 0 || i >= m_rows)
+      throw OutOfBoundsIndex("DenseMatrix::operator()", i);
+
+    if (i < 0 || i >= m_cols)
+      throw OutOfBoundsIndex("DenseMatrix::operator()", i);
+
+    return m_val[data_index(i,i)];
+  }
+
+  const double& DenseMatrix::diagonal(int i) const
+  {
+
+    if (i < 0 || i >= m_rows)
+      throw OutOfBoundsIndex("DenseMatrix::operator()", i);
+
+    if (i < 0 || i >= m_cols)
+      throw OutOfBoundsIndex("DenseMatrix::operator()", i);
+
+    return m_val[data_index(i,i)];
+  }
 
 
   int DenseMatrix::getSize() const 

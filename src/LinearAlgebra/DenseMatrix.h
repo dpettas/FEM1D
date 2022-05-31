@@ -25,8 +25,12 @@ namespace FEM
       int getSize() const;
       int getNrows() const;
       int getNcols() const;
+
       double&       value(int i, int j);
       const double& value(int i, int j) const;
+
+      double& diagonal(int i);
+      const double& diagonal(int i) const;
 
       double* begin(); 
       double*   end(); 

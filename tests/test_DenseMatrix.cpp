@@ -1,11 +1,12 @@
 #include <iostream>
 #include <iomanip>
 #include "LinearAlgebra/DenseMatrix.h"
+#include "LinearAlgebra/Matrices.h"
 
 
 int main (int argc, char *argv[])
 {
-  FEM::DenseMatrix mat(3,5,1.0); 
+  FEM::DenseMatrix mat = FEM::square(100, 10.0);
 
   mat(10,0) = 10.0;
   std::cout << mat << std::endl;
