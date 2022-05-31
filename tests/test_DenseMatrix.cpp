@@ -7,6 +7,8 @@ int main (int argc, char *argv[])
 {
   FEM::DenseMatrix mat(3,5,1.0); 
 
+  mat(10,0) = 10.0;
+  std::cout << mat << std::endl;
 
   // mat.value(1,2) = 10;
   // mat.value(0,0) =  0;

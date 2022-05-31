@@ -1,4 +1,5 @@
 #include "LinearAlgebra/DenseMatrix.h"
+#include "LinearAlgebra/exceptions.h"
 
 namespace FEM 
 {
@@ -61,6 +62,16 @@ namespace FEM
     return m_size;
   }
 
+  int DenseMatrix::getNrows() const 
+  {
+    return m_rows;
+  }
+
+  int DenseMatrix::getNcols() const 
+  {
+    return m_cols;
+  }
+
 
   DenseMatrix::~DenseMatrix()
   {
@@ -70,6 +81,33 @@ namespace FEM
     delete [] m_val;
     m_val = nullptr;
   }
+
+
+  double& DenseMatrix::operator() (int i, int j)
+  {
+    if (i < 0 || i >= m_rows)
+      throw OutOfBoundsIndex("DenseMatrix::operator()", i);
+
+    if (j < 0 || j >= m_cols)
+      throw OutOfBoundsIndex("DenseMatrix::operator()", j);
+
+    return m_val[this->data_index(i,j)];
+  }
+
+  const double& DenseMatrix::operator() (int i, int j) const
+  {
+
+    if (i < 0 || i >= m_rows)
+      throw OutOfBoundsIndex("DenseMatrix::operator()", i);
+
+    if (j < 0 || j >= m_cols)
+      throw OutOfBoundsIndex("DenseMatrix::operator()", j);
+ 
+    return m_val[this->data_index(i,j)];
+  }
+
+
+
 
   std::ostream& operator << (std::ostream& out, const FEM::DenseMatrix& mat)
   {

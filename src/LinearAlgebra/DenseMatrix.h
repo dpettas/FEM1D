@@ -4,6 +4,10 @@
 #include <iostream>
 #include <iomanip>
 #include <utility>
+#include "LinearAlgebra/exceptions.h"
+
+
+
 
 namespace FEM 
 {
@@ -19,6 +23,8 @@ namespace FEM
 
 
       int getSize() const;
+      int getNrows() const;
+      int getNcols() const;
       double&       value(int i, int j);
       const double& value(int i, int j) const;
 
@@ -26,17 +32,24 @@ namespace FEM
       double*   end(); 
 
 
+      double&       operator () (int i, int j);
+      const double& operator () (int i, int j) const;
     
     private: 
       int data_index(int i, int j) const;
-
-
 
       int m_rows = 0; 
       int m_cols = 0; 
       int m_size = 0;
       double* m_val = nullptr;
-  };  std::ostream& operator << (std::ostream& out, const FEM::DenseMatrix& mat);
+  };  
+
+
+  std::ostream& operator << (std::ostream& out, const FEM::DenseMatrix& mat);
 
 }
+
+
+
+
 #endif

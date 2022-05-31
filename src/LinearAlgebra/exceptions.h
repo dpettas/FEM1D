@@ -1,5 +1,5 @@
-#ifndef _FEM_DENSEMATRIX_INCLUDED_
-#define _FEM_DENSEMATRIX_INCLUDED_
+#ifndef _FEM_LINEAR_ALGEBRA_EXCEPTION_INCLUDED_
+#define _FEM_LINEAR_ALGEBRA_EXCEPTION_INCLUDED_
 
 #include <exception>
 #include <sstream>
@@ -32,6 +32,9 @@ namespace FEM
      std::string m_whichFunction;
      std::string msg;
   };
+
+
+
 
 
 
