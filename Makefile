@@ -9,6 +9,7 @@ SRC = $(wildcard src/**/*.cpp)
 SRC+= $(wildcard src/*.cpp)
 OBJ = $(patsubst src/%.cpp, obj/%.o, $(SRC))
 INC = -I./src/
+LIB = -llapack -lblas
 
 TEST_SEQUENTIALS=./tests/test_sequentials.cpp
 TEST_TABLE_SORT=./tests/test_table_sort.cpp
@@ -23,7 +24,7 @@ build: $(OBJ)
 
 obj/%.o: src/%.cpp
 	@mkdir -p $(shell dirname $@)
-	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
+	$(CC) $(CFLAGS) -c $< -o $@ $(INC) $(LIB)
 
 test_Point3D: $(OBJ)
 	$(CC) $(CFLAGS) -o ./test_Point3D $(OBJ) ./tests/test_Point3D.cpp $(INC)
@@ -91,7 +92,7 @@ test_table_sort: $(OBJ)
 	@echo "done"
 
 test_datafile: $(OBJ)
-	$(CC) $(CFLAGS) -o $(TEST_DATAFILE:.cpp=.exe) $(OBJ) $(TEST_DATAFILE) $(INC)
+	$(CC) $(CFLAGS) -o $(TEST_DATAFILE:.cpp=.exe) $(OBJ) $(TEST_DATAFILE) $(INC) $(LIB)
 	./$(TEST_DATAFILE:.cpp=.exe)
 
 clean:

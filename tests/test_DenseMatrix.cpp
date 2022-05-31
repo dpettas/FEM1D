@@ -5,23 +5,49 @@
 
 
 
+// LAPACK test code
+
+#include <iostream>
+#include <vector>
 
 
-int main (int argc, char *argv[])
+extern "C" void dgetrs_(char *TRANS, int *N, int *NRHS, double *A, 
+                      int *LDA, int *IPIV, double *B, int *LDB, int *INFO );
+
+
+extern "C" int dgetrf_(int *m, int *n, double *a, int *lda, int *ipiv, int *info);
+
+using namespace std;
+
+int main()
 {
-  FEM::DenseMatrix mat = FEM::Identity(3);
+    char trans = 'N';
+    int dim = 2;    
+    int nrhs = 1;
+    int LDA = dim;
+    int LDB = dim;
+    int info;
 
-  // mat(1,0) = 1.0;
-  std::cout << mat << std::endl;
+    vector<double> a, b;
 
-  // mat.value(1,2) = 10;
-  // mat.value(0,0) =  0;
-  // mat.value(0,1) =  2;
-  // mat.value(0,2) =  3;
-  // mat.value(2,4) =  3;
-  // std::cout << std::setprecision(4) << std::fixed;
-  // std::cout << mat << std::endl;
- 
+    a.push_back(1);
+    a.push_back(1);
+    a.push_back(1);
+    a.push_back(-1);
 
-  return 0;
+    b.push_back(2);
+    b.push_back(0);
+
+    int ipiv[3];
+
+    dgetrf_(&dim, &dim, &*a.begin(), &LDA, ipiv, &info);
+    dgetrs_(&trans, &dim, &nrhs, & *a.begin(), &LDA, ipiv, & *b.begin(), &LDB, &info);
+
+
+    std::cout << "solution is:";    
+    std::cout << "[" << b[0] << ", " << b[1] << ", " << "]" << std::endl;
+    std::cout << "Info = " << info << std::endl; 
+
+    return(0);
 }
+
