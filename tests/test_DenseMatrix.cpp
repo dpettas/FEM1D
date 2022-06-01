@@ -11,10 +11,7 @@
 #include <vector>
 
 
-extern "C" void dgetrs_(char *TRANS, int *N, int *NRHS, double *A, 
-                      int *LDA, int *IPIV, double *B, int *LDB, int *INFO );
-
-
+extern "C" void dgetrs_(char *TRANS, int *N, int *NRHS, double *A, int *LDA, int *IPIV, double *B, int *LDB, int *INFO );
 extern "C" int dgetrf_(int *m, int *n, double *a, int *lda, int *ipiv, int *info);
 
 using namespace std;
