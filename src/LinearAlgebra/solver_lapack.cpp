@@ -17,6 +17,13 @@ namespace FEM::ALGEBRA
 
   void SolverLapack::solve(const DenseMatrix& a, Array& b)
   {
+    if (b.size() != a.getNcols())
+      throw LapackNotSameRank("SolverLapack::solve", 
+          a.getNrows(),
+          a.getNcols(), 
+          b.size    () );
+
+
     solve(b.size(), a.begin(), b.begin());
   }
 

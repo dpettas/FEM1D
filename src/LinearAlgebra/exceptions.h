@@ -59,7 +59,16 @@ class LapackZeroDiagonalValue : public std::exception
 
 };
 
+class LapackNotSameRank : public std::exception 
+{
+  public: 
+    LapackNotSameRank() = default;
+    LapackNotSameRank(const std::string& whichFunction, int mat_i, int mat_j, int b_i); 
+    const char* what() const noexcept override;
 
+  private:
+    std::string msg;
+};
 
 
 

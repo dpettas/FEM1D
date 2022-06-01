@@ -74,4 +74,24 @@ namespace FEM
 
 
 
+  LapackNotSameRank::LapackNotSameRank(const std::string& whichFunction, int mat_i, int mat_j, int b_i)
+  {
+    std::stringstream out; 
+    out << whichFunction; 
+    out << " : "; 
+    out << "The rank of the matrix (" << mat_i << "," << mat_j << ") ";
+    out << "does not conform with the size of the array ";
+    out << "("<< b_i << ")";
+    msg = out.str();
+  }
+
+
+  const char* LapackNotSameRank::what() const noexcept 
+  {
+    return msg.c_str();
+  }
+
+
+
+
 }

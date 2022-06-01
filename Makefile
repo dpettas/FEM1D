@@ -79,7 +79,7 @@ test_DenseMatrix: $(OBJ)
 test_solver_lapack: $(OBJ)
 	$(CC) $(CFLAGS) -o ./test_solver_lapack $(OBJ) ./tests/test_solver_lapack.cpp $(INC) $(LIB)
 	./test_solver_lapack
-	@rm test_solver_lapack
+	# @rm test_solver_lapack
 
 
 test_GaussPoint1D: $(OBJ)
