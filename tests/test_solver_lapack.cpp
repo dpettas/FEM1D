@@ -8,32 +8,38 @@ int main()
     FEM::ALGEBRA::SolverLapack lapack;
     // note, to understand this part take a look in the MAN pages, at section of parameters.
     int     N = 3;
- 
-    double  A[9] =
-    {
-    1, 2, 3,
-    2, 3, 4,
-    3, 4, 1
-    };
- 
-    double B[3] =
-    {
-    -4,
-    -1,
-    -2
-    };
-// end of declarations
- 
-    std::cout << "compute the LU factorization..."  << std::endl;
-    //void LAPACK_dgetrf( lapack_int* m, lapack_int* n, double* a, lapack_int* lda, lapack_int* ipiv, lapack_int *info );
+    FEM::DenseMatrix mat(3,3);
+    FEM::Array       rhs(3);
 
-    lapack.factorize(N,N,A);
-    lapack.solve(N,A,B);
+    mat(0,0) = 1.0;
+    mat(0,1) = 2.0; 
+    mat(0,2) = 3.0;
+
+    mat(1,0) = 2.0;
+    mat(1,1) = 3.0; 
+    mat(1,2) = 4.0;
+
+    mat(2,0) = 3.0;
+    mat(2,1) = 4.0; 
+    mat(2,2) = 1.0;
+
+    rhs(0)   = -4;
+    rhs(1)   = -1;
+    rhs(2)   = -2;
+
+    std::cout << mat << std::endl; 
+    // std::cout << rhs << std::endl;
+ 
+ 
+
+    lapack.factorize(mat);
+    lapack.solve(mat,rhs);
+
+
     std::cout << "{" ;
     for (int i=0;i<N;i++)
-        std::cout << B[i] << " ";
+        std::cout << rhs(i) << " ";
     std::cout << "}" << std::endl;
-    std::exit(0);
  
  
     std::cout << "program terminated." << std::endl;

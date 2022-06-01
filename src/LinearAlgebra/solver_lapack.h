@@ -19,7 +19,10 @@ class SolverLapack
   ~SolverLapack();
 
   void factorize(int m, int n, double* a);
-  void solve(int n, double* a, double* b, int nrhs = 1);
+  void factorize(DenseMatrix& a);
+
+  void solve(int n, const double* a, double* b, int nrhs = 1);
+  void solve(const DenseMatrix& a, Array& b);
 
   private:
 

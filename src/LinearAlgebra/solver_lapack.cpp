@@ -8,6 +8,19 @@ namespace FEM::ALGEBRA
       delete [] ipiv;
   }
 
+
+  void SolverLapack::factorize(DenseMatrix& a)
+  {
+    factorize(a.getNrows(), a.getNcols(), a.begin());
+  }
+
+
+  void SolverLapack::solve(const DenseMatrix& a, Array& b)
+  {
+    solve(b.size(), a.begin(), b.begin());
+  }
+
+
   void SolverLapack::factorize(int m, int n, double* a)
   {
     lda = m;
@@ -25,7 +38,7 @@ namespace FEM::ALGEBRA
       throw LapackZeroDiagonalValue("SolverLapack::factorize", info);
   }
 
-  void SolverLapack::solve(int n, double* a, double* b, int nrhs)
+  void SolverLapack::solve(int n, const double* a, double* b, int nrhs)
   {
     trans = 'N';
     lda   = n;

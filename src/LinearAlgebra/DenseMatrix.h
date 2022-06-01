@@ -36,7 +36,9 @@ namespace FEM
       const double& diagonal(int i) const;
 
       double* begin(); 
+      const double* begin() const;
       double*   end(); 
+      const double* end() const;
 
 
       double&       operator () (int i, int j);

@@ -54,10 +54,23 @@ namespace FEM
     return m_val;
   }
 
+  const double* DenseMatrix::begin() const 
+  {
+    return m_val;
+  }
+
+
   double* DenseMatrix::end()
   {
     return (m_val+m_size);
   }
+
+
+  const double* DenseMatrix::end() const 
+  {
+    return (m_val + m_size);
+  }
+
 
   double& DenseMatrix::diagonal(int i)
   {
