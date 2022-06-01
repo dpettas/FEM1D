@@ -33,8 +33,31 @@ namespace FEM
      std::string msg;
   };
 
+class LapackArgumentIllegalValue : public std::exception
+{
+  public: 
+    LapackArgumentIllegalValue() = default; 
+    LapackArgumentIllegalValue(const std::string& whichFunction, int i);
+    const char* what() const noexcept override;
 
+  private: 
+    std::string m_whichFunction; 
+    std::string msg;
 
+};
+
+class LapackZeroDiagonalValue : public std::exception 
+{
+  public: 
+    LapackZeroDiagonalValue() = default;
+    LapackZeroDiagonalValue(const std::string& whichFunction, int i);
+
+    const char* what() const noexcept override;
+
+  private:
+    std::string msg;
+
+};
 
 
 
