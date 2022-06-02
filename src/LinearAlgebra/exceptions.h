@@ -35,6 +35,18 @@ namespace FEM
       }
   };
 
+  class DublicatedIndex : public ILinAlgExcecption 
+  {
+    public: 
+      DublicatedIndex() = delete;
+      DublicatedIndex(const std::string& whichFunction)
+      {
+        msg = whichFunction; 
+        msg+= " ";
+        msg+= "One or more indices are dublicated in the Array";
+      }
+  };
+
 
 
 

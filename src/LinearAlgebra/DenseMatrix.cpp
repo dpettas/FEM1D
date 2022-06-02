@@ -81,6 +81,16 @@ namespace FEM
     return m_val[this->data_index(i,j)];
   }
 
+  double& DenseMatrix::get(int i)
+  {
+    return *(m_val + i);
+  }
+
+  const double& DenseMatrix::get(int i) const 
+  {
+    return *(m_val + i);
+  }
+
   double* DenseMatrix::begin()
   {
     return m_val;
@@ -108,10 +118,10 @@ namespace FEM
   {
 
     if (i < 0 || i >= m_rows)
-      throw OutOfBoundsIndex("DenseMatrix::operator()", i);
+      throw OutOfBoundsIndex("DenseMatrix::diagonal(int i)", i);
 
     if (i < 0 || i >= m_cols)
-      throw OutOfBoundsIndex("DenseMatrix::operator()", i);
+      throw OutOfBoundsIndex("DenseMatrix::diagonal(int i)", i);
 
     return m_val[data_index(i,i)];
   }
@@ -120,16 +130,21 @@ namespace FEM
   {
 
     if (i < 0 || i >= m_rows)
-      throw OutOfBoundsIndex("DenseMatrix::operator()", i);
+      throw OutOfBoundsIndex("DenseMatrix::diagonal(int i)", i);
 
     if (i < 0 || i >= m_cols)
-      throw OutOfBoundsIndex("DenseMatrix::operator()", i);
+      throw OutOfBoundsIndex("DenseMatrix::diagonal(int i)", i);
 
     return m_val[data_index(i,i)];
   }
 
 
   int DenseMatrix::getSize() const 
+  {
+    return m_size;
+  }
+
+  int DenseMatrix::size() const 
   {
     return m_size;
   }
@@ -178,6 +193,28 @@ namespace FEM
     return m_val[this->data_index(i,j)];
   }
 
+  // Values DenseMatrix::operator() (const Indices& idx_x, const Indices& idx_y)
+  // {
+  //   if ( idx_x.size() != idx_y.size() )
+  //     throw NotEqualBalancedArrays("DenseMatrix::operator()(const Indices& idx_x, const Indices& idx_y)");
+  //
+  //   Values out; 
+  //   int nx= idx_x.size();
+  //   int ny= idx_y.size();
+  //
+  //   for ( int ii = 0; ii < nx; ++ii )
+  //   {
+  //     for ( int jj = 0; jj < ny; ++jj )
+  //     {
+  //       int i = idx_x.get(ii);
+  //       int j = idx_y.get(jj);
+  //       out.push_back( &m_val[data_index(i,j)] );
+  //     }
+  //   }
+  //
+  //
+  //   return out;
+  // }
 
 
 

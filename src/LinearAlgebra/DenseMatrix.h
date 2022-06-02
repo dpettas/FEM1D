@@ -5,6 +5,8 @@
 #include <iomanip>
 #include <utility>
 #include <initializer_list>
+#include "LinearAlgebra/Indices.h"
+#include "LinearAlgebra/Values.h"
 #include "LinearAlgebra/exceptions.h"
 
 
@@ -27,9 +29,13 @@ namespace FEM
       std::pair<int,int> getDimensions() const;
 
 
+      int size() const;
       int getSize() const;
       int getNrows() const;
       int getNcols() const;
+
+      double& get(int i);
+      const double& get(int i) const;
 
       double&       value(int i, int j);
       const double& value(int i, int j) const;
@@ -45,6 +51,10 @@ namespace FEM
 
       double&       operator () (int i, int j);
       const double& operator () (int i, int j) const;
+
+      // Values operator() (const Indices& idx_x, const Indices& idx_y);
+
+
     
     private: 
       int data_index(int i, int j) const;

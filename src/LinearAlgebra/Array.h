@@ -7,6 +7,7 @@
 #include <cmath>
 #include <tuple>
 #include <vector>
+#include <unordered_set>
 #include "exceptions.h"
 #include "Indices.h"
 #include "Values.h"
@@ -48,7 +49,7 @@ namespace FEM
       Array& operator-=(const Array& other);
 
       double&       operator() (int i);
-      FEM::Values   operator() (const FEM::Indices& idx);
+      ArrayValues   operator() (const FEM::Indices& idx);
       
       
       double   at(int i) const;

@@ -7,14 +7,16 @@
 namespace FEM 
 {
   class Array;
+  class DenseMatrix;
 
-  class Values : public std::vector<double*>
+  class ArrayValues : public std::vector<double*>
   {
   public: 
-    Values() = default;
-    Values(const Array& init) = delete;
+    ArrayValues() = default;
+    ArrayValues(const Array& init) = delete;
 
-    Values operator= (const Array& arr);
+    ArrayValues& operator= (const Array& arr);
+    // Values& operator= (const DenseMatrix& mat);
   };
 }
 

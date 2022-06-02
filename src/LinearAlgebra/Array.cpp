@@ -223,9 +223,23 @@ namespace FEM
   }
 
 
-  Values Array::operator () (const Indices& idx)
+  ArrayValues Array::operator () (const Indices& idx)
   {
-    Values out;
+   
+    auto hasDublication = [](const Indices& idx_)
+    {
+      return static_cast<int>(std::unordered_set<int> (idx_.begin(), idx_.end()).size()) != idx_.size();
+    };
+
+
+    if (hasDublication(idx))
+      throw DublicatedIndex("Array::operator()(const Indices&)");
+
+
+
+
+    ArrayValues out;
+
     for (int i = 0; i < idx.size(); ++i)
     {
       int idx_ = idx.get(i);
