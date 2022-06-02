@@ -92,6 +92,18 @@ namespace FEM
   }
 
 
+  NotSameNumberOfColumns::NotSameNumberOfColumns(const std::string& whichFunction)
+  {
+    msg  = whichFunction; 
+    msg += ' ';
+    msg += "The number of columns is not the same for every type of the list.";
+  }
+
+
+  const char* NotSameNumberOfColumns::what() const noexcept 
+  {
+    return msg.c_str();
+  }
 
 
 }

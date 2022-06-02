@@ -5,6 +5,38 @@ namespace FEM
 {
 
 
+  DenseMatrix::DenseMatrix(std::initializer_list<std::initializer_list<double>> ll)
+  {
+    int nrows = ll.size(); 
+    int ncols = ll.begin()->size();
+
+    // Check that all the rows has the same columns
+    for (const std::initializer_list<double>& row : ll)
+    {
+      if( (int) row.size() != ncols) 
+        throw NotSameNumberOfColumns("DenseMatrix::DenseMatrix(std::initializer_list<std::initializer_list<double>>)");
+    }
+
+    m_rows = nrows; 
+    m_cols = ncols; 
+    m_size = m_rows * m_cols; 
+    m_val  = new double [m_size];
+
+    int i = 0;
+    for(auto row : ll)
+    {
+      int j = 0;
+      for(auto val : row)
+      {
+        m_val[data_index(i,j)] = val;
+      
+        ++j; 
+      }
+      ++i;
+    }
+
+
+  }
 
 
   DenseMatrix::DenseMatrix(int n, int m, double val)

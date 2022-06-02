@@ -1,5 +1,5 @@
 CC=g++-10
-# CFLAGS= -std=c++2a -g -Wall -fprofile-arcs -ftest-coverage
+
 CFLAGS= -std=c++2a -g -Wall
 CLINKS="./src"
 
@@ -72,7 +72,7 @@ test_AsciiTecplot: $(OBJ)
 	@rm test_AsciiTecplot
 
 test_DenseMatrix: $(OBJ)
-	$(CC) $(CFLAGS) -o ./test_DenseMatrix $(OBJ) ./tests/test_DenseMatrix.cpp $(INC)
+	$(CC) $(CFLAGS) -o ./test_DenseMatrix $(OBJ) ./tests/test_DenseMatrix.cpp $(INC) $(LIB)
 	./test_DenseMatrix
 	@rm test_DenseMatrix
 

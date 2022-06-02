@@ -25,7 +25,7 @@ int main (int argc, char *argv[])
   FEM::Array c = a;
   
   
-  c({1,2}) = {10,30};
+  c({1,2,3}) = {10,10};
 
 
   std::cout << c(0) << std::endl;

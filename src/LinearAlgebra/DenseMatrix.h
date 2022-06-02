@@ -4,6 +4,7 @@
 #include <iostream>
 #include <iomanip>
 #include <utility>
+#include <initializer_list>
 #include "LinearAlgebra/exceptions.h"
 
 
@@ -20,6 +21,7 @@ namespace FEM
       DenseMatrix() = default;
       ~DenseMatrix();
       DenseMatrix(int n, int m, double val = 0.0);
+      DenseMatrix(std::initializer_list<std::initializer_list<double>> ll);
       DenseMatrix(const DenseMatrix& other);
 
       std::pair<int,int> getDimensions() const;

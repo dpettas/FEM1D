@@ -61,8 +61,8 @@ namespace FEM
 
           Values operator = (const Array& arr)
           {
-            // if (arr.size() != (int) m_values.size() )
-              // throw "The array of the right has not the same length with the array of the left";
+            if (arr.size() != (int) m_values.size() )
+              throw "The array of the right has not the same length with the array of the left";
 
             for (int i = 0; i < (int) m_values.size(); ++i)
             {

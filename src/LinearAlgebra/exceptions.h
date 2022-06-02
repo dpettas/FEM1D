@@ -29,9 +29,23 @@ namespace FEM
      const char * what() const noexcept override;
 
     private: 
-     std::string m_whichFunction;
      std::string msg;
   };
+
+
+  class NotSameNumberOfColumns : public std::exception 
+  {
+    public: 
+      NotSameNumberOfColumns() = default;
+      NotSameNumberOfColumns(const std::string& whichFunction);
+
+      const char* what() const noexcept override;
+    private:
+      std::string msg;
+  };
+
+
+
 
 class LapackArgumentIllegalValue : public std::exception
 {
