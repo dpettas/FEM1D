@@ -14,11 +14,6 @@
 
 namespace FEM 
 {
-
-
-
-
-
   class Array 
   {
     private: 
@@ -58,11 +53,8 @@ namespace FEM
       double   at(int i) const;
 
       double L2norm();
-      
-
   };
-
-
+  std::ostream& operator << (std::ostream& out, const Array& obj);
 }
 
 

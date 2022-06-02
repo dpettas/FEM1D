@@ -2,6 +2,22 @@
 
 namespace FEM 
 {
+  std::ostream& operator << (std::ostream& out, const Array& obj)
+  {
+
+    for (int i = 0; i < obj.size(); ++i)
+    {
+      out << obj.at(i) << " ";
+
+      if (i%5 == 0 && i != 0) out << '\n';
+    }
+
+
+    return out;
+  }
+
+
+
   Array::Array(int size, double init) : 
     m_size(size)
   {

@@ -15,13 +15,13 @@ class Indices
 {
 public: 
   Indices(std::initializer_list<int> il);
+  ~Indices();
 
   int size()       const;
   int get(int idx) const;
   int* begin()     const;
   int* end()       const;
 
-  ~Indices();
 
 private: 
   int  m_size = 0; 
