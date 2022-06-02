@@ -20,7 +20,7 @@ run: build
 	@./$(TARGET)
 
 build: $(OBJ)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ) $(MAIN_SOURCE) $(INC)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ) $(MAIN_SOURCE) $(INC) $(LIB)
 
 obj/%.o: src/%.cpp
 	@mkdir -p $(shell dirname $@)
