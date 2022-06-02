@@ -213,7 +213,12 @@ namespace FEM
   {
     Values out;
     for (int i = 0; i < idx.size(); ++i)
-      out.add(m_values[idx.get(i)]);
+    {
+      int idx_ = idx.get(i);
+      if (idx_ < 0 || idx_ >= m_size)
+        throw OutOfBoundsIndex("Array::operator()(const Indices& idx)", idx_);
+      out.add(m_values[idx_]);
+    }
 
     return out;
   }
