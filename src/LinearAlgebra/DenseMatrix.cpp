@@ -220,6 +220,13 @@ namespace FEM
       {
         int i = idx_x.get(ii);
         int j = idx_y.get(jj);
+
+        if ( i < 0 || i > getNrows() )
+          throw OutOfBoundsIndex("DenseMatrix::operator()(const Indices&, const Indices&)",i);
+
+        if ( j < 0 || j > getNcols() )
+          throw OutOfBoundsIndex("DenseMatrix::operator()(const Indices&, const Indices&)",j);
+
         out.push_back( &m_val[data_index(i,j)] );
       }
     }

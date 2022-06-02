@@ -7,14 +7,15 @@ int main()
 {
     FEM::ALGEBRA::SolverLapack lapack;
     // note, to understand this part take a look in the MAN pages, at section of parameters.
-    FEM::DenseMatrix mat = { {1,2,3}, 
-                             {2,3,4}, 
-                             {3,4,1} };
-    FEM::Array       rhs = {-4, -1, -2};
+    FEM::DenseMatrix mat = { {1,2,-1}, 
+                             {2,2,2},
+                             {1,-2,2}};
+    FEM::Array       rhs = {2, 12, 5};
 
 
-    std::cout << mat << std::endl; 
-    // std::cout << rhs << std::endl;
+
+
+
  
  
 

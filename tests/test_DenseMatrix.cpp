@@ -20,7 +20,8 @@ int main()
     FEM::Array a = {1,12,3,4};
 
 
-    a({0,1,2}) = {9,1,1};
+    a({0,1,2}) -= {9,1,1};
+    std::cout << a << std::endl;
 
     FEM::DenseMatrix mat = { {1,2,3}, 
                              {4,5,6},

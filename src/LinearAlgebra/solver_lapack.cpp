@@ -47,7 +47,7 @@ namespace FEM::ALGEBRA
 
   void SolverLapack::solve(int n, const double* a, double* b, int nrhs)
   {
-    trans = 'N';
+    trans = 'T'; // use the transpose because fortran and C reads differently the memory
     lda   = n;
     ldb   = n;
 

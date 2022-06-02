@@ -16,7 +16,8 @@ namespace FEM
     ArrayValues(const Array& init) = delete;
 
     ArrayValues& operator= (const Array& arr);
-    // Values& operator= (const DenseMatrix& mat);
+    ArrayValues& operator+=(const Array& arr);
+    ArrayValues& operator-=(const Array& arr);
   };
 }
 

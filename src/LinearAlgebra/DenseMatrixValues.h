@@ -16,7 +16,9 @@ namespace FEM
     DenseMatrixValues() = default;
     DenseMatrixValues(const Array& init) = delete;
 
-    DenseMatrixValues& operator= (const DenseMatrix& mat);
+    DenseMatrixValues& operator = (const DenseMatrix& mat);
+    DenseMatrixValues& operator+= (const DenseMatrix& mat);
+    DenseMatrixValues& operator-= (const DenseMatrix& mat);
   };
 }
 
