@@ -193,28 +193,40 @@ namespace FEM
     return m_val[this->data_index(i,j)];
   }
 
-  // Values DenseMatrix::operator() (const Indices& idx_x, const Indices& idx_y)
-  // {
-  //   if ( idx_x.size() != idx_y.size() )
-  //     throw NotEqualBalancedArrays("DenseMatrix::operator()(const Indices& idx_x, const Indices& idx_y)");
-  //
-  //   Values out; 
-  //   int nx= idx_x.size();
-  //   int ny= idx_y.size();
-  //
-  //   for ( int ii = 0; ii < nx; ++ii )
-  //   {
-  //     for ( int jj = 0; jj < ny; ++jj )
-  //     {
-  //       int i = idx_x.get(ii);
-  //       int j = idx_y.get(jj);
-  //       out.push_back( &m_val[data_index(i,j)] );
-  //     }
-  //   }
-  //
-  //
-  //   return out;
-  // }
+  DenseMatrixValues DenseMatrix::operator() (const Indices& idx_x, const Indices& idx_y)
+  {
+
+    auto hasDublication = [](const Indices& idx) 
+    { return static_cast<int>(std::unordered_set(idx.begin(),idx.end()).size()) != idx.size(); };
+
+
+    if ( idx_x.size() != idx_y.size() )
+      throw NotEqualBalancedArrays("DenseMatrix::operator()(const Indices& idx_x, const Indices& idx_y)");
+
+    if (hasDublication(idx_x))
+      throw DublicatedIndex("DenseMatrix::operator() (const Indices&, const Indices&) check i. ");
+
+    if (hasDublication(idx_y))
+      throw DublicatedIndex("DenseMatrix::operator() (const Indices&, const Indices&) chek j. ");
+    
+
+    DenseMatrixValues out;
+    int nx= idx_x.size();
+    int ny= idx_y.size();
+
+    for ( int ii = 0; ii < nx; ++ii )
+    {
+      for ( int jj = 0; jj < ny; ++jj )
+      {
+        int i = idx_x.get(ii);
+        int j = idx_y.get(jj);
+        out.push_back( &m_val[data_index(i,j)] );
+      }
+    }
+
+
+    return out;
+  }
 
 
 

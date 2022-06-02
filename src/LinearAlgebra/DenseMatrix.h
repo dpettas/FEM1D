@@ -5,8 +5,9 @@
 #include <iomanip>
 #include <utility>
 #include <initializer_list>
+#include <unordered_set>
 #include "LinearAlgebra/Indices.h"
-#include "LinearAlgebra/ArrayValues.h"
+#include "LinearAlgebra/DenseMatrixValues.h"
 #include "LinearAlgebra/exceptions.h"
 
 
@@ -29,8 +30,8 @@ namespace FEM
       std::pair<int,int> getDimensions() const;
 
 
-      int size() const;
-      int getSize() const;
+      int size()     const;
+      int getSize()  const;
       int getNrows() const;
       int getNcols() const;
 
@@ -52,7 +53,7 @@ namespace FEM
       double&       operator () (int i, int j);
       const double& operator () (int i, int j) const;
 
-      // Values operator() (const Indices& idx_x, const Indices& idx_y);
+      DenseMatrixValues operator() (const Indices& idx_x, const Indices& idx_y);
 
 
     
