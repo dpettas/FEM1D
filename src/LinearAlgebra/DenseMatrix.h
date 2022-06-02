@@ -6,7 +6,7 @@
 #include <utility>
 #include <initializer_list>
 #include "LinearAlgebra/Indices.h"
-#include "LinearAlgebra/Values.h"
+#include "LinearAlgebra/ArrayValues.h"
 #include "LinearAlgebra/exceptions.h"
 
 
