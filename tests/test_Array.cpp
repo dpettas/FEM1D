@@ -19,15 +19,21 @@ auto time_now = [](){return std::chrono::high_resolution_clock::now();};
 int main (int argc, char *argv[])
 {
 
-  FEM::Array a = {1,2,3};
-  FEM::Array b = {1,2,3}; 
+  FEM::Array a = {1,2,3,4};
 
 
   FEM::Array c = a;
+  
+  
+  c({1,2}) = {10,30};
 
 
-  std::cout << std::endl;
+  std::cout << c(0) << std::endl;
+  std::cout << c(1) << std::endl;
+  std::cout << c(2) << std::endl;
+  std::cout << c(3) << std::endl;
 
+  
 
 
   std::cout << "End\n";

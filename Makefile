@@ -27,42 +27,42 @@ obj/%.o: src/%.cpp
 	$(CC) $(CFLAGS) -c $< -o $@ $(INC) $(LIB)
 
 test_Point3D: $(OBJ)
-	$(CC) $(CFLAGS) -o ./test_Point3D $(OBJ) ./tests/test_Point3D.cpp $(INC)
+	$(CC) $(CFLAGS) -o ./test_Point3D $(OBJ) ./tests/test_Point3D.cpp $(INC) $(LIB)
 	./test_Point3D
 	@rm test_Point3D
 
 test_Array: $(OBJ)
-	$(CC) $(CFLAGS) -o ./test_Array $(OBJ) ./tests/test_Array.cpp $(INC)
+	$(CC) $(CFLAGS) -o ./test_Array $(OBJ) ./tests/test_Array.cpp $(INC) $(LIB)
 	./test_Array
-	@rm test_Array
+	# @rm test_Array
 
 test_point1D: $(OBJ)
-	$(CC) $(CFLAGS) -o ./test_point1D $(OBJ) ./tests/test_point1D.cpp $(INC)
+	$(CC) $(CFLAGS) -o ./test_point1D $(OBJ) ./tests/test_point1D.cpp $(INC) $(LIB)
 	./test_point1D
 
 test_node: $(OBJ)
-	$(CC) $(CFLAGS) -o ./test_node $(OBJ) ./tests/test_Node.cpp $(INC)
+	$(CC) $(CFLAGS) -o ./test_node $(OBJ) ./tests/test_Node.cpp $(INC) $(LIB)
 	./test_node
 	@rm test_node
 
 test_Mesh1D: $(OBJ)
-	$(CC) $(CFLAGS) -o ./test_Mesh1D $(OBJ) ./tests/test_Mesh1D.cpp $(INC)
+	$(CC) $(CFLAGS) -o ./test_Mesh1D $(OBJ) ./tests/test_Mesh1D.cpp $(INC) $(LIB)
 	./test_Mesh1D
 	@rm test_Mesh1D
 
 
 test_Node3D: $(OBJ)
-	$(CC) $(CFLAGS) -o ./test_Node3D $(OBJ) ./tests/test_Node3D.cpp $(INC)
+	$(CC) $(CFLAGS) -o ./test_Node3D $(OBJ) ./tests/test_Node3D.cpp $(INC) $(LIB)
 	./test_Node3D
 	@rm test_Node3D
 
 test_Mesh3D: $(OBJ)
-	$(CC) $(CFLAGS) -o ./test_Mesh3D $(OBJ) ./tests/test_Mesh3D.cpp $(INC)
+	$(CC) $(CFLAGS) -o ./test_Mesh3D $(OBJ) ./tests/test_Mesh3D.cpp $(INC) $(LIB)
 	./test_Mesh3D
 	@rm test_Mesh3D
 
 test_Brick: $(OBJ)
-	$(CC) $(CFLAGS) -o ./test_Brick $(OBJ) ./tests/test_Brick.cpp $(INC)
+	$(CC) $(CFLAGS) -o ./test_Brick $(OBJ) ./tests/test_Brick.cpp $(INC) $(LIB)
 	./test_Brick
 	@rm test_Brick
 

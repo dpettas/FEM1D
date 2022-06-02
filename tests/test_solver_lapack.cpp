@@ -7,7 +7,6 @@ int main()
 {
     FEM::ALGEBRA::SolverLapack lapack;
     // note, to understand this part take a look in the MAN pages, at section of parameters.
-    int     N = 3;
     FEM::DenseMatrix mat(3,3);
     FEM::Array       rhs(3);
 
@@ -37,7 +36,7 @@ int main()
 
 
     std::cout << "{" ;
-    for (int i=0;i<N;i++)
+    for (int i=0;i<rhs.size();i++)
         std::cout << rhs(i) << " ";
     std::cout << "}" << std::endl;
  

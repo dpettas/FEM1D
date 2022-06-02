@@ -209,6 +209,16 @@ namespace FEM
   }
 
 
+  Array::Values Array::operator () (const Array::Indices& idx)
+  {
+    Values out;
+    for (int i = 0; i < idx.size(); ++i)
+      out.add(m_values[idx.get(i)]);
+
+    return out;
+  }
+
+
   double Array::at(int i) const 
   {
     if (i >= m_size || i < 0)
