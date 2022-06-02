@@ -209,7 +209,7 @@ namespace FEM
   }
 
 
-  Array::Values Array::operator () (const Array::Indices& idx)
+  Values Array::operator () (const Indices& idx)
   {
     Values out;
     for (int i = 0; i < idx.size(); ++i)

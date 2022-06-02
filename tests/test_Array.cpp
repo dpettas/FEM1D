@@ -20,12 +20,10 @@ int main (int argc, char *argv[])
 {
 
   FEM::Array a = {1,2,3,4};
-
-
   FEM::Array c = a;
   
   
-  c({1,2,3}) = {10,10};
+  c({1,2,3}) = {10,10, 100};
 
 
   std::cout << c(0) << std::endl;

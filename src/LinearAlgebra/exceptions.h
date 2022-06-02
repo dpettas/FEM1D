@@ -8,6 +8,37 @@
 namespace FEM 
 {
 
+  class ILinAlgExcecption: public std::exception 
+  {
+    public: 
+      const char* what() const noexcept final 
+      {
+        return msg.c_str();
+      }
+
+    protected:
+      std::string msg;
+
+  };
+
+
+
+  class NotEqualBalancedArrays : public ILinAlgExcecption 
+  {
+    public: 
+      NotEqualBalancedArrays() = delete;
+      NotEqualBalancedArrays(const std::string& whichFunction)
+      {
+        msg = whichFunction; 
+        msg+= " ";
+        msg+= "The arrays left and right of the assignment are not balanced.";
+      }
+  };
+
+
+
+
+
   class NotEqualSizedArrays: public std::exception
   {
     public:
