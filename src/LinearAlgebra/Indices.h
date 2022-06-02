@@ -28,21 +28,6 @@ private:
   int* m_val  = nullptr;
 };
 
-class Values 
-{
-public: 
-  Values() = default;
-  Values(const Array& init) = delete;
-
-  Values operator = (const Array& arr);
-
-  void add(double& val) {return m_values.push_back(&val);}
-  double* get(int i) const {return m_values.at(i);}
-private:
-  std::vector<double*> m_values;
-
-
-};
 
 }
 #endif

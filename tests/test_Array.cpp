@@ -23,7 +23,7 @@ int main (int argc, char *argv[])
   FEM::Array c = a;
   
   
-  // c({1,50,3}) = {10,10, 100};
+  c({0,1,2}) = {10,10, 100};
 
 
   std::cout << c << std::endl;

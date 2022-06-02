@@ -8,10 +8,8 @@ namespace FEM
     for (int i = 0; i < obj.size(); ++i)
     {
       out << obj.at(i) << " ";
-
       if (i%5 == 0 && i != 0) out << '\n';
     }
-
 
     return out;
   }
@@ -233,7 +231,8 @@ namespace FEM
       int idx_ = idx.get(i);
       if (idx_ < 0 || idx_ >= m_size)
         throw OutOfBoundsIndex("Array::operator()(const Indices& idx)", idx_);
-      out.add(m_values[idx_]);
+
+      out.push_back( (m_values + idx_) );
     }
 
     return out;
