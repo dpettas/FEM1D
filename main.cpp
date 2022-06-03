@@ -1,16 +1,16 @@
 #include <iostream>
-#include "Point1D.h"
-#include "Node.h"
+#include "Legacy/element_module.h"
 
-#include "Mesh3D.h"
+LEGACY::element_module element_module;
 
+int main()
+{
 
-int main(){
+  element_module.discretization_data();
 
-
-  FEM::Mesh3D mesh(5,5,5);
-
-  mesh.toAsciiTeplot("fromMain.plt");
+  std::cout << element_module.nodtol << std::endl;
+  
+  
 
 
   std::cout << "End\n";
