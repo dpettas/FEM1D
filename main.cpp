@@ -6,7 +6,10 @@
 #include "Mesh3D.h"
 #include "BasisFunctions/BasisFunction.h"
 #include "BasisFunctions/LinearLagrange1D.h"
-#include "src/BasisFunctions/LinearLagrange2D.h"
+#include "BasisFunctions/LinearLagrange2D.h"
+#include "BasisFunctions/LinearLagrange3D.h"
+
+
 
 
 
@@ -19,10 +22,11 @@ int main(){
 
   FEM::LinearLagrange1DBFunction l1d;
   FEM::LinearLagrange2DBFunction l2d;
+  FEM::LinearLagrange3DBFunction l3d;
 
-  auto phi = l2d.phi(0);
+  auto phi = l3d.phi(0);
 
-  // std::cout << l2d.phi(3)(0.5,0.5) << std::endl;
+  std::cout << l3d.phi(3)(0.00,0.5,0.5) << std::endl;
 
 
 
