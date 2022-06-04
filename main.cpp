@@ -4,8 +4,7 @@
 #include "Node.h"
 
 #include "Mesh3D.h"
-#include "BasisFunctions/BasisFunction1D.h"
-#include "BasisFunctions/BasisFunction2D.h"
+#include "BasisFunctions/BasisFunction.h"
 
 
 
@@ -13,7 +12,6 @@ int main(){
 
 
   FEM::BasisFunction<double> func ([](double x1) { return x1*x1;});
-  FEM::BasisFunction<double,double> f2 ([](double x1, double x2) { return x1*x2;});
   FEM::BasisFunction<double,double> f2 ([](double x1, double x2) { return x1*x2;});
 
   auto df2 = f2.derWithRespectTo(1);

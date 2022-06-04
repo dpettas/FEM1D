@@ -9,6 +9,11 @@
 
 namespace FEM 
 {
+template <typename ...Ts> class BasisFunction;
+
+using BFunction1D = BasisFunction<double>;
+using BFunction2D = BasisFunction<double,double>;
+using BFunction3D = BasisFunction<double,double,double>;
 
 template <typename ...Ts>
   class BasisFunction 
