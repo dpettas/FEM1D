@@ -14,7 +14,6 @@ namespace FEM
 {
 template <typename ...Ts> class BFunction;
 
-class LinearLagrangeBFunction;
 
 using BFunction1D = BFunction<double>;
 using BFunction2D = BFunction<double,double>;
@@ -35,6 +34,7 @@ template <typename ...Ts>
       BFunction(_func basisFunction );
       BFunction(const BFunction& other);
 
+      void set(_func);
       BFunction& operator = (const BFunction& that);
       double operator () (Ts...);
 
@@ -42,8 +42,6 @@ template <typename ...Ts>
       _func derWithRespectTo(int i);
 
     private: 
-      friend LinearLagrangeBFunction; // for the usage of set only in the constructor;
-      void set(_func);
 
       double _eps = 1e-6;
       _func _basisFunction;

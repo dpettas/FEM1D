@@ -8,19 +8,19 @@
 namespace FEM 
 {
 
-  class LinearLagrangeBFunction 
+  class LinearLagrange1DBFunction 
   {
     public: 
       
       void set_diff_tolerance(double eps);
 
-      LinearLagrangeBFunction();
-     ~LinearLagrangeBFunction();
+      LinearLagrange1DBFunction();
+     ~LinearLagrange1DBFunction();
 
-      LinearLagrangeBFunction( const            LinearLagrangeBFunction&  ) = delete;
-      LinearLagrangeBFunction(                  LinearLagrangeBFunction&& ) = delete;
-      LinearLagrangeBFunction& operator= (const LinearLagrangeBFunction&  ) = delete;
-      LinearLagrangeBFunction& operator= (      LinearLagrangeBFunction&& ) = delete;
+      LinearLagrange1DBFunction( const            LinearLagrange1DBFunction&  ) = delete;
+      LinearLagrange1DBFunction(                  LinearLagrange1DBFunction&& ) = delete;
+      LinearLagrange1DBFunction& operator= (const LinearLagrange1DBFunction&  ) = delete;
+      LinearLagrange1DBFunction& operator= (      LinearLagrange1DBFunction&& ) = delete;
 
       int size() const;
       BFunction1D& phi(int i);

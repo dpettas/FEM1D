@@ -6,6 +6,7 @@
 #include "Mesh3D.h"
 #include "BasisFunctions/BasisFunction.h"
 #include "BasisFunctions/LinearLagrange1D.h"
+#include "src/BasisFunctions/LinearLagrange2D.h"
 
 
 
@@ -16,11 +17,10 @@ int main(){
   FEM::BFunction2D f2 ([](double x1, double x2)            { return x1*x2;});
   FEM::BFunction3D f3 ([](double x1, double x2, double x3) { return x1*x2*x3;});
 
-  FEM::LinearLagrangeBFunction l;
+  FEM::LinearLagrange1DBFunction l1d;
+  FEM::LinearLagrange2DBFunction l2d;
 
-  auto dphidc = l.phi(1).derWithRespectTo(0);
 
-  std::cout <<  dphidc(1.0) << std::endl;
 
 
   std::cout << "End\n";
