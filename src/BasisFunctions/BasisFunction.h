@@ -7,13 +7,20 @@
 #include <iostream>
 #include <tuple>
 
+
+
+
 namespace FEM 
 {
 template <typename ...Ts> class BFunction;
 
+class LinearLagrangeBFunction;
+
 using BFunction1D = BFunction<double>;
 using BFunction2D = BFunction<double,double>;
 using BFunction3D = BFunction<double,double,double>;
+
+
 
 template <typename ...Ts>
   class BFunction 
@@ -24,7 +31,7 @@ template <typename ...Ts>
       void set_diff_tolerance(double eps);
 
 
-      BFunction() = delete;
+      BFunction() = default;
       BFunction(_func basisFunction );
       BFunction(const BFunction& other);
 
@@ -35,6 +42,8 @@ template <typename ...Ts>
       _func derWithRespectTo(int i);
 
     private: 
+      friend LinearLagrangeBFunction; // for the usage of set only in the constructor;
+      void set(_func);
 
       double _eps = 1e-6;
       _func _basisFunction;
@@ -63,6 +72,12 @@ template <typename ...Ts>
   double BFunction<Ts...>::operator()(Ts... args) 
   { 
     return _basisFunction(args...);
+  }
+
+  template<typename ...Ts>
+  void BFunction<Ts...>::set(_func bfunct)
+  {
+    _basisFunction = bfunct;
   }
 
   template<typename ...Ts> 

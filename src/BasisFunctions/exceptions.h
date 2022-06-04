@@ -38,8 +38,8 @@ namespace FEM
 
         out << msg; 
         out << " ";
-        out << "The index i : " << i << "is out of bounds";
-        out << "possible values are in the range ["<<min<<","<<max<<"]\n";
+        out << " The index i : " << i << " is out of bounds. ";
+        out << " possible values are in the range ["<<min<<","<<max<<"]\n";
 
         _msg = out.str();
       }
