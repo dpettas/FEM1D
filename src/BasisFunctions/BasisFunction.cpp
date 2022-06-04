@@ -1,12 +1,12 @@
-#include "BasisFunctions/BasisFunction2D.h"
+#include "BasisFunctions/BasisFunction.h"
 
 namespace FEM 
 {
 
 
 template<>
-  BasisFunction<double>::_func  
-  BasisFunction<double>::derWithRespectTo(int i)
+  BFunction<double>::_func  
+  BFunction<double>::derWithRespectTo(int i)
   {
     if (i >= dimensionality() || i < 0)
       throw FEM::OutOfBoundsIndex("BasisFunction::derWithRespectTo",i,0,0);
@@ -17,8 +17,8 @@ template<>
   
 
 template<>
-  BasisFunction<double,double>::_func  
-  BasisFunction<double,double>::derWithRespectTo(int i)
+  BFunction<double,double>::_func  
+  BFunction<double,double>::derWithRespectTo(int i)
   {
     if (i >= dimensionality() || i < 0)
       throw FEM::OutOfBoundsIndex("BasisFunction::derWithRespectTo",i,0,1);
@@ -37,8 +37,8 @@ template<>
   }
 
 template<>
-  BasisFunction<double,double,double>::_func  
-  BasisFunction<double,double,double>::derWithRespectTo(int i)
+  BFunction<double,double,double>::_func  
+  BFunction<double,double,double>::derWithRespectTo(int i)
   {
     if (i >= dimensionality() || i < 0)
       throw FEM::OutOfBoundsIndex("BasisFunction::derWithRespectTo",i,0,2);

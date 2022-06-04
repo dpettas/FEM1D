@@ -9,14 +9,14 @@
 
 namespace FEM 
 {
-template <typename ...Ts> class BasisFunction;
+template <typename ...Ts> class BFunction;
 
-using BFunction1D = BasisFunction<double>;
-using BFunction2D = BasisFunction<double,double>;
-using BFunction3D = BasisFunction<double,double,double>;
+using BFunction1D = BFunction<double>;
+using BFunction2D = BFunction<double,double>;
+using BFunction3D = BFunction<double,double,double>;
 
 template <typename ...Ts>
-  class BasisFunction 
+  class BFunction 
   {
     public: 
       using _func = std::function<double(Ts...)>;
@@ -24,11 +24,11 @@ template <typename ...Ts>
       void set_diff_tolerance(double eps);
 
 
-      BasisFunction() = delete;
-      BasisFunction(_func basisFunction );
-      BasisFunction(const BasisFunction& other);
+      BFunction() = delete;
+      BFunction(_func basisFunction );
+      BFunction(const BFunction& other);
 
-      BasisFunction& operator = (const BasisFunction& that);
+      BFunction& operator = (const BFunction& that);
       double operator () (Ts...);
 
       constexpr int dimensionality() const;
@@ -44,36 +44,36 @@ template <typename ...Ts>
 
   // Member Definition 
   template<typename ...Ts>
-  void BasisFunction<Ts...>::set_diff_tolerance(double eps)
+  void BFunction<Ts...>::set_diff_tolerance(double eps)
   {
     _eps = eps;
   }
 
   template<typename ...Ts>
-  BasisFunction<Ts...>::BasisFunction(_func basisFunction):
+  BFunction<Ts...>::BFunction(_func basisFunction):
     _basisFunction(basisFunction)
   {}
 
   template<typename ...Ts> 
-  BasisFunction<Ts...>::BasisFunction(const BasisFunction<Ts...>& other):
+  BFunction<Ts...>::BFunction(const BFunction<Ts...>& other):
   _basisFunction(other._basisFunction)
   {}
 
   template<typename ...Ts>
-  double BasisFunction<Ts...>::operator()(Ts... args) 
+  double BFunction<Ts...>::operator()(Ts... args) 
   { 
     return _basisFunction(args...);
   }
 
   template<typename ...Ts> 
-    constexpr int BasisFunction<Ts...>::dimensionality() const
+    constexpr int BFunction<Ts...>::dimensionality() const
     {
       return sizeof...(Ts);
     }
 
   template<typename ...Ts>
     std::function<double(Ts...)>  
-    BasisFunction<Ts...>::derWithRespectTo(int i)
+    BFunction<Ts...>::derWithRespectTo(int i)
     {
 
       throw FEM::NotGerericImplementation("The function derWithRespectTo is not implemented in generic type.");

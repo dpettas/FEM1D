@@ -11,14 +11,11 @@
 int main(){
 
 
-  FEM::BasisFunction<double> func ([](double x1) { return x1*x1;});
-  FEM::BasisFunction<double,double> f2 ([](double x1, double x2) { return x1*x2;});
+  FEM::BFunction1D f1 ([](double x1)                       { return x1*x1;});
+  FEM::BFunction2D f2 ([](double x1, double x2)            { return x1*x1;});
+  FEM::BFunction3D f3 ([](double x1, double x2, double x3) { return x1*x1;});
 
-  auto df2 = f2.derWithRespectTo(1);
 
-  std::cout << f2 (2.0, 3.0) << std::endl;
-  std::cout << df2(2.0, 3.0) << std::endl;
-  // std::cout << func.derWithRespectTo(0)(1) << std::endl;
 
 
 
