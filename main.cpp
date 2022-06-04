@@ -20,6 +20,9 @@ int main(){
   FEM::LinearLagrange1DBFunction l1d;
   FEM::LinearLagrange2DBFunction l2d;
 
+  auto phi = l2d.phi(0);
+
+  // std::cout << l2d.phi(3)(0.5,0.5) << std::endl;
 
 
 
