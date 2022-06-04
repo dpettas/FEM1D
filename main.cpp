@@ -5,22 +5,23 @@
 
 #include "Mesh3D.h"
 #include "BasisFunctions/BasisFunction1D.h"
+#include "BasisFunctions/BasisFunction2D.h"
 
 
 
 int main(){
 
 
-  FEM::BasisFunction1D func ([](double x1) { return x1*x1;});
-  
-  auto df = func.dx1();
+  FEM::BasisFunction<double> func ([](double x1) { return x1*x1;});
+  FEM::BasisFunction<double,double> f2 ([](double x1, double x2) { return x1*x2;});
+  FEM::BasisFunction<double,double> f2 ([](double x1, double x2) { return x1*x2;});
 
-  std::cout << func(3) << std::endl;
-  std::cout << df(3) << std::endl;
+  auto df2 = f2.derWithRespectTo(1);
 
-  FEM::Mesh3D mesh(5,5,5);
+  std::cout << f2 (2.0, 3.0) << std::endl;
+  std::cout << df2(2.0, 3.0) << std::endl;
+  // std::cout << func.derWithRespectTo(0)(1) << std::endl;
 
-  mesh.toAsciiTeplot("fromMain.plt");
 
 
 
