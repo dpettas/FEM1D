@@ -10,16 +10,18 @@
 #include "BasisFunctions/LinearLagrange2D.h"
 #include "BasisFunctions/LinearLagrange3D.h"
 
-
-
+#include "math/functions.h"
 
 
 int main(){
 
 
-  FEM::BFunction1D f1 ([](double x1)                       { return x1;});
-  FEM::BFunction2D f2 ([](double x1, double x2)            { return x1*x2;});
-  FEM::BFunction3D f3 ([](double x1, double x2, double x3) { return x1*x2*x3;});
+
+  auto xx =  FEM::linspace(0.0,1.0,100);
+
+  std::exit(0);
+
+
 
   FEM::LinearLagrange1DBFunction l1d;
   FEM::LinearLagrange2DBFunction l2d;
@@ -27,14 +29,18 @@ int main(){
 
   auto phi = l3d.phi(0);
 
-  double x =  1;  
-  double y =  1;  
-  double z =  1;  
+  double x = +1;  
+  double y = -1;  
+  double z = +1;  
 
   // point 0  (-1,-1,-1)
   // point 1  (+1,-1,-1)
-  // point 2  ()
+  // point 2  (-1,+1,-1)
   // point 3  (+1,+1,-1)
+  // point 4  (-1,-1,+1)
+  // point 5  (+1,-1,+1)
+  // point 6  (-1,+1,+1)
+  // point 7  (+1,+1,+1)
 
   std::cout.precision(5);
   std::cout << std::fixed;
