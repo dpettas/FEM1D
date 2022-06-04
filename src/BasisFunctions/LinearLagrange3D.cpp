@@ -77,7 +77,7 @@ namespace FEM
           LinearLagrange1DBFunction lbf;
           auto phi0  = lbf.phi(0);
           auto phi1  = lbf.phi(1);
-          return phi0(ksi) * phi1(eta) * phi1(zeta);
+          return phi1(ksi) * phi1(eta) * phi1(zeta);
         } );
 
 

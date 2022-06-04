@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <tuple>
 #include "Point1D.h"
 #include "Node.h"
 
@@ -26,7 +27,26 @@ int main(){
 
   auto phi = l3d.phi(0);
 
-  std::cout << l3d.phi(3)(0.00,0.5,0.5) << std::endl;
+  double x =  1;  
+  double y =  1;  
+  double z =  1;  
+
+  // point 0  (-1,-1,-1)
+  // point 1  (+1,-1,-1)
+  // point 2  ()
+  // point 3  (+1,+1,-1)
+
+  std::cout.precision(5);
+  std::cout << std::fixed;
+  
+  std::cout << "0" << "  " << l3d.phi(0)(x,y,z) << std::endl;
+  std::cout << "1" << "  " << l3d.phi(1)(x,y,z) << std::endl;
+  std::cout << "2" << "  " << l3d.phi(2)(x,y,z) << std::endl;
+  std::cout << "3" << "  " << l3d.phi(3)(x,y,z) << std::endl;
+  std::cout << "4" << "  " << l3d.phi(4)(x,y,z) << std::endl;
+  std::cout << "5" << "  " << l3d.phi(5)(x,y,z) << std::endl;
+  std::cout << "6" << "  " << l3d.phi(6)(x,y,z) << std::endl;
+  std::cout << "7" << "  " << l3d.phi(7)(x,y,z) << std::endl;
 
 
 
