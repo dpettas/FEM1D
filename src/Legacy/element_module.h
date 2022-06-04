@@ -1,3 +1,5 @@
+#ifndef _LEGACY_ELEMENT_MODULE_ 
+#define _LEGACY_ELEMENT_MODULE_ 
 
 namespace LEGACY 
 {
@@ -24,6 +26,6 @@ namespace LEGACY
   };
 
 
-
-
 }
+
+#endif
