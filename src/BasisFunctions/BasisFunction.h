@@ -24,6 +24,8 @@ using BFunction3D = BFunction<double,double,double>;
 template <typename ...Ts>
   class BFunction 
   {
+    static_assert( (std::is_same_v <double, Ts> && ...) , 
+        "All the arguments of the template should be doubles");
     public: 
       using _func = std::function<double(Ts...)>;
 

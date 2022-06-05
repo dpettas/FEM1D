@@ -9,15 +9,14 @@
 #include "BasisFunctions/LinearLagrange1D.h"
 #include "BasisFunctions/LinearLagrange2D.h"
 #include "BasisFunctions/LinearLagrange3D.h"
-
+#include <Integration/GPoint.h>
 #include "math/functions.h"
 
 
 int main(){
 
+  FEM::GPoint<double, double, double> p (5.0/8.0, 1, 2.0, 3.0);
 
-
-  auto xx =  FEM::linspace(0.0,1.0,100);
 
   std::exit(0);
 
