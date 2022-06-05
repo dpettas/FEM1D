@@ -13,9 +13,11 @@
 #include "math/functions.h"
 
 
+
+
 int main(){
 
-  FEM::GPoint<double, double, double> p (5.0/8.0, 1, 2.0, 3.0);
+  FEM::GPoint<> p (5.0/8.0);
 
 
   std::exit(0);
