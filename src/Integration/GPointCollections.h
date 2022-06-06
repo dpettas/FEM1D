@@ -14,9 +14,9 @@ namespace FEM::COLLECTIONS
                                           GPoint( 8.0/9.0,                 0.0  ),
                                           GPoint( 5.0/9.0,  +sqrt(3.0/5.0) )
                                        };
-// DO I = 1, NGAUSS_1d
-// DO J = 1, NGAUSS_1d
-  static GPointCollection GPoints9_1D = { 
+
+
+  static GPointCollection GPoints9_2D = { 
                                           GPoint( 25.0/81.0,  -sqrt(3.0/5.0), -sqrt(3.0/5.0) ),
                                           GPoint( 40.0/81.0,  -sqrt(3.0/5.0),           0.0  ),
                                           GPoint( 25.0/81.0,  -sqrt(3.0/5.0), +sqrt(3.0/5.0) ),
