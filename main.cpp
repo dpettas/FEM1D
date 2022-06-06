@@ -15,10 +15,13 @@
 
 int main(){
 
-  FEM::Point d  = {0.0, 0.0, 1.0};
+  FEM::Point p1  = {1.0, 1.0, 1.0};
+  FEM::Point p2  = {3.0, 4.0, 5.0};
 
+  // p1 -= p2;
 
-  std::cout << d << std::endl;
+  std::cout << p1 - p2 - p1 << std::endl;
+
   // d.get()
 
 

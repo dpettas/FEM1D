@@ -30,7 +30,17 @@ namespace FEM
       Point& operator = (const Point&  that);
       Point& operator = (      Point&& that);
 
-      bool   operator== (const Point& other);
+
+      Point  operator+ (const Point& that);
+      Point  operator- (const Point& that);
+
+      Point& operator+=(const Point& that);
+      Point& operator-=(const Point& that);
+      Point& operator*=(const double& val);
+      Point& operator/=(const double& val);
+
+      bool   operator== (const Point& other) const;
+
 
 
       int size()                     const;
@@ -42,6 +52,9 @@ namespace FEM
       double* _coords = nullptr;
   };
 
+//*******************************************************
+// Outside the class operators
+//*******************************************************
 
 template <typename... Ts> 
   std::ostream& operator << (std::ostream& out, const Point<Ts...>& obj)
@@ -56,6 +69,49 @@ template <typename... Ts>
     return out;
   }
 
+template <typename... Ts>
+  Point<Ts...> operator * (const Point<Ts...>& p, double val)
+  {
+    Point<Ts...> out = p;
+
+    for (int i = 0; i < p.size(); ++i)
+      p[i] *= val;
+    
+    return out;
+  }
+
+template <typename... Ts>
+  Point<Ts...> operator * (double val, const Point<Ts...>& p)
+  {
+    Point<Ts...> out = p;
+
+    for (int i = 0; i < p.size(); ++i)
+      p[i] *= val;
+    
+    return out;
+  }
+
+template <typename... Ts>
+  Point<Ts...> operator / (const Point<Ts...>& p, double val)
+  {
+    Point<Ts...> out = p;
+
+    for (int i = 0; i < p.size(); ++i)
+      p[i] *= val;
+    
+    return out;
+  }
+
+template <typename... Ts>
+  Point<Ts...> operator / (double val, const Point<Ts...>& p)
+  {
+    Point<Ts...> out = p;
+
+    for (int i = 0; i < p.size(); ++i)
+      p[i] *= val;
+    
+    return out;
+  }
 
 
 
@@ -121,6 +177,80 @@ template <typename... Ts>
     return *this;
   }
 
+template <typename... Ts> 
+  Point<Ts...> Point<Ts...>::operator + (const Point<Ts...>& that)
+  {
+    Point<Ts...> out = *this;
+
+    for (int i=0; i<size(); ++i)
+      out._coords[i] += that._coords[i];
+
+    return out;
+  }
+
+template <typename... Ts> 
+  Point<Ts...> Point<Ts...>::operator - (const Point<Ts...>& that)
+  {
+    Point<Ts...> out = *this;;
+
+    for (int i=0; i<size(); ++i)
+      out._coords[i] -= that._coords[i];
+
+    return out;
+  }
+
+
+template <typename... Ts> 
+  Point<Ts...>& Point<Ts...>::operator +=(const Point<Ts...>& that)
+  {
+
+    for (int i=0; i<size(); ++i)
+      _coords[i] += that._coords[i];
+
+    return *this;
+  }
+
+template <typename... Ts> 
+  Point<Ts...>& Point<Ts...>::operator -=(const Point<Ts...>& that)
+  {
+
+    for (int i=0; i<size(); ++i)
+      _coords[i] -= that._coords[i];
+
+    return *this;
+  }
+
+template <typename... Ts> 
+  Point<Ts...>& Point<Ts...>::operator *=(const double& val)
+  {
+
+    for (int i=0; i<size(); ++i)
+      _coords[i] *= val;
+
+    return *this;
+  }
+
+template <typename... Ts> 
+  Point<Ts...>& Point<Ts...>::operator /=(const double& val)
+  {
+
+    for (int i=0; i<size(); ++i)
+      _coords[i] /= val;
+
+    return *this;
+  }
+
+
+template <typename... Ts> 
+  bool Point<Ts...>::operator == (const Point<Ts...>& other) const
+  {
+    bool out = true;
+
+    for (int i=0; i<size(); ++i)
+      out = out && (_coords[i] == other._coords[i]);
+
+    return out;
+  }
 
 template <typename... Ts>
   const double* Point<Ts...>::get() const
