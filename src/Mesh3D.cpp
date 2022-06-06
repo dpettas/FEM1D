@@ -55,6 +55,11 @@ namespace FEM
   {
     return m_nodes[id];
   }
+  
+  const Brick& Mesh3D::getElement(int id) const
+  {
+    return m_elements[id];
+  }
 
  
   Mesh3D::PolynomialOrder Mesh3D::getOrder() const

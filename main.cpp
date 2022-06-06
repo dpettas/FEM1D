@@ -15,23 +15,12 @@
 
 
 int main(){
-  using FEM::COLLECTION::linearLagrange1D;
-  using FEM::COLLECTION::linearLagrange2D;
-  using FEM::COLLECTION::linearLagrange3D;
 
+  FEM::Mesh3D mesh(5,5,5);
 
+  FEM::Brick elm = mesh.getElement(2);
 
-  std::cout << "****** linear Lagrange 1D ********\n";
-  FEM::BFunctionCollection1D* l = &linearLagrange1D;
-  std::cout << l->size() << std::endl;
-  std::cout << l->phi(0)(-1.0) << "  "<< l->phi(0)(+1.0) << std::endl;
-  std::cout << l->phi(1)(-1.0) << "  "<< l->phi(1)(+1.0) << std::endl;
-
-
-
-
-  std::exit(0);
-
+  std::cout << elm.getNode(0) << std::endl;
 
 
 

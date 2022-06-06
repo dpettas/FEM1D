@@ -13,6 +13,7 @@ namespace FEM
       Brick() = default;
       Brick(const Brick& other) = default;
 
+
       int getNumberOfNodes() const;
 
       void addNode(const Node3D& node);

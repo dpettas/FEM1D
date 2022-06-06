@@ -36,7 +36,9 @@ namespace FEM
       int getNumberOfElementsInX() const;
       int getNumberOfElementsInY() const;
       int getNumberOfElementsInZ() const;
+
       PolynomialOrder getOrder()   const;
+
 
 
       std::vector<Node3D*> getNodesThatSatisfies( std::function<bool(const Node3D& n)> which);
@@ -46,6 +48,7 @@ namespace FEM
       const std::vector<Brick>&  getElements() const;
 
       const Node3D& getNode(int id) const;
+      const Brick&  getElement(int id) const;
 
       void toAsciiTeplot(const std::string& filename);
 
