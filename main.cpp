@@ -11,6 +11,7 @@
 #include "Integration/GPointCollections.h"
 #include "math/functions.h"
 #include "Point/Point.h"
+#include "Point/operators.h"
 
 
 int main(){
@@ -19,6 +20,10 @@ int main(){
   FEM::Point p2  = {3.0, 4.0, 5.0};
 
   // p1 -= p2;
+
+  p2 = p1 * 10;
+  p2 = 10 * p1;
+  p1*= 5.0;
 
   std::cout << p1 - p2 - p1 << std::endl;
 
