@@ -1,11 +1,19 @@
 #ifndef _FEM_GPOINT_INCLUDED_
 #define _FEM_GPOINT_INCLUDED_
 
-#include <iostream>
+#include <initializer_list>
 #include <type_traits>
+#include <exception>
+#include <string>
+
 
 namespace FEM 
 {
+
+
+
+
+
   template < typename... Tv>
   class GPoint;
   
@@ -25,28 +33,38 @@ namespace FEM
 
       GPoint() = delete;
       GPoint(double weight, Tv...);
+      ~GPoint();
 
-      constexpr double* get();
-      constexpr double  weight();
+      double  get(int i) const;
+      double* get()      const;
+      double  weight()   const;
       constexpr int     size() const;
 
     private: 
 
       double  _weight;
-      double coors[sizeof...(Tv)];
+      double* coors = nullptr;
   };
 
 
   
 
   template<typename ...Tv> 
-    GPoint<Tv...>::GPoint(double weight, Tv ... coords) 
+    GPoint<Tv...>::GPoint(double weight, Tv... coords) 
     {
       _weight = weight;
+      coors = new double [sizeof...(Tv)];
 
       int j = 0; 
       ( (coors[j++] = coords), ...);
     }
+
+  template<typename... Tv> 
+   GPoint<Tv...>::~GPoint() 
+   {
+    if(!coors) delete [] coors;
+   }
+  
 
   template<typename ...Tv> 
     constexpr int GPoint<Tv...>::size() const 
@@ -55,13 +73,19 @@ namespace FEM
     }
 
   template<typename... Tv> 
-    constexpr double* GPoint<Tv...>::get() 
+    double GPoint<Tv...>::get(int i)  const
+    {
+      return coors[i];
+    }
+  
+  template<typename... Tv> 
+    double* GPoint<Tv...>::get()  const
     {
       return coors;
     }
 
   template<typename... Tv> 
-    constexpr double GPoint<Tv...>::weight() 
+    double GPoint<Tv...>::weight() const
     {
       return _weight;
     }

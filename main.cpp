@@ -9,7 +9,8 @@
 #include "BasisFunctions/LinearLagrange1D.h"
 #include "BasisFunctions/LinearLagrange2D.h"
 #include "BasisFunctions/LinearLagrange3D.h"
-#include <Integration/GPoint.h>
+#include "Integration/GPoint.h"
+#include "Integration/GPointCollection.h"
 #include "math/functions.h"
 
 
@@ -17,7 +18,14 @@
 
 int main(){
 
-  FEM::GPoint<> p (5.0/8.0);
+  FEM::GPoint p (5.0/8.0,1.0,2.0);
+  std::cout << "==========================\n";
+  FEM::GPointCollection gp = { FEM::GPoint(1.0, 2.0, 3.0), 
+                               FEM::GPoint(1.0, 2.0, 3.0)
+  };
+  std::cout << gp.size() << std::endl;
+  std::cout << gp.get(0).get(1);
+  std::cout << "==========================\n";
 
 
   std::exit(0);
