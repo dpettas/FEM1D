@@ -37,11 +37,11 @@ template <typename ...Ts>
       BFunction(const BFunction& other);
 
       void set(_func);
-      BFunction& operator = (const BFunction& that);
-      double operator () (Ts...);
+      const BFunction& operator = (const BFunction& that);
+      const double operator () (Ts...) const;
 
       constexpr int dimensionality() const;
-      _func derWithRespectTo(int i);
+       _func derWithRespectTo(int i);
 
     private: 
 
@@ -69,7 +69,7 @@ template <typename ...Ts>
   {}
 
   template<typename ...Ts>
-  double BFunction<Ts...>::operator()(Ts... args) 
+  const double BFunction<Ts...>::operator()(Ts... args) const
   { 
     return _basisFunction(args...);
   }

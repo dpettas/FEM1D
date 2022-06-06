@@ -8,6 +8,12 @@
 
 namespace FEM 
 {
+  template<typename... Ts> 
+    class BFunctionCollection;
+
+  using BFunctionCollection1D = BFunctionCollection<double>;
+  using BFunctionCollection2D = BFunctionCollection<double,double>;
+  using BFunctionCollection3D = BFunctionCollection<double,double, double>;
 
 template <typename... Ts>
 class BFunctionCollection  : private std::vector<BFunction<Ts...>>
@@ -22,7 +28,7 @@ class BFunctionCollection  : private std::vector<BFunction<Ts...>>
     BFunctionCollection& operator= (      BFunctionCollection&& ) = delete;
 
     int size() const; 
-    const BFunction<Ts...>& phi(int i) const;
+    BFunction<Ts...>& phi(int i);
 
   private:
 
@@ -44,11 +50,11 @@ BFunctionCollection<Ts...>::BFunctionCollection(std::initializer_list<BFunction<
 template<typename... Ts> 
 int BFunctionCollection<Ts...>::size() const
 {
- return std::vector<Ts...>::size(); 
+ return std::vector<BFunction<Ts...>>::size(); 
 }
 
 template<typename... Ts> 
-const BFunction<Ts...>&  BFunctionCollection<Ts...>::phi(int i) const 
+BFunction<Ts...>&  BFunctionCollection<Ts...>::phi(int i)
 {
   return this->at(i); 
 }

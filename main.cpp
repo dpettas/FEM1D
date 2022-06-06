@@ -14,11 +14,18 @@
 
 
 
-
 int main(){
+  using FEM::COLLECTION::linearLagrange1D;
+  using FEM::COLLECTION::linearLagrange2D;
+  using FEM::COLLECTION::linearLagrange3D;
 
-  FEM::COLLECTION::LinearLagrange1D.phi(0);
 
+
+  std::cout << "****** linear Lagrange 1D ********\n";
+  FEM::BFunctionCollection1D* l = &linearLagrange1D;
+  std::cout << l->size() << std::endl;
+  std::cout << l->phi(0)(-1.0) << "  "<< l->phi(0)(+1.0) << std::endl;
+  std::cout << l->phi(1)(-1.0) << "  "<< l->phi(1)(+1.0) << std::endl;
 
 
 
