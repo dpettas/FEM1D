@@ -7,10 +7,27 @@
 
 namespace FEM::COLLECTIONS
 {
+  using std::sqrt;
+
   static GPointCollection GPoints3_1D = { 
-                                          GPoint( 5.0/9.0,  -std::sqrt(3.0/5.0) ),
+                                          GPoint( 5.0/9.0,  -sqrt(3.0/5.0) ),
                                           GPoint( 8.0/9.0,                 0.0  ),
-                                          GPoint( 5.0/9.0,  +std::sqrt(3.0/5.0) )
+                                          GPoint( 5.0/9.0,  +sqrt(3.0/5.0) )
+                                       };
+// DO I = 1, NGAUSS_1d
+// DO J = 1, NGAUSS_1d
+  static GPointCollection GPoints9_1D = { 
+                                          GPoint( 25.0/81.0,  -sqrt(3.0/5.0), -sqrt(3.0/5.0) ),
+                                          GPoint( 40.0/81.0,  -sqrt(3.0/5.0),           0.0  ),
+                                          GPoint( 25.0/81.0,  -sqrt(3.0/5.0), +sqrt(3.0/5.0) ),
+
+                                          GPoint( 40.0/81.0,            0.0 , -sqrt(3.0/5.0) ),
+                                          GPoint( 64.0/81.0,            0.0 ,           0.0  ),
+                                          GPoint( 40.0/81.0,            0.0 , +sqrt(3.0/5.0) ),
+
+                                          GPoint( 25.0/81.0,  +sqrt(3.0/5.0), -sqrt(3.0/5.0) ),
+                                          GPoint( 40.0/81.0,  +sqrt(3.0/5.0),           0.0  ),
+                                          GPoint( 25.0/81.0,  +sqrt(3.0/5.0), +sqrt(3.0/5.0) ),
                                        };
 
 }
