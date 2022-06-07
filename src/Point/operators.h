@@ -7,9 +7,19 @@ namespace FEM
 {
 
 
-//*******************************************************
-// Outside the class operators
-//*******************************************************
+
+// Point<Ts...> makePoint(Ts... coords)
+// the Ts should be double
+template <typename...Ts> 
+  Point<Ts...> makePoint(Ts... coords )
+  {
+    Point<Ts...> out;
+    int i = 0;
+    ( (out.component(i++) = coords), ...);
+
+    return out;
+  }
+
 
 template <typename... Ts> 
   std::ostream& operator << (std::ostream& out, const Point<Ts...>& obj)
@@ -30,7 +40,7 @@ template <typename... Ts>
     Point<Ts...> out = p;
 
     for (int i = 0; i < p.size(); ++i)
-      p[i] *= val;
+      out *= val;
     
     return out;
   }
@@ -41,7 +51,7 @@ template <typename... Ts>
     Point<Ts...> out = p;
 
     for (int i = 0; i < p.size(); ++i)
-      p[i] *= val;
+      out *= val;
     
     return out;
   }
@@ -52,7 +62,7 @@ template <typename... Ts>
     Point<Ts...> out = p;
 
     for (int i = 0; i < p.size(); ++i)
-      p[i] /= val;
+      out /= val;
     
     return out;
   }
@@ -63,7 +73,7 @@ template <typename... Ts>
     Point<Ts...> out = p;
 
     for (int i = 0; i < p.size(); ++i)
-      p[i] /= val;
+      out /= val;
     
     return out;
   }

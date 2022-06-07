@@ -21,7 +21,7 @@ namespace FEM
   {
     public:
 
-      Point(Ts... coords);
+      Point();
       ~Point();
 
       Point(const Point<Ts...>&   other);
@@ -53,16 +53,15 @@ namespace FEM
   };
 
 
-
-
 template <typename... Ts>
-  Point<Ts...>::Point(Ts... coords)
+  Point<Ts...>::Point()
   {
     _coords = new double [sizeof...(Ts)];
 
-    int i = 0;
-    ( (_coords[i++]= coords)  , ...);
+    for(int i =0 ; i < size(); ++i)
+      _coords[i] = 0.0;
   }
+
 
 
 template <typename... Ts>
@@ -108,6 +107,7 @@ template <typename... Ts>
     if (this == &that)
       return *this;
 
+    std::cout << "Hi\n";
     if (!_coords) 
       delete [] _coords;
 

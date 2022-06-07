@@ -12,31 +12,20 @@
 #include "math/functions.h"
 #include "Point/Point.h"
 #include "Point/operators.h"
+#include "Node/Node.h"
 
 
 int main(){
 
-  FEM::Point p1  = {1.0, 1.0, 1.0};
-  FEM::Point p2  = {3.0, 4.0, 5.0};
+  auto p1  = FEM::makePoint(1.0, 2.0, 3.0);
+  // FEM::Point p2  = {3.0, 4.0, 5.0};
 
-  // p1 -= p2;
+  FEM::Node<double,double,double> n1;
 
-  p2 = p1 * 10;
-  p2 = 10 * p1;
-  p1*= 5.0;
+// Check the Point class template
+// Check the Node class template
 
-  std::cout << p1 - p2 - p1 << std::endl;
-
-  // d.get()
-
-
-  // FEM::Mesh3D mesh(5,5,5);
-  //
-  // FEM::Brick elm = mesh.getElement(2);
-  //
-  // std::cout << elm.getNode(0) << std::endl;
-
-
+  std::cout << n1 << std::endl;
 
 
 
