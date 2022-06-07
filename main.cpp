@@ -13,6 +13,7 @@
 #include "Point/Point.h"
 #include "Point/operators.h"
 #include "Node/Node.h"
+#include "Node/functions.h"
 
 
 int main(){
@@ -20,13 +21,14 @@ int main(){
   auto p1  = FEM::makePoint(1.0, 2.0, 3.0);
   // FEM::Point p2  = {3.0, 4.0, 5.0};
 
-  FEM::Node<double,double,double> n1;
+  FEM::Node n1 (10, p1);
 
 // Check the Point class template
 // Check the Node class template
 
-  std::cout << n1 << std::endl;
 
+
+  std::cout << n1 << std::endl;
 
 
   std::cout << "End\n";
