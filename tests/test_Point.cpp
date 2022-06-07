@@ -33,11 +33,19 @@ int main (int argc, char *argv[])
   // subtraction 
   assert( a2 - a1 == res_m);
 
+
+  // multiplucation
   FEM::Point m1   = FEM::makePoint(1.5,2.0,0.25);
   FEM::Point res3 = FEM::makePoint(3.0,4.0,0.50);
 
-  assert( 2.0 * m1 == res3);
+  assert( 2.0 * m1 == res3    );
   assert( 2.0 * m1 == m1 * 2.0);
+
+  // division
+  FEM::Point d1   = FEM::makePoint(2.0,3.0,0.25);
+  FEM::Point res4 = FEM::makePoint(1.0,1.5,0.125);
+
+  assert( d1/2.0 == res4 );
 
   
   return 0;

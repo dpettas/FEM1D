@@ -194,7 +194,7 @@ template <typename... Ts>
       return false;
 
     for (int i=0; i<size(); ++i)
-      out = out && (_coords[i] == other._coords[i]);
+      out = out && ( std::abs(_coords[i] - other._coords[i]) <= 1e-8 );
 
     return out;
   }
