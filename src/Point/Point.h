@@ -40,7 +40,7 @@ namespace FEM
       Point& operator/=(const double& val);
 
       bool   operator== (const Point& other) const;
-
+      bool   operator!= (const Point& other) const;
 
 
       int size()                     const;
@@ -83,6 +83,7 @@ template <typename... Ts>
 
     _coords = other._coords;
     delete [] other._coords;
+    other._coords = nullptr;
   }
 
 template <typename... Ts> 
@@ -106,13 +107,13 @@ template <typename... Ts>
   {
     if (this == &that)
       return *this;
-
-    std::cout << "Hi\n";
+    
     if (!_coords) 
       delete [] _coords;
 
     _coords = that._coords;
     delete [] that._coords;
+    that._coords = nullptr;
 
     return *this;
   }
@@ -186,11 +187,25 @@ template <typename... Ts>
   {
     bool out = true;
 
+    if (!other._coords && !_coords)
+      return true;
+
+    if (!other._coords &&  _coords)
+      return false;
+
     for (int i=0; i<size(); ++i)
       out = out && (_coords[i] == other._coords[i]);
 
     return out;
   }
+
+
+template <typename... Ts> 
+  bool Point<Ts...>::operator != (const Point<Ts...>& other) const
+  {
+    return !operator==(other);
+  }
+
 
 template <typename... Ts>
   const double* Point<Ts...>::get() const

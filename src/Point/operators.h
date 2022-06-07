@@ -40,7 +40,7 @@ template <typename... Ts>
     Point<Ts...> out = p;
 
     for (int i = 0; i < p.size(); ++i)
-      out *= val;
+      out.component(i) *= val;
     
     return out;
   }
@@ -51,7 +51,7 @@ template <typename... Ts>
     Point<Ts...> out = p;
 
     for (int i = 0; i < p.size(); ++i)
-      out *= val;
+      out.component(i) *= val;
     
     return out;
   }
@@ -62,7 +62,7 @@ template <typename... Ts>
     Point<Ts...> out = p;
 
     for (int i = 0; i < p.size(); ++i)
-      out /= val;
+      out.component(i) /= val;
     
     return out;
   }
@@ -73,7 +73,7 @@ template <typename... Ts>
     Point<Ts...> out = p;
 
     for (int i = 0; i < p.size(); ++i)
-      out /= val;
+      out.component(i) /= val;
     
     return out;
   }

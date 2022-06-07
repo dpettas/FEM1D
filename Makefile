@@ -29,7 +29,7 @@ obj/%.o: src/%.cpp
 test_Point: $(OBJ)
 	$(CC) $(CFLAGS) -o ./test_Point $(OBJ) ./tests/test_Point.cpp $(INC) $(LIB)
 	./test_Point
-	# @rm test_Point3D
+	@rm test_Point
 
 test_Array: $(OBJ)
 	$(CC) $(CFLAGS) -o ./test_Array $(OBJ) ./tests/test_Array.cpp $(INC) $(LIB)
