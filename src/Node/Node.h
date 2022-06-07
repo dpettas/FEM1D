@@ -7,7 +7,14 @@
 
 namespace FEM 
 {
-  
+  template<typename... Ts> 
+    class Node; 
+
+  using Node1D = Node<double>;
+  using Node2D = Node<double, double>;
+  using Node3D = Node<double, double, double>;
+
+ 
   template<typename... Ts>
   class Node : public Point<Ts...>
   {
