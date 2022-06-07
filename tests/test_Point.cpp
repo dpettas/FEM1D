@@ -47,6 +47,24 @@ int main (int argc, char *argv[])
 
   assert( d1/2.0 == res4 );
 
+  // check += , -=, *=, /=
+
+  FEM::Point c1 = FEM::makePoint(1.0, -1.0, 0.5);
+
+  c1 += FEM::makePoint(1.0, 1.0, -1.5);
+  assert( c1 == FEM::makePoint(2.0, 0.0, -1.0) );
+  
+  c1 -= FEM::makePoint(1.0, 1.0, -1.5);
+  assert( c1 == FEM::makePoint(1.0, -1.0, 0.5) );
+
+  c1 *= 3.0;
+  assert( c1 == FEM::makePoint(3.0, -3.0, 1.5) );
+
+  c1 /=-2.0;
+  assert( c1 == FEM::makePoint(-1.5, +1.5,-0.75) );
+
+
+  std::cout << "[done]\n";
   
   return 0;
 }
