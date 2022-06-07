@@ -26,10 +26,10 @@ obj/%.o: src/%.cpp
 	@mkdir -p $(shell dirname $@)
 	$(CC) $(CFLAGS) -c $< -o $@ $(INC) $(LIB)
 
-test_Point3D: $(OBJ)
-	$(CC) $(CFLAGS) -o ./test_Point3D $(OBJ) ./tests/test_Point3D.cpp $(INC) $(LIB)
-	./test_Point3D
-	@rm test_Point3D
+test_Point: $(OBJ)
+	$(CC) $(CFLAGS) -o ./test_Point $(OBJ) ./tests/test_Point.cpp $(INC) $(LIB)
+	./test_Point
+	# @rm test_Point3D
 
 test_Array: $(OBJ)
 	$(CC) $(CFLAGS) -o ./test_Array $(OBJ) ./tests/test_Array.cpp $(INC) $(LIB)
