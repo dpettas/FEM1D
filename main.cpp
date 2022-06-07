@@ -22,13 +22,14 @@ int main(){
   // FEM::Point p2  = {3.0, 4.0, 5.0};
 
   FEM::Node n1 (10, p1);
+  FEM::Node n2 ( 9, p1);
 
 // Check the Point class template
 // Check the Node class template
 
 
-
-  std::cout << n1 << std::endl;
+  std::cout << std::boolalpha;
+  std::cout << (n1 == n2) << std::endl;
 
 
   std::cout << "End\n";

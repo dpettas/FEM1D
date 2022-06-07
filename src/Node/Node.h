@@ -17,11 +17,15 @@ namespace FEM
       Node( const Node&  other);
       Node(       Node&& other);
 
+      void setLabel(int label);
+
+
+      int  getLabel() const;
+
       Node& operator = (const Node&  that); 
       Node& operator = (      Node&& that);
+      bool  operator ==(const Node&  other) const;
 
-      void setLabel(int label);
-      int getLabel() const;
     private:
 
       int _label = -1;
@@ -70,6 +74,12 @@ template <typename... Ts>
    }
 
 
+  template<typename... Ts> 
+    bool Node<Ts...>::operator==(const Node& other) const
+    {
+      return (_label == other._label) && Point<Ts...>::operator==(other);
+
+    }
 
 }
 
