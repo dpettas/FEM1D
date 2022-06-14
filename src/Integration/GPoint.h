@@ -1,6 +1,8 @@
 #ifndef _FEM_GPOINT_INCLUDED_
 #define _FEM_GPOINT_INCLUDED_
 
+#include "Point/Point.h"
+#include "Point/operators.h"
 #include <initializer_list>
 #include <type_traits>
 #include <exception>
@@ -9,10 +11,6 @@
 
 namespace FEM 
 {
-
-
-
-
 
   template < typename... Tv>
   class GPoint;
@@ -23,7 +21,7 @@ namespace FEM
 
 
   template < typename... Tv>
-  class GPoint 
+  class GPoint : public Point<Tv...>
   {
     static_assert( (std::is_same_v <double, Tv> && ...) ,
         "All the arguments of the template should be doubles");
@@ -32,66 +30,93 @@ namespace FEM
     public: 
 
       GPoint() = delete;
-      GPoint(double weight, Tv...);
-      ~GPoint();
+      GPoint(double weight, Tv... coords);
+      GPoint(double weight, const Point<Tv...>& point);
+      GPoint(const GPoint&  other);
+      // GPoint(      GPoint&& other);
 
-      double  get(int i) const;
-      double* get()      const;
+      GPoint& operator =  (const GPoint&  that);
+      // GPoint& operator =  (      GPoint&& that);
+
+      bool    operator == (const GPoint& other);
+      bool    operator != (const GPoint& other);
+
       double  weight()   const;
-      constexpr int     size() const;
+    
 
     private: 
 
       double  _weight;
-      double* coors = nullptr;
   };
 
-
-  
-
   template<typename ...Tv> 
-    GPoint<Tv...>::GPoint(double weight, Tv... coords) 
+    GPoint<Tv...>::GPoint(double weight, Tv... coords): 
+    _weight(weight)
     {
-      _weight = weight;
-      coors = new double [sizeof...(Tv)];
-
-      int j = 0; 
-      ( (coors[j++] = coords), ...);
+      int i = 0;
+      ( (this->component(i++) = coords), ...  );
     }
 
-  template<typename... Tv> 
-   GPoint<Tv...>::~GPoint() 
-   {
-    if(!coors) delete [] coors;
-   }
-  
+  // template<typename ...Tv> 
+  //   GPoint<Tv...>::GPoint(double weight, const Point<Tv...>& point): 
+  //   Point <Tv...>::Point(point),
+  //   _weight(weight)
+  //   {}
 
-  template<typename ...Tv> 
-    constexpr int GPoint<Tv...>::size() const 
-    {
-      return sizeof...(Tv);
-    }
-
-  template<typename... Tv> 
-    double GPoint<Tv...>::get(int i)  const
-    {
-      return coors[i];
-    }
-  
-  template<typename... Tv> 
-    double* GPoint<Tv...>::get()  const
-    {
-      return coors;
-    }
-
+   
   template<typename... Tv> 
     double GPoint<Tv...>::weight() const
     {
       return _weight;
     }
 
+  template<typename... Tv> 
+    GPoint<Tv...>::GPoint(const GPoint& other) : 
+      // Point<Tv...>::Point(other), 
+      _weight(weight)
+    {}
+  
+  // template<typename... Tv> 
+  //   GPoint<Tv...>::GPoint( GPoint&& other) : 
+  //     Point<Tv...>::Point(other), 
+  //     _weight(weight)
+  //   {}
 
+ template<typename... Tv> 
+    GPoint<Tv...>& GPoint<Tv...>::operator = ( const GPoint& that)
+    {
+      if (this == &that)
+        return *this;
 
+      GPoint<Tv...>::operator=(that);
+      _weight = that._weight;
+
+      return *this;
+    }
+ 
+ // template<typename... Tv> 
+ //    GPoint<Tv...>& GPoint<Tv...>::operator = ( GPoint&& that)
+ //    {
+ //      if (this == &that)
+ //        return *this;
+ //
+ //      GPoint<Tv...>::operator=(that);
+ //      _weight = that._weight;
+ //
+ //      return *this;
+ //    }
+
+  template<typename... Tv> 
+    bool GPoint<Tv...>::operator == (const GPoint& other)
+    {
+      return _weight == other._weight && Point<Tv...>::operator==(other);
+    }
+  
+  template<typename... Tv> 
+    bool GPoint<Tv...>::operator != (const GPoint& other)
+    {
+      return !(GPoint<Tv...>::operator==(other));
+    }
 
 }
 #endif

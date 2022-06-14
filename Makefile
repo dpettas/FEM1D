@@ -30,6 +30,11 @@ test_Point: $(OBJ)
 	$(CC) $(CFLAGS) -o ./test_Point $(OBJ) ./tests/test_Point.cpp $(INC) $(LIB)
 	./test_Point
 	@rm test_Point
+	
+test_GPoint: $(OBJ)
+	$(CC) $(CFLAGS) -o ./test_GPoint $(OBJ) ./tests/test_GPoint.cpp $(INC) $(LIB)
+	./test_GPoint
+	@rm test_GPoint
 
 test_Array: $(OBJ)
 	$(CC) $(CFLAGS) -o ./test_Array $(OBJ) ./tests/test_Array.cpp $(INC) $(LIB)
