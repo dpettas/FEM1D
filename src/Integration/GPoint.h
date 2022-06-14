@@ -67,13 +67,13 @@ namespace FEM
   template<typename... Tv> 
     GPoint<Tv...>::GPoint(const GPoint& other) : 
       Point<Tv...>::Point(other),
-      _weight(weight)
+      _weight(other._weight)
     {}
   
   template<typename... Tv>
     GPoint<Tv...>::GPoint( GPoint&& other) :
       Point<Tv...>::Point(std::move(other)),
-      _weight(weight)
+      _weight(other._weight)
     {}
 
  template<typename... Tv> 
