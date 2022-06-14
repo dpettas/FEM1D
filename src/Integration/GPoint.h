@@ -27,19 +27,20 @@ namespace FEM
         "All the arguments of the template should be doubles");
 
 
+
     public: 
 
       GPoint() = delete;
       GPoint(double weight, Tv... coords);
       GPoint(double weight, const Point<Tv...>& point);
       GPoint(const GPoint&  other);
-      // GPoint(      GPoint&& other);
+      GPoint(      GPoint&& other);
 
       GPoint& operator =  (const GPoint&  that);
-      // GPoint& operator =  (      GPoint&& that);
+      GPoint& operator =  (      GPoint&& that);
 
-      bool    operator == (const GPoint& other);
-      bool    operator != (const GPoint& other);
+      bool    operator == (const GPoint& other) const;
+      bool    operator != (const GPoint& other) const;
 
       double  weight()   const;
     
@@ -56,9 +57,7 @@ namespace FEM
       int i = 0;
       ( (this->component(i++) = coords), ...  );
     }
-
-
-   
+ 
   template<typename... Tv> 
     double GPoint<Tv...>::weight() const
     {
@@ -71,11 +70,11 @@ namespace FEM
       _weight(weight)
     {}
   
-  // template<typename... Tv> 
-  //   GPoint<Tv...>::GPoint( GPoint&& other) : 
-  //     Point<Tv...>::Point(other), 
-  //     _weight(weight)
-  //   {}
+  template<typename... Tv>
+    GPoint<Tv...>::GPoint( GPoint&& other) :
+      Point<Tv...>::Point(std::move(other)),
+      _weight(weight)
+    {}
 
  template<typename... Tv> 
     GPoint<Tv...>& GPoint<Tv...>::operator = ( const GPoint& that)
@@ -83,32 +82,32 @@ namespace FEM
       if (this == &that)
         return *this;
 
-      GPoint<Tv...>::operator=(that);
+      Point<Tv...>::operator=(that);
       _weight = that._weight;
 
       return *this;
     }
  
- // template<typename... Tv> 
- //    GPoint<Tv...>& GPoint<Tv...>::operator = ( GPoint&& that)
- //    {
- //      if (this == &that)
- //        return *this;
- //
- //      GPoint<Tv...>::operator=(that);
- //      _weight = that._weight;
- //
- //      return *this;
- //    }
+ template<typename... Tv>
+    GPoint<Tv...>& GPoint<Tv...>::operator = ( GPoint&& that)
+    {
+      if (this == &that)
+        return *this;
+
+      Point<Tv...>::operator=(std::move(that));
+      _weight = that._weight;
+
+      return *this;
+    }
 
   template<typename... Tv> 
-    bool GPoint<Tv...>::operator == (const GPoint& other)
+    bool GPoint<Tv...>::operator == (const GPoint& other) const
     {
       return _weight == other._weight && Point<Tv...>::operator==(other);
     }
   
   template<typename... Tv> 
-    bool GPoint<Tv...>::operator != (const GPoint& other)
+    bool GPoint<Tv...>::operator != (const GPoint& other) const
     {
       return !(GPoint<Tv...>::operator==(other));
     }

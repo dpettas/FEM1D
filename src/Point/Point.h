@@ -112,7 +112,7 @@ template <typename... Ts>
       delete [] _coords;
 
     _coords = that._coords;
-    delete [] that._coords;
+
     that._coords = nullptr;
 
     return *this;
