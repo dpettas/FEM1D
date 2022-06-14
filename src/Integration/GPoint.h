@@ -57,11 +57,6 @@ namespace FEM
       ( (this->component(i++) = coords), ...  );
     }
 
-  // template<typename ...Tv> 
-  //   GPoint<Tv...>::GPoint(double weight, const Point<Tv...>& point): 
-  //   Point <Tv...>::Point(point),
-  //   _weight(weight)
-  //   {}
 
    
   template<typename... Tv> 
@@ -72,7 +67,7 @@ namespace FEM
 
   template<typename... Tv> 
     GPoint<Tv...>::GPoint(const GPoint& other) : 
-      // Point<Tv...>::Point(other), 
+      Point<Tv...>::Point(other),
       _weight(weight)
     {}
   
