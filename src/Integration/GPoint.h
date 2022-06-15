@@ -26,8 +26,6 @@ namespace FEM
     static_assert( (std::is_same_v <double, Tv> && ...) ,
         "All the arguments of the template should be doubles");
 
-
-
     public: 
 
       GPoint() = delete;
