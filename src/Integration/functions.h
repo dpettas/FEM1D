@@ -3,6 +3,10 @@
 #include "Integration/GPoint.h"
 #include <iostream>
 
+
+namespace FEM 
+{
+
 FEM::GPoint2D makeGPoint( FEM::GPoint1D gs1, FEM::GPoint1D gs2 );
 FEM::GPoint3D makeGPoint( FEM::GPoint1D gs1, FEM::GPoint1D gs2, FEM::GPoint1D gs3 );
 FEM::GPoint3D makeGPoint( FEM::GPoint2D gs1, FEM::GPoint1D gs2);
@@ -18,5 +22,8 @@ std::ostream& operator << (std::ostream& out, const FEM::GPoint<Ts...>& obj)
   std::cout << "point : " << p << ", weight  : " << obj.weight();
   return out;
 }
+
+}
+
 
 #endif

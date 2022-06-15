@@ -5,6 +5,7 @@
 #include "Point/Point.h"
 #include "Integration/GPoint.h"
 #include "Integration/GPointCollection.h"
+#include "Integration/functions.h"
 
 namespace FEM::COLLECTIONS
 {
@@ -18,18 +19,61 @@ namespace FEM::COLLECTIONS
 
 
   static GPointCollection GPoints9_2D = {
-                                          GPoint( 25.0/81.0,  -sqrt(3.0/5.0), -sqrt(3.0/5.0) ),
-                                          GPoint( 40.0/81.0,  -sqrt(3.0/5.0),           0.0  ),
-                                          GPoint( 25.0/81.0,  -sqrt(3.0/5.0), +sqrt(3.0/5.0) ),
+                                          makeGPoint( GPoints3_1D[0], GPoints3_1D[0]),
+                                          makeGPoint( GPoints3_1D[0], GPoints3_1D[1]),
+                                          makeGPoint( GPoints3_1D[0], GPoints3_1D[2]),
 
-                                          GPoint( 40.0/81.0,            0.0 , -sqrt(3.0/5.0) ),
-                                          GPoint( 64.0/81.0,            0.0 ,           0.0  ),
-                                          GPoint( 40.0/81.0,            0.0 , +sqrt(3.0/5.0) ),
+                                          makeGPoint( GPoints3_1D[1], GPoints3_1D[0]),
+                                          makeGPoint( GPoints3_1D[1], GPoints3_1D[1]),
+                                          makeGPoint( GPoints3_1D[1], GPoints3_1D[2]),
 
-                                          GPoint( 25.0/81.0,  +sqrt(3.0/5.0), -sqrt(3.0/5.0) ),
-                                          GPoint( 40.0/81.0,  +sqrt(3.0/5.0),           0.0  ),
-                                          GPoint( 25.0/81.0,  +sqrt(3.0/5.0), +sqrt(3.0/5.0) ),
+                                          makeGPoint( GPoints3_1D[2], GPoints3_1D[0]),
+                                          makeGPoint( GPoints3_1D[2], GPoints3_1D[1]),
+                                          makeGPoint( GPoints3_1D[2], GPoints3_1D[2]),
                                        };
+
+  static GPointCollection GPoints27_3D= {
+                                          makeGPoint( GPoints3_1D[0], GPoints3_1D[0], GPoints3_1D[0]),
+                                          makeGPoint( GPoints3_1D[0], GPoints3_1D[0], GPoints3_1D[1]),
+                                          makeGPoint( GPoints3_1D[0], GPoints3_1D[0], GPoints3_1D[2]),
+
+                                          makeGPoint( GPoints3_1D[0], GPoints3_1D[1], GPoints3_1D[0]),
+                                          makeGPoint( GPoints3_1D[0], GPoints3_1D[1], GPoints3_1D[1]),
+                                          makeGPoint( GPoints3_1D[0], GPoints3_1D[1], GPoints3_1D[2]),
+
+                                          makeGPoint( GPoints3_1D[0], GPoints3_1D[2], GPoints3_1D[0]),
+                                          makeGPoint( GPoints3_1D[0], GPoints3_1D[2], GPoints3_1D[1]),
+                                          makeGPoint( GPoints3_1D[0], GPoints3_1D[2], GPoints3_1D[2]),
+
+                                          
+                                          makeGPoint( GPoints3_1D[1], GPoints3_1D[0], GPoints3_1D[0]),
+                                          makeGPoint( GPoints3_1D[1], GPoints3_1D[0], GPoints3_1D[1]),
+                                          makeGPoint( GPoints3_1D[1], GPoints3_1D[0], GPoints3_1D[2]),
+
+                                          makeGPoint( GPoints3_1D[1], GPoints3_1D[1], GPoints3_1D[0]),
+                                          makeGPoint( GPoints3_1D[1], GPoints3_1D[1], GPoints3_1D[1]),
+                                          makeGPoint( GPoints3_1D[1], GPoints3_1D[1], GPoints3_1D[2]),
+
+                                          makeGPoint( GPoints3_1D[1], GPoints3_1D[2], GPoints3_1D[0]),
+                                          makeGPoint( GPoints3_1D[1], GPoints3_1D[2], GPoints3_1D[1]),
+                                          makeGPoint( GPoints3_1D[1], GPoints3_1D[2], GPoints3_1D[2]),
+
+
+                                          makeGPoint( GPoints3_1D[2], GPoints3_1D[0], GPoints3_1D[0]),
+                                          makeGPoint( GPoints3_1D[2], GPoints3_1D[0], GPoints3_1D[1]),
+                                          makeGPoint( GPoints3_1D[2], GPoints3_1D[0], GPoints3_1D[2]),
+
+                                          makeGPoint( GPoints3_1D[2], GPoints3_1D[1], GPoints3_1D[0]),
+                                          makeGPoint( GPoints3_1D[2], GPoints3_1D[1], GPoints3_1D[1]),
+                                          makeGPoint( GPoints3_1D[2], GPoints3_1D[1], GPoints3_1D[2]),
+
+                                          makeGPoint( GPoints3_1D[2], GPoints3_1D[2], GPoints3_1D[0]),
+                                          makeGPoint( GPoints3_1D[2], GPoints3_1D[2], GPoints3_1D[1]),
+                                          makeGPoint( GPoints3_1D[2], GPoints3_1D[2], GPoints3_1D[2]),
+                                       };
+
+
+
 
 }
 

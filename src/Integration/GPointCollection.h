@@ -18,6 +18,8 @@ namespace FEM
       GPointCollection(std::initializer_list<GPoint<Ts...>> l );
       const GPoint<Ts...>& get(int i) const;
       int size() const;
+      
+      const GPoint<Ts...>& operator [] (int i) const;
 
   };
 
@@ -36,6 +38,11 @@ namespace FEM
       return this->at(i);
     }
 
+  template<typename... Ts>
+    const GPoint<Ts...>& GPointCollection<Ts...>::operator[](int i) const
+    {
+      return this->at(i);
+    }
 
   template<typename... Ts>
     int GPointCollection<Ts...>::size() const
