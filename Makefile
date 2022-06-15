@@ -36,6 +36,11 @@ test_GPoint: $(OBJ)
 	./test_GPoint
 	@rm test_GPoint
 
+test_GPointCollection: $(OBJ)
+	$(CC) $(CFLAGS) -o ./test_GPointCollection $(OBJ) ./tests/test_GPointCollection.cpp $(INC) $(LIB)
+	./test_GPointCollection
+	@rm test_GPointCollection
+
 test_Array: $(OBJ)
 	$(CC) $(CFLAGS) -o ./test_Array $(OBJ) ./tests/test_Array.cpp $(INC) $(LIB)
 	./test_Array
