@@ -5,6 +5,8 @@
 
 FEM::GPoint2D makeGPoint( FEM::GPoint1D gs1, FEM::GPoint1D gs2 );
 FEM::GPoint3D makeGPoint( FEM::GPoint1D gs1, FEM::GPoint1D gs2, FEM::GPoint1D gs3 );
+FEM::GPoint3D makeGPoint( FEM::GPoint2D gs1, FEM::GPoint1D gs2);
+FEM::GPoint3D makeGPoint( FEM::GPoint1D gs1, FEM::GPoint2D gs2);
 
 
 
