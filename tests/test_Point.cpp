@@ -7,7 +7,11 @@ int main (int argc, char *argv[])
 {
   FEM::Point   p0 = FEM::makePoint(0.0,0.0,0.0);
   FEM::Point   p1 = FEM::makePoint(1.0,0.0,0.0);
+  FEM::Point   pd = {1.0, 2.0, 3.0};
 
+  assert(pd.component(0) == 1.0);
+  assert(pd.component(1) == 2.0);
+  assert(pd.component(2) == 3.0);
   // size 
   assert(p0.size() == 3);
 

@@ -13,11 +13,7 @@ namespace FEM
 template <typename...Ts> 
   Point<Ts...> makePoint(Ts... coords )
   {
-    Point<Ts...> out;
-    int i = 0;
-    ( (out.component(i++) = coords), ...);
-
-    return out;
+    return Point<Ts...> (coords...);
   }
 
 

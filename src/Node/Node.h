@@ -47,7 +47,8 @@ namespace FEM
 
  template <typename... Ts> 
    Node<Ts...>::Node(int label, Ts... coords)
-   : Point<Ts...>::Point(coords...), _label(label)
+   : Point<Ts...>::Point(coords...), 
+   _label(label)
    {}
 
 

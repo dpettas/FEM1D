@@ -150,7 +150,7 @@ namespace FEM
 
       for(int i = 0; i < m_npoints; ++i)
       {
-        for (int j = 0; j < m_values.size(); ++j)
+        for (int j = 0; j < static_cast<int>(m_values.size()); ++j)
         {
           out << m_values.at(j).second[i] << "  ";
         }
@@ -164,13 +164,13 @@ namespace FEM
     {
       std::stringstream out;
 
-      for (int nelem = 0; nelem < m_connectivity.size(); ++nelem)
+      for (int nelem = 0; nelem < static_cast<int>( m_connectivity.size()); ++nelem)
       {
-        for (int id_ = 0; id_ < m_connectivity[nelem].size(); ++id_)
+        for (int id_ = 0; id_ < static_cast<int> (m_connectivity[nelem].size()); ++id_)
         {
           out << m_connectivity[nelem][id_] + 1 << " ";
         }
-       out << '\n';
+        out << '\n';
       }
       
       return out.str();
