@@ -20,6 +20,7 @@ namespace FEM
   {
     public: 
       Node();
+      Node(int label, Ts... coors);
       Node(int label, const Point<Ts...>& point);
       Node( const Node&  other);
       Node(       Node&& other);
@@ -39,6 +40,15 @@ namespace FEM
     
   };
 
+ template <typename... Ts> 
+   Node<Ts...>::Node(int label, const Point<Ts...>& point)
+   : Point<Ts...>::Point(point), _label(label)
+   {}
+
+ template <typename... Ts> 
+   Node<Ts...>::Node(int label, Ts... coords)
+   : Point<Ts...>::Point(coords...), _label(label)
+   {}
 
 
 template <typename... Ts>
@@ -60,10 +70,6 @@ template <typename... Ts>
     _label = label;
   }
 
- template <typename... Ts> 
-   Node<Ts...>::Node(int label, const Point<Ts...>& point)
-   : Point<Ts...>::Point(point), _label(label)
-   {}
 
 template <typename... Ts> 
    Node<Ts...>::Node(const Node& other)
