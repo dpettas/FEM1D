@@ -31,7 +31,7 @@ namespace FEM
       int  getLabel() const;
 
       Node& operator = (const Node&  that); 
-      Node& operator = (      Node&& that);
+      Node& operator = (      Node&& that); 
       bool  operator ==(const Node&  other) const;
 
     private:
@@ -86,6 +86,28 @@ template <typename... Ts>
      _label = other._label;
      other._label = -1;
    }
+
+template <typename... Ts> 
+  Node<Ts...>& Node<Ts...>::operator=(const Node<Ts...> &that)
+  {
+    if (this == &that)
+      return *this;
+    
+    Point<Ts...>::operator=(that);
+    _label = that._label;
+    return *this;
+  }
+
+template <typename... Ts> 
+  Node<Ts...>& Node<Ts...>::operator=(Node<Ts...>&& that)
+  {
+    if (this == &that)
+      return *this;
+    
+    Point<Ts...>::operator=(std::move(that));
+    _label = that._label;
+    return *this;
+  }
 
 
   template<typename... Ts> 

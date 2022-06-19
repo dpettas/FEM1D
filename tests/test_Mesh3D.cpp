@@ -14,13 +14,13 @@
 
 int main (int argc, char *argv[])
 {
-  FEM::Mesh mesh(3,3,2);
+  FEM::Mesh mesh(1,1,1);
 
   std::cout << mesh.getNumberOfNodes() << std::endl;
   std::cout << mesh.getNumberOfElements() << std::endl;
   std::cout << mesh.getNodeID(0,0,1) << std::endl;
 
-
+  std::cout << std::fixed;
   for (const FEM::Node3D n : mesh.getNodes())
     std::cout << n << std::endl;
 

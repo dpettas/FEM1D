@@ -3,7 +3,8 @@
 
 #include "Node/Node.h"
 #include "Elements/Brick.h"
-#include <string_view>
+
+#include <algorithm>
 
 namespace FEM 
 {

@@ -66,6 +66,15 @@ namespace FEM
         }
       }
     }
+
+    // Sort by label
+    std::sort(_nodes.begin(), 
+              _nodes.end()  ,
+              [] (const Node3D na, const Node3D nb)
+              {
+                return na.getLabel() < nb.getLabel();
+              } );
+
   }
   
 }
