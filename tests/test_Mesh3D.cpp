@@ -1,4 +1,6 @@
-#include "Mesh3D.h"
+#include "Mesh/Mesh.h"
+#include "Node/Node.h"
+#include "Node/functions.h"
 #include <cstdlib>
 #include <vector>
 #include <cmath>
@@ -7,31 +9,22 @@
 #include <iomanip>
 
 
-void printNodes(const std::vector<FEM::Node3D*>& nodes)
-{
-  for (int i = 0; i < nodes.size(); ++i){
-    std::cout << std::setprecision(3) << std::fixed
-              << nodes.at(i)->getLabel() << " "
-              << nodes.at(i)->get()[0]<< " "
-              << nodes.at(i)->get()[1]<< " "
-              << nodes.at(i)->get()[2]<< '\n';
-  }
-
-}
-
 
 
 
 int main (int argc, char *argv[])
 {
-  FEM::Mesh3D mesh(10,20,25);
+  FEM::Mesh mesh(3,3,2);
+
+  std::cout << mesh.getNumberOfNodes() << std::endl;
+  std::cout << mesh.getNumberOfElements() << std::endl;
+  std::cout << mesh.getNodeID(0,0,1) << std::endl;
 
 
+  for (const FEM::Node3D n : mesh.getNodes())
+    std::cout << n << std::endl;
 
-  // mesh.generateNodes();
-  // mesh.createconnectivity();
 
-  mesh.toAsciiTeplot("test_.plt");
 
 
   return 0;

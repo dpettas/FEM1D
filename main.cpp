@@ -14,7 +14,7 @@
 #include "Point/operators.h"
 #include "Node/Node.h"
 #include "Node/functions.h"
-
+#include "Mesh/Mesh.h"
 
 int main(){
 

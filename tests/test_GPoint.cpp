@@ -46,5 +46,6 @@ int main (int argc, char *argv[])
   assert(p6.get()[2] == 4.22 );
   assert(p6.weight() == 1.22 );
   
+  std::cout << "[done]\n";
   return 0;
 }

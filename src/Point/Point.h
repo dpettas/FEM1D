@@ -63,15 +63,6 @@ template <typename... Ts>
     ( (_coords[i++] = coords), ...  );
   }
 
-// template <typename... Ts>
-//   Point<Ts...>::Point()
-//   {
-//     _coords = new double [sizeof...(Ts)];
-//
-//     for (int i = 0; i < size(); ++i)
-//       _coords[i] = 0.0;
-//   }
-
 
 template <typename... Ts>
   Point<Ts...>::Point(const Point<Ts...>& other)

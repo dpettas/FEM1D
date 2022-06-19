@@ -3,6 +3,7 @@
 
 
 #include "Node/Node.h"
+#include "Point/operators.h"
 
 namespace FEM 
 {
@@ -22,8 +23,8 @@ namespace FEM
   template<typename... Ts>
     std::ostream& operator << (std::ostream& out, const Node<Ts...>& obj)
     {
-      Point<Ts...> pout = obj;
-      out << "("<< obj.getLabel() << ", " << pout << ")"<< std::endl;
+      out << "("<< obj.getLabel() << ", " 
+          << static_cast<Point<Ts...> >(obj) << ")";
       return out; 
     }
 
