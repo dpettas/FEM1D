@@ -42,6 +42,13 @@ namespace FEM
     return _elements;
   }
 
+  const Node3D& Mesh::getNode(int id) const
+  { 
+    return _nodes.at(id);
+  }
+    
+
+
   void Mesh::createNodes() 
   {
     int nbf = 2;

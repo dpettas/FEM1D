@@ -21,8 +21,8 @@ int main (int argc, char *argv[])
   std::cout << mesh.getNodeID(0,0,1) << std::endl;
 
   std::cout << std::fixed;
-  for (const FEM::Node3D n : mesh.getNodes())
-    std::cout << n << std::endl;
+  for(int i = 0; i < mesh.getNumberOfNodes(); ++i)
+    std::cout << mesh.getNode(i) << std::endl;
 
 
 
