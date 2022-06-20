@@ -3,6 +3,7 @@
 
 #include "BasisFunctions/exceptions.h"
 #include "Point/Point.h"
+#include "exceptions/exceptions.h"
 #include <cstddef>
 #include <functional>
 #include <iostream>
@@ -85,7 +86,7 @@ template <typename ...Ts>
     if      constexpr (sizeof...(Ts) == 1) return _basisFunction(pp[0]);
     else if constexpr (sizeof...(Ts) == 2) return _basisFunction(pp[0], pp[1]);
     else if constexpr (sizeof...(Ts) == 3) return _basisFunction(pp[0], pp[1], pp[2]);
-    else throw "NotImplemented";
+    else  throw NotImplementedError();
 
   }
 
