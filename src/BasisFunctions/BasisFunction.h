@@ -2,6 +2,7 @@
 #define _FEM_BASISFUNCTION2D_INCLUDED_ 
 
 #include "BasisFunctions/exceptions.h"
+#include "Point/Point.h"
 #include <cstddef>
 #include <functional>
 #include <iostream>
@@ -38,7 +39,8 @@ template <typename ...Ts>
 
       void set(_func);
       const BFunction& operator = (const BFunction& that);
-      const double operator () (Ts...) const;
+      double operator () (Ts...) const;
+      double operator () (const Point<Ts...>& p) const;
 
       constexpr int dimensionality() const;
        _func derWithRespectTo(int i);
@@ -69,9 +71,22 @@ template <typename ...Ts>
   {}
 
   template<typename ...Ts>
-  const double BFunction<Ts...>::operator()(Ts... args) const
+  double BFunction<Ts...>::operator()(Ts... args) const
   { 
     return _basisFunction(args...);
+  }
+
+  template<typename... Ts>
+  double BFunction<Ts...>::operator()(const Point<Ts...>& p) const
+  {
+    const double* pp = p.get();
+
+
+    if      constexpr (sizeof...(Ts) == 1) return _basisFunction(pp[0]);
+    else if constexpr (sizeof...(Ts) == 2) return _basisFunction(pp[0], pp[1]);
+    else if constexpr (sizeof...(Ts) == 3) return _basisFunction(pp[0], pp[1], pp[2]);
+    else throw "NotImplemented";
+
   }
 
   template<typename ...Ts>
