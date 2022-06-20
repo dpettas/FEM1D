@@ -33,18 +33,19 @@ int main (int argc, char *argv[])
 
   mesh.scale(2,2,2).translate(-1.0, -1.0, -1.0);
 
+
   // std::cout << mesh.getNumberOfNodes() << std::endl;
   // std::cout << mesh.getNumberOfElements() << std::endl;
   // std::cout << mesh.getNodeID(0,0,1) << std::endl;
   std::cout << std::fixed;
-  showBFunctions(mesh.getNode(0));
-  showBFunctions(mesh.getNode(1));
-  showBFunctions(mesh.getNode(2));
-  showBFunctions(mesh.getNode(3));
-  showBFunctions(mesh.getNode(4));
-  showBFunctions(mesh.getNode(5));
-  showBFunctions(mesh.getNode(6));
-  showBFunctions(mesh.getNode(7));
+  showBFunctions(mesh.getElement(0).getNode(0));
+  showBFunctions(mesh.getElement(0).getNode(1));
+  showBFunctions(mesh.getElement(0).getNode(2));
+  showBFunctions(mesh.getElement(0).getNode(3));
+  showBFunctions(mesh.getElement(0).getNode(4));
+  showBFunctions(mesh.getElement(0).getNode(5));
+  showBFunctions(mesh.getElement(0).getNode(6));
+  showBFunctions(mesh.getElement(0).getNode(7));
 
 
 

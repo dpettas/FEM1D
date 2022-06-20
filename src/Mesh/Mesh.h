@@ -38,9 +38,11 @@ namespace FEM
       bool operator==(const Mesh& other);
       bool operator!=(const Mesh& other);
 
-      void createNodes();
 
     private: 
+      void createNodes();
+      void connectivity();
+
       int _nxel =  0;
       int _nyel =  0;
       int _nzel =  0;
