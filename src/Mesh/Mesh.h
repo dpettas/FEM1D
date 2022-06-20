@@ -17,8 +17,8 @@ namespace FEM
       Mesh(const Mesh& other);
       Mesh(      Mesh&& other);
 
-      int                        getNumberOfNodes()    const;  
-      int                        getNumberOfElements() const;  
+      int                        getNumberOfNodes()             const;  
+      int                        getNumberOfElements()          const;  
       int                        getNodeID(int i, int j, int k) const;
       
       const Node3D&              getNode   (int id) const;

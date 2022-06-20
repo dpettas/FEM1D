@@ -9,7 +9,21 @@
 #include <fstream>
 #include <iomanip>
 
+void showBFunctions(const FEM::Node3D& n)
+{
 
+  auto phi = [] (int i, const FEM::Node3D& n) { return FEM::COLLECTION::linearLagrange3D.phi(i)(n); };
+  
+  std::cout <<  "  0.  " << phi(0,n) << "  ";
+  std::cout <<  "  1.  " << phi(1,n) << "  ";
+  std::cout <<  "  2.  " << phi(2,n) << "  ";
+  std::cout <<  "  3.  " << phi(3,n) << "  ";
+  std::cout <<  "  4.  " << phi(4,n) << "  ";
+  std::cout <<  "  5.  " << phi(5,n) << "  ";
+  std::cout <<  "  6.  " << phi(6,n) << "  ";
+  std::cout <<  "  7.  " << phi(7,n) << std::endl;
+  
+}
 
 
 
@@ -23,22 +37,19 @@ int main (int argc, char *argv[])
   // std::cout << mesh.getNumberOfElements() << std::endl;
   // std::cout << mesh.getNodeID(0,0,1) << std::endl;
   std::cout << std::fixed;
-  // std::cout << mesh.getNode(0) << std::endl;
-  // std::cout << mesh.getNode(1) << std::endl;
-  // std::cout << mesh.getNode(2) << std::endl;
-  // std::cout << mesh.getNode(3) << std::endl;
-  // std::cout << mesh.getNode(4) << std::endl;
-  // std::cout << mesh.getNode(5) << std::endl;
-  // std::cout << mesh.getNode(6) << std::endl;
-  // std::cout << mesh.getNode(7) << std::endl;
-
-
-  auto phi = [] (int i, FEM::Node3D& n) { return FEM::COLLECTION::linearLagrange3D.phi(i)(n); };
+  showBFunctions(mesh.getNode(0));
+  showBFunctions(mesh.getNode(1));
+  showBFunctions(mesh.getNode(2));
+  showBFunctions(mesh.getNode(3));
+  showBFunctions(mesh.getNode(4));
+  showBFunctions(mesh.getNode(5));
+  showBFunctions(mesh.getNode(6));
+  showBFunctions(mesh.getNode(7));
 
 
 
-  FEM::Node3D n = mesh.getNode(0);
-  std::cout << static_cast<FEM::Point3D>(n) << "    " << phi(0,n) << std::endl;
+
+
 
 
 
