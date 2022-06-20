@@ -27,8 +27,8 @@ namespace FEM
       const std::vector<Node3D>& getNodes()         const;
       const std::vector<Brick>&  getElements()      const;
 
-      Mesh& scale();
-      Mesh& translate();
+      Mesh& scale    (double _scale0, double _scale1, double _scale2);
+      Mesh& translate(double _trans0, double _trans1, double _trans2);
 
       void toAsciiTecplot(const char* fiilename)    const;
 

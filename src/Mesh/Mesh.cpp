@@ -46,6 +46,31 @@ namespace FEM
   { 
     return _nodes.at(id);
   }
+
+  Mesh& Mesh::scale(double _scale0, double _scale1, double _scale2)
+  {
+    for(Node3D& node : _nodes)
+    {
+      node.component(0) *= _scale0;
+      node.component(1) *= _scale1;
+      node.component(2) *= _scale2;
+    }
+
+   
+    return *this;
+  }
+  
+  Mesh& Mesh::translate(double _trans0, double _trans1, double _trans2)
+  {
+    for(Node3D& node : _nodes)
+    {
+      node.component(0) += _trans0;
+      node.component(1) += _trans1;
+      node.component(2) += _trans2;
+    }
+   
+    return *this;
+  }
     
 
 
