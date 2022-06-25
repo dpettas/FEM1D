@@ -144,12 +144,13 @@ namespace FEM
 
           element_id  = node_id(surf + 0, level + 0, jj + 1);
           element.addNode( this->getNode(element_id));
+          
+          element_id  = node_id(surf + 0, level + 1, jj + 0);
+          element.addNode( this->getNode(element_id));
        
           element_id  = node_id(surf + 0, level + 1, jj + 1);
           element.addNode( this->getNode(element_id));
 
-          element_id  = node_id(surf + 0, level + 1, jj + 0);
-          element.addNode( this->getNode(element_id));
 
           element_id  = node_id(surf + 1, level + 0, jj + 0);
           element.addNode( this->getNode(element_id));
@@ -157,10 +158,10 @@ namespace FEM
           element_id  = node_id(surf + 1, level + 0, jj + 1);
           element.addNode( this->getNode(element_id));
 
-          element_id  = node_id(surf + 1, level + 1, jj + 1);
+          element_id  = node_id(surf + 1, level + 1, jj + 0);
           element.addNode( this->getNode(element_id));
 
-          element_id  = node_id(surf + 1, level + 1, jj + 0);
+          element_id  = node_id(surf + 1, level + 1, jj + 1);
           element.addNode( this->getNode(element_id));
 
        
@@ -169,63 +170,6 @@ namespace FEM
       }
     
   }
-  
-
-  //   for (int i = 0; i < m_nzel; ++i)
-  //   {
-  //     for (int j = 0; j < m_nyel; ++j)
-  //     {
-  //       for (int k = 0; k < m_nxel; ++k)
-  //       {
-  //         // Only for Linear
-  //         // std::cout << k << std::endl;
-  //         int NBF_1d = 2;
-  //         int jj     = (NBF_1d-1)*(k-0) + 0;
-  //         int surf   = i -0;
-  //         int level  = j -0;
-  //         int mnd    = m_nnx * m_nny;
-  //         int nnd    = m_nnx;
-  //
-  //
-  //         int element_id;
-  //         Brick  element;
-  //
-  //         auto node_id = [mnd, nnd](int surf_, int level_, int loc_)
-  //         {
-  //           return surf_ * mnd + level_ * nnd + loc_;
-  //         };
-  //
-  //         element_id  = node_id(surf + 0, level + 0, jj + 0);
-  //         element.addNode( this->getNode(element_id));
-  //
-  //         element_id  = node_id(surf + 0, level + 0, jj + 1);
-  //         element.addNode( this->getNode(element_id));
-  //       
-  //         element_id  = node_id(surf + 0, level + 1, jj + 1);
-  //         element.addNode( this->getNode(element_id));
-  //
-  //         element_id  = node_id(surf + 0, level + 1, jj + 0);
-  //         element.addNode( this->getNode(element_id));
-  //
-  //         element_id  = node_id(surf + 1, level + 0, jj + 0);
-  //         element.addNode( this->getNode(element_id));
-  //
-  //         element_id  = node_id(surf + 1, level + 0, jj + 1);
-  //         element.addNode( this->getNode(element_id));
-  //
-  //         element_id  = node_id(surf + 1, level + 1, jj + 1);
-  //         element.addNode( this->getNode(element_id));
-  //
-  //         element_id  = node_id(surf + 1, level + 1, jj + 0);
-  //         element.addNode( this->getNode(element_id));
-  //
-  //       
-  //         _elements.push_back(element);
-  //       }
-  //     }
-  //   }
-
-
 
   }
 
