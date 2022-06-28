@@ -25,12 +25,12 @@ namespace FEM::COLLECTION
   {
     BFunction3D ( [] (double ksi, double eta, double zeta) { return 0.50 * (1.0 - ksi) * 0.50 * (1.0 - eta) * 0.50 * (1.0 - zeta);} ),
     BFunction3D ( [] (double ksi, double eta, double zeta) { return 0.50 * (1.0 + ksi) * 0.50 * (1.0 - eta) * 0.50 * (1.0 - zeta);} ),
-    BFunction3D ( [] (double ksi, double eta, double zeta) { return 0.50 * (1.0 - ksi) * 0.50 * (1.0 + eta) * 0.50 * (1.0 - zeta);} ),
     BFunction3D ( [] (double ksi, double eta, double zeta) { return 0.50 * (1.0 + ksi) * 0.50 * (1.0 + eta) * 0.50 * (1.0 - zeta);} ),
+    BFunction3D ( [] (double ksi, double eta, double zeta) { return 0.50 * (1.0 - ksi) * 0.50 * (1.0 + eta) * 0.50 * (1.0 - zeta);} ),
     BFunction3D ( [] (double ksi, double eta, double zeta) { return 0.50 * (1.0 - ksi) * 0.50 * (1.0 - eta) * 0.50 * (1.0 + zeta);} ),
     BFunction3D ( [] (double ksi, double eta, double zeta) { return 0.50 * (1.0 + ksi) * 0.50 * (1.0 - eta) * 0.50 * (1.0 + zeta);} ),
-    BFunction3D ( [] (double ksi, double eta, double zeta) { return 0.50 * (1.0 - ksi) * 0.50 * (1.0 + eta) * 0.50 * (1.0 + zeta);} ),
     BFunction3D ( [] (double ksi, double eta, double zeta) { return 0.50 * (1.0 + ksi) * 0.50 * (1.0 + eta) * 0.50 * (1.0 + zeta);} ),
+    BFunction3D ( [] (double ksi, double eta, double zeta) { return 0.50 * (1.0 - ksi) * 0.50 * (1.0 + eta) * 0.50 * (1.0 + zeta);} ),
 
   };
   

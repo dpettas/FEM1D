@@ -3,8 +3,10 @@
 
 #include "Node/Node.h"
 #include "Elements/Brick.h"
+#include "export/AsciiTecplot.h"
 
 #include <algorithm>
+#include <iostream>
 
 namespace FEM 
 {
@@ -30,13 +32,15 @@ namespace FEM
       Mesh& scale    (double _scale0, double _scale1, double _scale2);
       Mesh& translate(double _trans0, double _trans1, double _trans2);
 
-      void toAsciiTecplot(const char* fiilename)    const;
 
       Mesh& operator= (const Mesh&  that);
       Mesh& operator= (      Mesh&& that);
 
       bool operator==(const Mesh& other);
       bool operator!=(const Mesh& other);
+
+      void toAsciiTecplot(const char* fiilename)    const;
+      void toAsciiTecplot(const std::string& filename) const;
 
 
     private: 

@@ -1,5 +1,6 @@
 #include "Mesh/Mesh.h"
 #include <cctype>
+#include <vector>
 
 namespace FEM 
 {
@@ -30,34 +31,66 @@ namespace FEM
     for (const Node3D& n : other.getNodes())
       _nodes.push_back(n);
 
+    for (const Brick& elem : other.getElements() )
+    {
+      int nn = elem.getNumberOfNodes();
+     
+
+      Brick nelement;
+
+      for (int i = 0; i < nn; ++i )
+      {
+        int label = elem.getNode(i).getLabel(); // other nodes
+        nelement.addNode( _nodes[label] ); 
+      }
+      _elements.push_back( nelement  );
+    }
+  }
+
+
+  void Mesh::toAsciiTecplot(const char* filename) const
+  {
+    int nn = getNumberOfNodes();
+    int ne = getNumberOfElements(); 
+    std::vector<double> x;
+    std::vector<double> y;
+    std::vector<double> z;
+    std::vector<std::vector<int>> connectivity;
+ 
+    for (const Node3D& n : getNodes())
+    {
+      x.push_back(n.component(0));
+      y.push_back(n.component(1));
+      z.push_back(n.component(2));
+    }
+
+
+    for (const Brick& elem : getElements() )
+    {
+      connectivity.push_back( elem.getNodeLabels() );
+    }
 
 
 
-    //
-    //
-    // for (const Brick& elem : other.getElements() )
-    // {
-    //   int nn = elem.getNumberOfNodes();
-    //   
-    //
-    //   Brick nelement; 
-    //
-    //   for (int i = 0; i < nn; ++i )
-    //   {
-    //     int label = elem.getNode(i).getLabel(); // other nodes
-    //     Node3D& n = _nodes[label]; // new nodes
-    //     nelement.addNode( n );  
-    //   }
-    //
-    //
-    //   _elements.push_back( nelement  );
-    //
-    // }
-    //
+
+    IO::AsciiTecplot tecfile (filename);
+    tecfile.open();
+
+    tecfile.setNumberOfPoints ( nn );
+    tecfile.setNumberOfElemets( ne );
+
+    tecfile.addFieldValue("X",x);
+    tecfile.addFieldValue("Y",y);
+    tecfile.addFieldValue("Z",z);
+    tecfile.addConnectivity(connectivity);
+    tecfile.write();
+    tecfile.close();
+  }
 
 
-
-
+  void Mesh::toAsciiTecplot(const std::string& filename) const 
+  {
+    toAsciiTecplot(filename.c_str());
   }
 
 
@@ -190,11 +223,11 @@ namespace FEM
 
           element_id  = node_id(surf + 0, level + 0, jj + 1);
           element.addNode( this->getNode(element_id));
-          
-          element_id  = node_id(surf + 0, level + 1, jj + 0);
-          element.addNode( this->getNode(element_id));
-       
+        
           element_id  = node_id(surf + 0, level + 1, jj + 1);
+          element.addNode( this->getNode(element_id));
+
+          element_id  = node_id(surf + 0, level + 1, jj + 0);
           element.addNode( this->getNode(element_id));
 
           element_id  = node_id(surf + 1, level + 0, jj + 0);
@@ -203,10 +236,10 @@ namespace FEM
           element_id  = node_id(surf + 1, level + 0, jj + 1);
           element.addNode( this->getNode(element_id));
 
-          element_id  = node_id(surf + 1, level + 1, jj + 0);
+          element_id  = node_id(surf + 1, level + 1, jj + 1);
           element.addNode( this->getNode(element_id));
 
-          element_id  = node_id(surf + 1, level + 1, jj + 1);
+          element_id  = node_id(surf + 1, level + 1, jj + 0);
           element.addNode( this->getNode(element_id));
 
        
@@ -214,7 +247,10 @@ namespace FEM
         }
       }
     
+    }
   }
 
-  }
+
+
+
 }
