@@ -30,8 +30,10 @@ int main (int argc, char *argv[])
   FEM::Mesh mesh(1,1,1);
 
 
+
   mesh.scale(2,2,2).translate(-1.0, -1.0, -1.0);
 
+  std::cout << mesh.getElement(0).centroid() << std::endl;
 
   FEM::Mesh cmesh = mesh;
   cmesh.toAsciiTecplot("cmesh.plt");

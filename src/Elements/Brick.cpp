@@ -1,4 +1,5 @@
 #include "Brick.h"
+#include <iostream>
 
 
 namespace FEM
@@ -22,6 +23,29 @@ namespace FEM
     
     return *this;
   }
+
+
+  Point3D Brick::centroid() const
+  {
+    double x1= 0.0;
+    double x2= 0.0;
+    double x3= 0.0;
+
+    for (int i = 0; i < getNumberOfNodes(); ++i )
+    {
+      const Node3D& n = this->getNode(i);
+      x1 += n.component(0);
+      x2 += n.component(1);
+      x3 += n.component(3);
+    }
+    x1 /= this->getNumberOfNodes();
+    x2 /= this->getNumberOfNodes();
+    x3 /= this->getNumberOfNodes();
+
+    return Point3D(x1,x2,x3);
+  }
+
+
 
 
   int Brick::getNumberOfNodes() const

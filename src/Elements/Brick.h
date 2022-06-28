@@ -2,6 +2,7 @@
 #define _FEM_BRICK_INCLUDED_ 
 
 #include "Node/Node.h"
+#include "Point/Point.h"
 #include <vector>
 #include <initializer_list>
 //
@@ -27,6 +28,7 @@ namespace FEM
       const Node3D& getNode(int id) const;
       const std::vector<int> getNodeLabels() const;
 
+      Point3D centroid() const; 
 
     private:
       int m_label = -1;
