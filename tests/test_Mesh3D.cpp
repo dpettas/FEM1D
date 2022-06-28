@@ -11,7 +11,6 @@
 
 void showBFunctions(const FEM::Node3D& n)
 {
-
   auto phi = [] (int i, const FEM::Node3D& n) { return FEM::COLLECTION::linearLagrange3D.phi(i)(n); };
   
   std::cout <<  "  0.  " << phi(0,n) << "  ";
@@ -22,7 +21,6 @@ void showBFunctions(const FEM::Node3D& n)
   std::cout <<  "  5.  " << phi(5,n) << "  ";
   std::cout <<  "  6.  " << phi(6,n) << "  ";
   std::cout <<  "  7.  " << phi(7,n) << std::endl;
-  
 }
 
 

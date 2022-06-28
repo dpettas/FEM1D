@@ -17,6 +17,52 @@ namespace FEM
     connectivity();
   }
 
+  Mesh::Mesh(const Mesh& other)
+  {
+    _nxel = other._nxel; 
+    _nyel = other._nyel; 
+    _nzel = other._nzel;
+
+    _nnx  = other._nnx; 
+    _nny  = other._nny;
+    _nnz  = other._nnz;
+    
+    for (const Node3D& n : other.getNodes())
+      _nodes.push_back(n);
+
+
+
+
+    //
+    //
+    // for (const Brick& elem : other.getElements() )
+    // {
+    //   int nn = elem.getNumberOfNodes();
+    //   
+    //
+    //   Brick nelement; 
+    //
+    //   for (int i = 0; i < nn; ++i )
+    //   {
+    //     int label = elem.getNode(i).getLabel(); // other nodes
+    //     Node3D& n = _nodes[label]; // new nodes
+    //     nelement.addNode( n );  
+    //   }
+    //
+    //
+    //   _elements.push_back( nelement  );
+    //
+    // }
+    //
+
+
+
+
+  }
+
+
+
+
 
   int Mesh::getNumberOfNodes() const 
   {
@@ -151,7 +197,6 @@ namespace FEM
           element_id  = node_id(surf + 0, level + 1, jj + 1);
           element.addNode( this->getNode(element_id));
 
-
           element_id  = node_id(surf + 1, level + 0, jj + 0);
           element.addNode( this->getNode(element_id));
 
@@ -172,27 +217,4 @@ namespace FEM
   }
 
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
